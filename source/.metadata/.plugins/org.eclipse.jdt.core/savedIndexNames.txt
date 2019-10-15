@@ -1,2 +1,0 @@
-INDEX VERSION 1.131+C:\Users\AnkitPanigrahy\Documents\final-project\RMS\source\.metadata\.plugins\org.eclipse.jdt.core
-392132651.index
