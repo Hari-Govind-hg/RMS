@@ -1,0 +1,40 @@
+<div class="container">
+        <div class="row">
+            <section class="col-sm-12">
+                <div class="jumbotron">
+                    <h3 class="display-4">Welcome HR.</h3>
+                    <a class="btn btn-primary btn-lg" routerLink="/addjob" role="button">Create New Job Posting</a>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+
+            <div class="card col-sm-3" id="addnewJob" routerLink="/addjob">
+                <div class="card-body">
+                        <div class="upperContainerNewJob">
+                            <h1>+</h1>
+                            <h2>New Job</h2>
+                        </div>
+                        <div class="container">
+                        </div>
+                </div>
+            </div>
+    
+            <div class="card col-sm-3" *ngFor = "let job of jobList" routerLink="/jobs/{{job.jobId}}">
+                <div class="card-body">
+                    <div class="upperContainer">
+                    <h5 class="card-title">{{job.designation}}</h5>
+                    <p class="card-text">Role:{{job.jobRole}}</p>
+                    </div>
+                    <hr class="dividingLine">
+                    <div class="container">
+                    <a routerLink="/jobs/{{job.jobId}}" class="link">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            
+    
+        </div>
+</div>
