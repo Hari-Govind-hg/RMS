@@ -1,0 +1,12 @@
+.footer{
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+p{
+    color: antiquewhite;
+}

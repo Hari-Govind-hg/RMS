@@ -2,12 +2,13 @@
         <link rel="stylesheet" type="text/css" href="C:/Users/HariGovind/Desktop/RMS Studying and Working/Temporary UI/tempUI/rms-ui/css/util.css">
         <link rel="stylesheet" type="text/css" href="C:/Users/HariGovind/Desktop/RMS Studying and Working/Temporary UI/tempUI/rms-ui/css/main.css">
 </head> -->
+<span style="float: left; margin-left:-180px;">
+    <button class="btn btn-dark" routerLink="/jobs"><<Go Back</button>
+</span>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h2>Create new Job posting</h2>
-        </div>
         <div class=" card col-md-12" id="formdiv" style="margin-left: -150px; margin-top: 40px;">
+                <h2 style="text-align: center; margin-top: 10px;">Create new Job posting</h2>
              <!--Step 3: connect form group here -->
                     <form class="col-md-6 offset-md-3" style="margin-top: 10px;" [formGroup]="jobPostingForm" (ngSubmit)="onAddJobHandler()">
 
@@ -108,7 +109,7 @@
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
                                 <button type="reset" class="btn btn-warning">Reset</button>
-                                <span style="float: right;"><button class="btn btn-dark" routerLink="/"><<Go Back</button></span>
+                                <span style="float: right;"><button class="btn btn-dark" routerLink="/jobs"><<Go Back</button></span>
                             </div>
                         </div>
                     </form>

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { JobServiceService } from '../../job-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { JobServiceService } from '../HRservice/job-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-jobdetail',
   templateUrl: './jobdetail.component.html',
-  styleUrls: []
+  styleUrls: ['./jobdetail.component.css']
 })
 export class JobdetailComponent implements OnInit {
   jobData:any;
@@ -14,7 +14,8 @@ export class JobdetailComponent implements OnInit {
   jobId:String;
   jobSubscription:Subscription;
   isSaved:boolean=false;
-  constructor(private jobService:JobServiceService,private route:ActivatedRoute) { }
+  isDeleted:boolean=false;
+  constructor(private jobService:JobServiceService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     const _jobId = this.route.snapshot.params.id;
@@ -40,8 +41,13 @@ export class JobdetailComponent implements OnInit {
     //use promise based submission
     let res = await this.jobService.updateJob(this.duplicateJobData);
 
+    const _jobId = this.route.snapshot.params.id;
+    console.log("The id is:"+_jobId);
+
     if(res){
       this.isSaved = true;
+      console.log(res);
+      this.router.navigate(['/jobs'+_jobId]);
     }
   }
 
@@ -49,6 +55,10 @@ export class JobdetailComponent implements OnInit {
     const _jobId = this.route.snapshot.params.id;
     console.log(_jobId);
     let res = await this.jobService.deleteJob(_jobId);
+    if(res){
+      this.isDeleted = true;
+      this.router.navigate(['/jobs']);
+    }
   }
 
   ngOnDestroy(){

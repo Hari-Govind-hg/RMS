@@ -1,15 +1,23 @@
-<a routerLink="/">
-    <<Go back</a> <div class="container">
+<span style="float: left;"><button class="btn btn-dark" routerLink="/jobs"><<Go Back</button></span>
+     <div class="container col-md-4" style="margin-left:350px ;">
       <div class="row">
         <div class="card col-md-12">
           <div class="card-body" *ngIf="jobData">
             <h3 class="card-title">{{jobData.designation}}</h3>
             <h5><b>Id:</b> {{jobData.jobId}}</h5>
+            <hr>
             <p><b>Job Role:</b> {{jobData.jobRole}}</p>
+            <hr>
             <p><b>Description:</b> {{jobData.jobDescription}}</p>
+            <hr>
             <p><b>Employment Type:</b> {{jobData.employmentType}}</p>
+            <hr>
             <p><b>Salary:</b>{{jobData.salary}}</p>
+            <hr>
             <p><b>Location:</b>{{jobData.location}}</p>
+            <div class="alert alert-success" *ngIf="isSaved">
+                    Updated successfully!
+            </div>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editJobModal" (click)="onEditHandler()">Edit</button>
             <button type="button" class="btn btn-danger" (click)="onDeleteHandler()">Delete</button>
   
@@ -24,7 +32,7 @@
                     </button>
                   </div>
                   <div class="modal-body"*ngIf="duplicateJobData">
-                    <form ngNativeValidate #f="ngForm" (ngSubmit)="onUpdateHandler(f)">
+                    <form ngNativeValidate #f="ngForm">
                       <div class="form-group row">
                         <label for="staticName" class="col-sm-3 col-form-label">Designation</label>
                         <div class="col-sm-9">
@@ -61,14 +69,9 @@
                           <input type="text" class="form-control" name="location" placeholder="Enter Location" [(ngModel)]="duplicateJobData.location">
                         </div>
                       </div>
-  
-                      <div class="alert alert-success" *ngIf="isSaved">
-                        Updated successfully!
-                      </div>
-  
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary" (click)="onUpdateHandler(f)" data-dismiss="modal">Save changes</button>
                       </div>
                     </form>
                   </div>

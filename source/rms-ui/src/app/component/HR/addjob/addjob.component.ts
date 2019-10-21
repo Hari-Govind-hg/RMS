@@ -1,6 +1,7 @@
-import { JobServiceService } from '../../job-service.service';
+import { JobServiceService } from '../HRservice/job-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-addjob',
@@ -13,7 +14,7 @@ export class AddjobComponent implements OnInit {
   jobPostingForm:FormGroup;
   isSaved:boolean=false;
 
-  constructor(private rmsService:JobServiceService) {
+  constructor(private rmsService:JobServiceService,private router:Router) {
 
     this.jobPostingForm=new FormGroup({
       jobId:new FormControl('',[Validators.required]),
@@ -32,6 +33,7 @@ export class AddjobComponent implements OnInit {
      console.log(res);
      if(res){
        this.isSaved=true;
+       this.router.navigate(['/jobs']);
      }
    }
   ngOnInit() {

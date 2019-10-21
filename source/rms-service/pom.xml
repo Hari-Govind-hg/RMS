@@ -60,7 +60,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>employee-mgmt-app09</finalName>	
+		<finalName>rms</finalName>	
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
