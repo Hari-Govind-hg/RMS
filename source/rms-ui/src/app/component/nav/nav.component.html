@@ -1,0 +1,36 @@
+<style>
+.avatar-hr{
+  width: 40px;
+  height: 40px;
+}
+.avatar{
+    float: right;
+    margin-left: 675px;
+}
+#loginbutton{
+  margin-left: 660px;
+}
+</style>
+<div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="persistentNav">
+        <a class="navbar-brand" routerLink="/">R M S</a>
+          <ul class="navbar-nav">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/jobs">Jobs<span class="sr-only">(current)</span></a>
+            </li>
+            <div class="avatar">
+            <li *ngIf="nav.visible" class="nav-item navbar-left avatar dropdown col-md-2">
+                <a mdbDropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="avatar-hr rounded-circle z-depth-0" alt="avatar image">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </li>
+            </div>
+            <li *ngIf="!nav.visible" class="nav-item" id="loginbutton" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" routerLink="/login">Login</a>
+              </li>
+          </ul>
+      </nav>
+</div>

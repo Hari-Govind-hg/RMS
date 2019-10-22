@@ -1,0 +1,118 @@
+<!-- <head>
+        <link rel="stylesheet" type="text/css" href="C:/Users/HariGovind/Desktop/RMS Studying and Working/Temporary UI/tempUI/rms-ui/css/util.css">
+        <link rel="stylesheet" type="text/css" href="C:/Users/HariGovind/Desktop/RMS Studying and Working/Temporary UI/tempUI/rms-ui/css/main.css">
+</head> -->
+<span style="float: left; margin-left:-180px;">
+    <button class="btn btn-dark" routerLink="/jobs"><<Go Back</button>
+</span>
+<div class="container">
+    <div class="row">
+        <div class=" card col-md-12" id="formdiv" style="margin-left: -150px; margin-top: 40px;">
+                <h2 style="text-align: center; margin-top: 10px;">Create new Job posting</h2>
+             <!--Step 3: connect form group here -->
+                    <form class="col-md-6 offset-md-3" style="margin-top: 10px;" [formGroup]="jobPostingForm" (ngSubmit)="onAddJobHandler()">
+
+                        <div class="form-group row">
+                            <label for="staticId" class="col-sm-8 col-form-label">Job ID</label>&nbsp;&nbsp;
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': jobPostingForm.get('jobId').touched && jobPostingForm.get('jobId').invalid}"
+                                    placeholder="Enter Job Id" formControlName="jobId" />
+                                <div class="invalid-feedback">
+                                    <div>Job ID is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticId" class="col-sm-8 col-form-label">Designation</label>&nbsp;&nbsp;
+                            <div class="col-sm-10">
+
+                                <input type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': jobPostingForm.get('designation').touched && jobPostingForm.get('designation').invalid}"
+                                    placeholder="Enter Designation" formControlName="designation" />
+                                <div class="invalid-feedback">
+                                    <div>Designation is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="staticId" class="col-sm-8 col-form-label">Job Role</label>&nbsp;&nbsp;
+                            <div class="col-sm-10">
+
+                                <input type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': jobPostingForm.get('jobRole').touched && jobPostingForm.get('jobRole').invalid}"
+                                    placeholder="Enter Job Role" formControlName="jobRole" />
+                                <div class="invalid-feedback">
+                                    <div>Job Role is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                                <label for="staticId" class="col-sm-8 col-form-label">Job Description</label>&nbsp;&nbsp;
+                                <div class="col-sm-10">
+                                  
+                                  <input type="text" class="form-control" 
+                                  [ngClass]="{ 'is-invalid': jobPostingForm.get('jobDescription').touched && jobPostingForm.get('jobDescription').invalid}"
+                                  placeholder="Enter Job Description" formControlName="jobDescription" /> 
+                                  <div class="invalid-feedback">
+                                    <div>Job Description is required</div>
+                                  </div>
+                                </div>
+                              </div>
+            
+                        
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-8 col-form-label">Employment Type</label>&nbsp;&nbsp;
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': jobPostingForm.get('employmentType').touched && jobPostingForm.get('employmentType').invalid}"
+                                    placeholder="Enter Empolyment type" formControlName="employmentType" />
+                                <div class="invalid-feedback">
+                                    <div>Employment type is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-8 col-form-label">Offered Salary</label>&nbsp;&nbsp;
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control"
+                                        [ngClass]="{ 'is-invalid': jobPostingForm.get('salary').touched && jobPostingForm.get('salary').invalid}"
+                                        placeholder="Enter Salary" formControlName="salary" />
+                                    <div class="invalid-feedback">
+                                        <div>Salary is required</div>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-8 col-form-label">Location</label>&nbsp;&nbsp;
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"
+                                        [ngClass]="{ 'is-invalid': jobPostingForm.get('location').touched && jobPostingForm.get('location').invalid}"
+                                        placeholder="Enter Location" formControlName="location" />
+                                    <div class="invalid-feedback">
+                                        <div>Lacation is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        <div class="alert alert-success" *ngIf="isSaved">
+                            Saved Successfully
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
+                                <button type="reset" class="btn btn-warning">Reset</button>
+                                <span style="float: right;"><button class="btn btn-dark" routerLink="/jobs"><<Go Back</button></span>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>

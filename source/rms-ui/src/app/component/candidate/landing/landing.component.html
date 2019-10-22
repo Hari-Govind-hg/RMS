@@ -1,0 +1,35 @@
+<!-- <div class="container">
+    <div class="row">
+        <section class="col-sm-12">
+            <h1>Welcome to Job portal</h1>
+            <div class="jumbotron">
+                <h2 class="display-4">Job Description goes here...</h2>
+                <a class="btn btn-primary btn-lg" routerLink="/profile" role="button">Edit Profile</a>
+            </div>
+        </section>
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+            <section class="col-sm-12">
+                <div class="jumbotron">
+                    <h3 class="display-4">Welcome {{currentUser.firstName}}.</h3>
+                    <a class="btn btn-primary btn-lg" routerLink="/profile" role="button">Edit Profile</a>
+                </div>
+            </section>
+        </div>
+        <hr>
+
+    
+        <div class="row">
+    
+            <div class="card col-sm-3 aqua-gradient animated fadeIn slower" id="addnewJob" routerLink="/jobs/addjob">
+                        <div class="upperContainerNewJob aqua-gradient">
+                            <h1>+</h1>
+                            <h2>Apply For Job</h2>
+                        </div>
+            </div>
+        </div>
+        <hr>
+        <h4>Applied Jobs</h4>
+    </div>

@@ -1,0 +1,47 @@
+div.card {
+    width: 250px;
+    text-align: center;
+    transition: box-shadow .3s;
+    margin: 0.5%;
+    /* border: solid 2px ; */
+  }
+.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.upperContainer{
+   height: 150px;
+   color: white;
+}
+
+div.jumbotron{
+    width:75%;
+    align-self: center;
+    margin-left: 3%;
+    text-align: center;
+}
+
+div.upperContainerNewJob{
+    background-color: rgb(96, 79, 255);
+    color: white;
+    padding: 10px;
+    /* font-size: calc(3*16px); */
+    text-align: center;
+    height: 250px;
+}
+
+#addnewJob{
+    /* background-color: rgb(96, 79, 255); */
+    color: white;
+    font-size: 50px;
+    /* border: solid 2px rgb(41, 21, 212); */
+}
+
+#jobList{
+    height: 150px;
+}
+div.container{
+    position: relative;
+    min-height: 100%;
+    margin-bottom:100px;
+}

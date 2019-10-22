@@ -1,0 +1,33 @@
+<!-- <div class="row">
+    <div class="card col-sm-3">
+        <div class="card-body">
+            <h5 class="card-title">Full Stack Developer</h5>
+            <p class="card-text">4 years of experience </p>
+            <a routerLink="/jobdetails" class="link">View Details</a>
+        </div>
+    </div>
+    <div class="card col-sm-3">
+        <div class="card-body">
+            <h5 class="card-title">Hr</h5>
+            <p class="card-text">15 years of experience </p>
+            <a routerLink="/jobdetails" class="link">View Details</a>
+        </div>
+    </div>
+    <div class="card col-sm-3">
+        <div class="card-body">
+            <h5 class="card-title">Associate Software Engineer</h5>
+            <p class="card-text">1 year of experience </p>
+            <a routerLink="/jobdetails" class="link">View Details</a>
+        </div>
+    </div>
+
+</div> -->
+
+<div class="card col-sm-3 blue-gradient animated fadeIn"  *ngFor = "let job of jobList" routerLink="/jobs/{{job.jobId}}">
+    <div class="card-body blue-gradient">
+        <div class="upperContainer">
+        <h5 class="card-title">{{job.designation}}</h5>
+        <p>Role:{{job.jobRole}}</p>
+        </div>
+    </div>
+</div>

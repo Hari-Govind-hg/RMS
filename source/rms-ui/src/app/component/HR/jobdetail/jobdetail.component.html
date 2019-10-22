@@ -1,0 +1,85 @@
+<span style="float: left;"><button class="btn btn-dark" routerLink="/jobs"><<Go Back</button></span>
+     <div class="container col-md-4" style="margin-left:350px ;">
+      <div class="row">
+        <div class="card col-md-12">
+          <div class="card-body" *ngIf="jobData">
+            <h3 class="card-title">{{jobData.designation}}</h3>
+            <h5><b>Id:</b> {{jobData.jobId}}</h5>
+            <hr>
+            <p><b>Job Role:</b> {{jobData.jobRole}}</p>
+            <hr>
+            <p><b>Description:</b> {{jobData.jobDescription}}</p>
+            <hr>
+            <p><b>Employment Type:</b> {{jobData.employmentType}}</p>
+            <hr>
+            <p><b>Salary:</b>{{jobData.salary}}</p>
+            <hr>
+            <p><b>Location:</b>{{jobData.location}}</p>
+            <div class="alert alert-success" *ngIf="isSaved">
+                    Updated successfully!
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editJobModal" (click)="onEditHandler()">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="onDeleteHandler()">Delete</button>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="editJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Job</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body"*ngIf="duplicateJobData">
+                    <form ngNativeValidate #f="ngForm">
+                      <div class="form-group row">
+                        <label for="staticName" class="col-sm-3 col-form-label">Designation</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="designation" placeholder="Enter designation" [(ngModel)]="duplicateJobData.designation">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="staticAge" class="col-sm-3 col-form-label">Job Role</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="jobRole" placeholder="Enter Job Role" [(ngModel)]="duplicateJobData.jobRole">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="staticDesignation" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="jobDescription" placeholder="Enter Job Description" [(ngModel)]="duplicateJobData.jobDescription">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="staticDepartment" class="col-sm-3 col-form-label">Employment Type</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="employmentType" placeholder="Enter Employment Type" [(ngModel)]="duplicateJobData.employmentType">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="staticCountry" class="col-sm-3 col-form-label">Salary</label>
+                        <div class="col-sm-9">
+                          <input type="number" class="form-control" name="salary" placeholder="Enter Salary" [(ngModel)]="duplicateJobData.salary">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="staticCountry" class="col-sm-3 col-form-label">Location</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="location" placeholder="Enter Location" [(ngModel)]="duplicateJobData.location">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" (click)="onUpdateHandler(f)" data-dismiss="modal">Save changes</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      </div>

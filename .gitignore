@@ -6,7 +6,6 @@
 **/bin
 **/build
 **/RemoteSystemsTempFiles
-**/servers
 **/.metadata
 **/.settings
 **/.recommenders

@@ -1,0 +1,194 @@
+<span style="float: left; margin-left:-180px;">
+    <button class="btn btn-dark" routerLink="/landing"><<Go Back</button>
+</span>
+<div class="container">
+    <div class="row">
+        <div class=" card col-md-12" id="formdiv" style="margin-left: -150px; margin-top: 40px;">
+            <h1>Candidate Details</h1>
+        <!--Step 3: connect form group here -->
+        <form class="col-md-6 offset-md-3" [formGroup]="profile" (ngSubmit)="onSave()">
+
+            <div class="form-group row">
+                <label for="staticName" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"
+                        [ngClass]="{ 'is-invalid': profile.get('name').touched && profile.get('name').invalid}"
+                        placeholder="Enter Candidate Name" formControlName="name" />
+                    <div class="invalid-feedback">
+                        <div>Name is required</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="staticId" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control"
+                        [ngClass]="{ 'is-invalid': profile.get('email').touched && profile.get('email').invalid}"
+                        placeholder="Enter Email" formControlName="email" />
+                    <div class="invalid-feedback">
+                        <div>Email is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticAge" class="col-sm-2 col-form-label">Phone Number</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control"
+                        [ngClass]="{ 'is-invalid': profile.get('phone').touched && profile.get('phone').invalid}"
+                        placeholder="Enter phoneNumber" formControlName="phone" />
+                    <div class="invalid-feedback">
+                        <div>Phone Number is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticAge" class="col-sm-2 col-form-label">Address</label>
+                <div class="col-sm-5">
+                    <div class="row">
+                        <input type="text" class="form-control"
+                            [ngClass]="{ 'is-invalid': profile.get('street').touched && profile.get('street').invalid}"
+                            placeholder="Enter Street" formControlName="street" />
+                        <div class="invalid-feedback">
+                            <div>street is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="text" class="form-control"
+                            [ngClass]="{ 'is-invalid': profile.get('town').touched && profile.get('town').invalid}"
+                            placeholder="Enter Town" formControlName="town" />
+                        <div class="invalid-feedback">
+                            <div>town is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="text" class="form-control"
+                            [ngClass]="{ 'is-invalid': profile.get('state').touched && profile.get('state').invalid}"
+                            placeholder="Enter State" formControlName="state" />
+                        <div class="invalid-feedback">
+                            <div>state is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="text" class="form-control"
+                            [ngClass]="{ 'is-invalid': profile.get('country').touched && profile.get('country').invalid}"
+                            placeholder="Enter Country" formControlName="country" />
+                        <div class="invalid-feedback">
+                            <div>country is required</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="number" class="form-control"
+                            [ngClass]="{ 'is-invalid': profile.get('pincode').touched && profile.get('country').invalid}"
+                            placeholder="Enter pincode" formControlName="pincode" />
+                        <div class="invalid-feedback">
+                            <div>pincode is required</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <label for="staticId" class="col-sm-2 col-form-label">Skills</label>
+                <div class="col-sm-10">
+
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="">css
+
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="">html
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="">Angular js
+                        </label>
+                    </div>
+
+                    <div class="invalid-feedback">
+                        <div>Atleast one skill is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">upload resume</label>
+                <div class="col-sm-10">
+                    <input type="file">
+                    <div class="invalid-feedback">
+                        <div>Resume is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Years Of Experience</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"
+                        [ngClass]="{ 'is-invalid': profile.get('experience').touched && profile.get('experience').invalid}"
+                        placeholder="Enter Years of Experience" formControlName="experience" />
+                    <div class="invalid-feedback">
+                        <div>Experience is required</div>
+                    </div>
+                </div>
+            </div>
+            The way Bootstrap uses checkboxes in their docs is as following:
+
+<div class="checkbox">
+    <label>
+        <input type="checkbox">Two
+    </label>
+</div>
+So yours would look like:
+
+<ul>
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown Form<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">Two
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">Two
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">Two
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>
+            <div class="alert alert-success" *ngIf="isSaved">
+                Saved Successfully
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a routerLink="/listjobs" class="btn btn-link">Save</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

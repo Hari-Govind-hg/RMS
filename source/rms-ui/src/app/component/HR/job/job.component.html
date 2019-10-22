@@ -1,0 +1,31 @@
+<div class="container">
+        <div class="row">
+            <section class="col-sm-12">
+                <div class="jumbotron">
+                    <h3 class="display-4">Welcome {{currentUser.firstName}}.</h3>
+                    <a class="btn btn-primary btn-lg" routerLink="/jobs/addjob" role="button">Create New Job Posting</a>
+                </div>
+            </section>
+        </div>
+
+        <hr>
+
+        <div class="row">
+
+            <div class="card col-sm-3 aqua-gradient animated fadeIn slower" id="addnewJob" routerLink="/jobs/addjob">
+                        <div class="upperContainerNewJob aqua-gradient">
+                            <h1>+</h1>
+                            <h2>New Job</h2>
+                        </div>
+            </div>
+    
+            <div class="card col-sm-3 blue-gradient animated fadeIn"  *ngFor = "let job of jobList" routerLink="/jobs/{{job.jobId}}">
+                <div class="card-body blue-gradient">
+                    <div class="upperContainer">
+                    <h5 class="card-title">{{job.designation}}</h5>
+                    <p>Role:{{job.jobRole}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
