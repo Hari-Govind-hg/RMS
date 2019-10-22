@@ -1,0 +1,13 @@
+*.project
+*.classpath
+*.springbeans
+**/*.settings
+**/target
+**/bin
+**/build
+**/RemoteSystemsTempFiles
+**/.metadata
+**/.settings
+**/.recommenders
+**/Servers
+**/*.log
