@@ -1,3 +1,4 @@
+import { AboutComponent } from './component/about/about.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { NavComponent } from './component/nav/nav.component';
@@ -44,6 +45,7 @@ import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails
     LandingComponent,
     ProfileComponent,
     AddjobComponent,
+    AboutComponent,
     ViewjobsComponent,
     JobdetailsComponent,
     SidenavComponent,
