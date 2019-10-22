@@ -1,6 +1,5 @@
 package com.ibm.rms.model;
 
-
 import java.util.List;
 
 import javax.validation.constraints.Min;
@@ -9,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 
 
 	/**
@@ -121,7 +119,3 @@ import org.springframework.data.mongodb.core.mapping.Document;
 		
 		
 	}
-
-	
-	
-
