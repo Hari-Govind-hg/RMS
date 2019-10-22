@@ -17,7 +17,7 @@ public class Job extends Organisation{
 	@Id
 	private String jId;
 	private String jTitle;
-	private String jDescricption;
+	private String jDescription;
 	private ArrayList<String> skillList;
 	private String jSalary;
 	private String jRequiredExperience;
@@ -27,12 +27,12 @@ public class Job extends Organisation{
 	private Organisation jOrganisation;
 	
 	
-//	public Job(String jId, String jTitle, String jDescricption, ArrayList<String> skillList, String jSalary,
+//	public Job(String jId, String jTitle, String jDescription, ArrayList<String> skillList, String jSalary,
 //			String jRequiredExperience, Date jApplicationCloseDate,Organisation jOrganisation) {
 //		super();
 //		this.jId = jId;
 //		this.jTitle = jTitle;
-//		this.jDescricption = jDescricption;
+//		this.jDescription = jDescription;
 //		this.skillList = skillList;
 //		this.jSalary = jSalary;
 //		this.jRequiredExperience = jRequiredExperience;
@@ -61,13 +61,13 @@ public class Job extends Organisation{
 	}
 
 
-	public String getjDescricption() {
-		return jDescricption;
+	public String getjDescription() {
+		return jDescription;
 	}
 
 
-	public void setjDescricption(String jDescricption) {
-		this.jDescricption = jDescricption;
+	public void setjDescription(String jDescription) {
+		this.jDescription = jDescription;
 	}
 
 
@@ -138,7 +138,7 @@ public class Job extends Organisation{
 
 	@Override
 	public String toString() {
-		return "Job [jId=" + jId + ", jTitle=" + jTitle + ", jDescricption=" + jDescricption + ", skills=" + skillList
+		return "Job [jId=" + jId + ", jTitle=" + jTitle + ", jDescription=" + jDescription + ", skills=" + skillList
 				+ ", jSalary=" + jSalary + ", jRequiredExperience=" + jRequiredExperience + ", jPublishDate="
 				+ jPublishDate + ", jApplicationCloseDate=" + jApplicationCloseDate + ", jAppliedCandidateList="
 				+ jAppliedCandidateList + ", jOrganisation=" + jOrganisation + "]";
