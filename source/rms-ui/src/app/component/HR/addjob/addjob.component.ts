@@ -13,17 +13,18 @@ export class AddjobComponent implements OnInit {
   //Create the formGroup
   jobPostingForm:FormGroup;
   isSaved:boolean=false;
+  skills: string[] = ['Java', 'HTML/CSS', 'JavaScript', 'Spring', 'Angular', 'SQL','Networking','ML','C++','C'];
 
   constructor(private rmsService:JobServiceService,private router:Router) {
 
     this.jobPostingForm=new FormGroup({
-      jobId:new FormControl('',[Validators.required]),
-      designation:new FormControl('',Validators.required),
-      jobRole:new FormControl('',Validators.required),
-      jobDescription:new FormControl('',Validators.required),
-      employmentType:new FormControl('',Validators.required),
-      salary:new FormControl('',Validators.required),
-      location:new FormControl('',Validators.required),
+      jTitle:new FormControl('',[Validators.required]),
+      skillList:new FormControl('',[Validators.required]),
+      jDescription:new FormControl('',Validators.required),
+      jSalary:new FormControl('',Validators.required),
+      jRequiredExperience:new FormControl('',Validators.required),
+      jApplicationCloseDate:new FormControl('',Validators.required)
+      // jOrganisation:new FormControl('',Validators.required),
     });
    }
 

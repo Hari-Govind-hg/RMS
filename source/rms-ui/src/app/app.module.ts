@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatSelectTrigger, MatOption, MatOptionModule, MatSelect, MatSelectModule, MatDatepicker, MatDatepickerInput, MatDatepickerToggle, MatNativeDateModule } from '@angular/material';
 import { SidenavComponent } from './component/landingPage/sidenav/sidenav.component';
 import { CardViewComponent } from './component/landingPage/card-view/card-view.component';
 import { HomeImageComponent } from './component/landingPage/home-image/home-image.component';
@@ -49,7 +49,11 @@ import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails
     SidenavComponent,
     HomeImageComponent,
     CardViewComponent,
-    LoginLandingComponent
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker,
+    // MatSelectTrigger,
+    LoginLandingComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,11 @@ import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails
     MaterialModule,
     FlexLayoutModule,
     MatCardModule,
+    MatOptionModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatNativeDateModule,
     MatSidenavModule, MatButtonModule, MatToolbarModule, MatIconModule, MatListModule,
     MDBBootstrapModule.forRoot(),
   ],

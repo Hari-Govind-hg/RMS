@@ -1,7 +1,12 @@
 .card{
     display: block;
     margin-top: 100px;
+    transition:box-shadow .3s;
 }
+.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(87, 77, 223, 0.329), 0 6px 20px 0 rgba(32, 29, 189, 0.397);
+}
+
 div.formContainer{
     display: block;
     margin-left: 200px;
@@ -13,10 +18,11 @@ form{
 }
 div.container{
     display: block;
-    position: relative;
+    /* position: relative;*/
     min-height: 100%;
     margin-bottom:220px;
 }
+
 input{
     transition: box-shadow .3s;
 }
@@ -26,6 +32,6 @@ input:hover{
 a{
     color: black;
 }
-#goBack{
-    margin-top: -80px;
-}
+/* #goBack{ */
+    /* margin-top: -80px; */
+/* } */

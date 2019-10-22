@@ -47,7 +47,7 @@ export class JobdetailComponent implements OnInit {
     if(res){
       this.isSaved = true;
       console.log(res);
-      this.router.navigate(['/jobs'+_jobId]);
+      this.router.navigate(['/jobs']);
     }
   }
 
