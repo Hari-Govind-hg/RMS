@@ -1,0 +1,21 @@
+.map-container-section {
+    overflow:hidden;
+    margin-top:10px;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    width:700px;
+  }
+  .map-container-section iframe {
+    left:0px;
+    top:0;
+
+    height:800px;
+    width:800px;
+    position:absolute;
+  }
+h2{
+    font-size: 60px;
+    text-align: justify;
+    color:rgb(68, 194, 183);
+}

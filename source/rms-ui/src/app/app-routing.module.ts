@@ -13,6 +13,7 @@ import { ProfileComponent } from './component/candidate/profile/profile.componen
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
 import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails.component';
 import { AboutComponent } from './component/about/about.component';
+import { ContactComponent } from './component/contact/contact.component';
 
 const routes: Routes = [
   {path:'', component:HomeImageComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'listjobs',component:ViewjobsComponent},
   {path:'jobdetails',component:JobdetailsComponent},
   {path: 'about', component:AboutComponent},
+  {path: 'contact', component:ContactComponent},
   { path: '**', redirectTo: '' }
 ];
 

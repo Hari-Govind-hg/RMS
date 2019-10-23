@@ -30,6 +30,7 @@ import { LandingComponent } from './component/candidate/landing/landing.componen
 import { ProfileComponent } from './component/candidate/profile/profile.component';
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
 import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails.component';
+import { ContactComponent } from './component/contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +57,7 @@ import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails
     MatDatepicker,
     // MatSelectTrigger,
     LoginLandingComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
