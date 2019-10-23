@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatSelectTrigger, MatOption, MatOptionModule, MatSelect, MatSelectModule, MatDatepicker, MatDatepickerInput, MatDatepickerToggle, MatNativeDateModule } from '@angular/material';
+import { MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatSelectTrigger, MatOption, MatOptionModule, MatSelect, MatSelectModule, MatDatepicker, MatDatepickerInput, MatDatepickerToggle, MatNativeDateModule, MatFormFieldControl } from '@angular/material';
 import { SidenavComponent } from './component/landingPage/sidenav/sidenav.component';
 import { CardViewComponent } from './component/landingPage/card-view/card-view.component';
 import { HomeImageComponent } from './component/landingPage/home-image/home-image.component';

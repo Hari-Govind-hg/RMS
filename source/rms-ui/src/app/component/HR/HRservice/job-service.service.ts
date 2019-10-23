@@ -53,6 +53,14 @@ export class JobServiceService {
       }));
   }
 
+  getJobBySkill(skill){
+    console.log("id is " + skill);
+    return this.http.get(this.REST_API_URL + "/filter?skill="+ skill)
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
+  }
   updateJob(jobData) {
     let _url = this.REST_API_URL + "/" + jobData.jId;
     console.log(jobData.jobId)

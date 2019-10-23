@@ -5,6 +5,20 @@
                 <div class="jumbotron">
                     <h3 class="display-4">Welcome {{currentUser.firstName}}.</h3>
                     <a class="btn btn-primary btn-lg" routerLink="/jobs/addjob" role="button">Create New Job Posting</a>
+                    <form class="example-form col-md-12" #f="ngForm" style="margin-top: 20px;" [formGroup]="myControl">
+                      <div class="row">
+                      <div class="col-md-8">
+                      <input type="text" style="margin-top: 10px;" class="form-control" name="skill" placeholder="Search Based on Skill" formControlName="skill" [ngClass]="{ 'is-invalid': myControl.get('skill').touched && myControl.get('skill').invalid}">
+                    </div>
+                    <div class="col-md-2"> 
+                      <button type="submit" (click)="onSearchHandler(f)"  class="btn btn-default">
+                      <span>
+                        SEARCH
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                    </form>
                 </div>
             </div>    
         </div>

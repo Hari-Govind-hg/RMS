@@ -5,6 +5,7 @@ import { AuthenticationService, UserService } from '../HRservice/loginservice';
 import { User } from '../HRservice/models';
 import { NavService } from '../../nav/nav.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-job',
@@ -16,6 +17,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class JobComponent implements OnInit {
   jobList:any[];
+  myControl:FormGroup;
   jobSubscription:Subscription;
   currentUser: User;
   jobId:String;
@@ -25,10 +27,14 @@ export class JobComponent implements OnInit {
   isDeleted:boolean;
   isSaved:boolean;
   jobData:any;
+  skill:String;
 
   constructor(private jobService: JobServiceService,private authenticationService: AuthenticationService,
     private userService: UserService,public nav: NavService,private router:Router,private route:ActivatedRoute) 
     { const _jobId = this.route.snapshot.params.id;
+      this.myControl=new FormGroup({
+        skill:new FormControl('')
+      });
       this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
   });
@@ -58,6 +64,26 @@ export class JobComponent implements OnInit {
     // console.log("editHandler passed id is="+id);
     // this.duplicateJobData=JSON.parse(JSON.stringify(this.jobData));
     // console.log(this.duplicateJobData);
+    }
+
+    onSearchHandler(searchForm){
+      console.log(searchForm.value.skill.toLowerCase());
+      this.skill = searchForm.value.skill;
+      if(this.skill==""){
+        this.jobSubscription= this.jobService.getJobs()
+    .subscribe((res:any[])=>{
+      console.log(res);
+      this.jobList = res;
+  });
+      }
+      else{
+      this.jobSubscription= this.jobService.getJobBySkill(this.skill)
+      .subscribe((res:any[])=>{
+        console.log(res);
+        this.jobList = res;
+    });
+  }
+  
     }
 
   async onUpdateHandler(formData){
