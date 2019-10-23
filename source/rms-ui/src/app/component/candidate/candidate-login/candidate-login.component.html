@@ -1,0 +1,37 @@
+<div class="container">
+        <div class="row">
+            <button class="btn btn-dark" id="goBack" routerLink="/" style="float: right;"><<Go Back</button>
+        </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+    <div class="card col-md-10">
+        <div class="formContainer">
+        <h2>Sign In</h2>
+        <form class="col-md-12" style="margin-top: 10px;" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <div class="form-group row">
+                    <label for="staticId" class="col-sm-2 col-form-label">Username: </label>
+                        <input type="text" class="form-control col-sm-6" placeholder="Enter Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                        <div class="invalid-feedback">
+                            <div>Job ID is required</div>
+                        </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="staticId" class="col-sm-2 col-form-label">Password</label>
+                        <input type="password" class="col-sm-6 form-control" placeholder="Enter Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                        <div class="invalid-feedback">
+                            <div>Password is required</div>
+                        </div>
+                </div>
+            <div class="form-group row" style="float: right; margin-right: 210px;">
+                <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Sign In
+                </button>
+                <a routerLink="/candidateRegister" class="btn btn-link">Sign Up</a>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>

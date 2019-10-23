@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../HR/HRservice/loginservice';
+// import { AuthenticationService } from '../HR/HRservice/loginservice';
+import { AuthenticationService } from '../authentication/authentication.service';
 import { User } from '../HR/HRservice/models';
 import { NavService } from './nav.service';
 
@@ -23,6 +24,6 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/hrlogin']);
+    this.router.navigate(['/']);
 }
 }
