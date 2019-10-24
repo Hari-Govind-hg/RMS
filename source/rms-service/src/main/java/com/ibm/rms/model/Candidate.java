@@ -42,19 +42,6 @@ public class Candidate {
 //		this.cExperience = cExperience;
 //	}
 
-	
-	@Override
-	public boolean equals(Object obj) {
-		Candidate c = (Candidate)obj;
-		if(c.getcId().equals(this.getcId())) {
-			return true;
-		}
-		return false;
-	}
-
-
-
-
 	public String getcId() {
 		return cId;
 	}
@@ -135,4 +122,12 @@ public class Candidate {
 				+ cExperience + ", cAppliedJobList=" + cAppliedJobList + "]";
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		Candidate c = (Candidate)obj;
+		if(c.getcId().equals(this.getcId())) {
+			return true;
+		}
+		return false;
+	}
 }

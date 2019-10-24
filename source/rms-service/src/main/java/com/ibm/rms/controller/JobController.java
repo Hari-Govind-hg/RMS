@@ -40,7 +40,7 @@ public class JobController {
 		//System.out.println(job);
 		// Exception Handling moved to @ExceptionHandler
 //		try {
-		jobService.jobCreate(job);
+		boolean x = jobService.jobCreate(job);
 //		} catch (ApplicationException e) {
 //			resMsg = new ResponseMessage("Failure", e.getMessage());
 //			return ResponseEntity.badRequest().body(resMsg);
@@ -51,9 +51,12 @@ public class JobController {
 //			resMsg = new ResponseMessage("Failure", "Validation Error");
 //			return ResponseEntity.badRequest().body(resMsg);			
 //		}
-
-		resMsg = new ResponseMessage("Success", new String[] {"Job created successfully"});
-
+		if(x) {
+			resMsg = new ResponseMessage("Success", new String[] {"Job created successfully."});
+		}
+		else {
+			resMsg = new ResponseMessage("Failed", new String[] {"Job creation Failed."});
+		}
 		// Build newly created Employee resource URI - Employee ID is always 0 here.
 		// Need to get the new Employee ID.
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -80,9 +83,13 @@ public class JobController {
 	public ResponseEntity<ResponseMessage> updateEmployee(@PathVariable String id, @RequestBody Job updatedJob) {
 		ResponseMessage resMsg;
 		updatedJob.setjId(id);
-		jobService.updateJob(updatedJob);
-		resMsg = new ResponseMessage("Success", new String[] {"Employee updated successfully"});
-
+		boolean x = jobService.updateJob(updatedJob);
+		if(x) {
+			resMsg = new ResponseMessage("Success", new String[] {"Job updated successfully"});
+		}
+		else {
+			resMsg = new ResponseMessage("Failed", new String[] {"Job update failed"});
+		}
 		// Build newly created Employee resource URI - Employee ID is always 0 here.
 		// Need to get the new Employee ID.
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -95,8 +102,13 @@ public class JobController {
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> deleteEmployee(@PathVariable String id) {
 		ResponseMessage resMsg;
-		jobService.deleteJob(id);
-		resMsg = new ResponseMessage("Success", new String[] {"Employee deleted successfully"});
+		boolean x = jobService.deleteJob(id);
+		if(x) {
+			resMsg = new ResponseMessage("Success", new String[] {"Job deleted successfully"});
+		}
+		else {
+			resMsg = new ResponseMessage("Failed", new String[] {"Job deletion failed"});
+		}
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
 
