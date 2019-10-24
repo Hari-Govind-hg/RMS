@@ -1,3 +1,4 @@
+import { AboutComponent } from './component/about/about.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { NavComponent } from './component/nav/nav.component';
@@ -18,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatSelectTrigger, MatOption, MatOptionModule, MatSelect, MatSelectModule, MatDatepicker, MatDatepickerInput, MatDatepickerToggle, MatNativeDateModule } from '@angular/material';
 import { SidenavComponent } from './component/landingPage/sidenav/sidenav.component';
 import { CardViewComponent } from './component/landingPage/card-view/card-view.component';
 import { HomeImageComponent } from './component/landingPage/home-image/home-image.component';
@@ -29,6 +30,10 @@ import { LandingComponent } from './component/candidate/landing/landing.componen
 import { ProfileComponent } from './component/candidate/profile/profile.component';
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
 import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
+import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
+import { AuthenticationService } from './component/authentication/authentication.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,17 +44,25 @@ import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails
     JobComponent,
     JobdetailComponent,
     RegisterComponent,
+    CandidateLoginComponent,
+    CandidateRegisterComponent,
     LoginComponent,
     AlertComponent,
     LandingComponent,
     ProfileComponent,
     AddjobComponent,
+    AboutComponent,
     ViewjobsComponent,
     JobdetailsComponent,
     SidenavComponent,
     HomeImageComponent,
     CardViewComponent,
-    LoginLandingComponent
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker,
+    // MatSelectTrigger,
+    LoginLandingComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +75,11 @@ import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails
     MaterialModule,
     FlexLayoutModule,
     MatCardModule,
+    MatOptionModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatNativeDateModule,
     MatSidenavModule, MatButtonModule, MatToolbarModule, MatIconModule, MatListModule,
     MDBBootstrapModule.forRoot(),
   ],
@@ -73,7 +90,8 @@ import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails
     // provider used to create fake backend
     fakeBackendProvider,
     // provider for the selective navigation elements feature
-    NavService
+    NavService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

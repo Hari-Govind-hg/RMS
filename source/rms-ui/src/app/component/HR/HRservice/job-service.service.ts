@@ -5,7 +5,7 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class JobServiceService {
-  REST_API_URL: string = "http://localhost:8090/rms/jobs";
+  REST_API_URL: string = "http://localhost:80/jobs";
   constructor(private http: HttpClient) {
 
   }
@@ -53,8 +53,16 @@ export class JobServiceService {
       }));
   }
 
+  getJobBySkill(skill){
+    console.log("id is " + skill);
+    return this.http.get(this.REST_API_URL + "/filter?skill="+ skill)
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
+  }
   updateJob(jobData) {
-    let _url = this.REST_API_URL + "/" + jobData.jobId;
+    let _url = this.REST_API_URL + "/" + jobData.jId;
     console.log(jobData.jobId)
     let promise = new Promise((resolve, reject) => {
       this.http.put(_url, jobData)

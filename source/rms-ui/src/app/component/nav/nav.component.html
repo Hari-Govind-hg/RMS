@@ -3,34 +3,47 @@
   width: 40px;
   height: 40px;
 }
-.avatar{
+.navbar-brand{
+    font-family: 'Alfa Slab One', cursive;
+  }
+/* .avatar{
     float: right;
     margin-left: 675px;
-}
-#loginbutton{
+} */
+/* #loginbutton{
   margin-left: 660px;
-}
+} */
 </style>
-<div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="persistentNav">
-        <a class="navbar-brand" routerLink="/">R M S</a>
+    <div class="col-md-10">
           <ul class="navbar-nav">
+              <a class="navbar-brand" routerLink="/">R M S</a>
+              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/jobs">JOBS<span class="sr-only">(current)</span></a>
+            </li>
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-              <a class="nav-link" routerLink="/jobs">Jobs<span class="sr-only">(current)</span></a>
+              <a class="nav-link" routerLink="/about">About</a>
             </li>
-            <div class="avatar">
-            <li *ngIf="nav.visible" class="nav-item navbar-left avatar dropdown col-md-2">
-                <a mdbDropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="avatar-hr rounded-circle z-depth-0" alt="avatar image">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+              <a class="nav-link" routerLink="/contact">Contact</a>
+            </li>
+          </ul>
+    </div>
+    <div class="col-md-2">
+          <ul class="navbar-nav">
+            <li *ngIf="nav.visible" class="nav-item avatar dropdown col-md-1">
+            <div class="btn-group" mdbDropdown>
+                <a mdbDropdownToggle mdbWavesEffect type="button" class="dropdown-toggle waves-light" mdbWavesEffect style="height: auto; width: 40px">
+                  <img src="../../../assets/images/avatar-icon.png" alt="" class="img-fluid rounded-circle z-depth-0" >
                 </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
-                    <a class="dropdown-item" (click)="logout()">Logout</a>
-                </div>
-            </li>
+                    <div class="dropdown-menu dropdown-primary col-md-1">
+                      <a class="dropdown-item col-md-1" (click)="logout()">Logout</a>
+                    </div>
             </div>
+            </li>
             <li *ngIf="!nav.visible" class="nav-item" id="loginbutton" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" routerLink="/login">Login</a>
               </li>
           </ul>
-      </nav>
-</div>
+    </div>
+  </nav>

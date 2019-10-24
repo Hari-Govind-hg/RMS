@@ -1,121 +1,148 @@
 package com.ibm.rms.model;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-	/**
-	 * Models employee object
-	 */
-	@Document("job")
-	@XmlRootElement
-	public class Job {
-
-		
-		@Id
-		private int jobId;
-
-		private String designation;
-		private String jobRole;
-		private String jobDescription;
-		private String employmentType;
-		private String salary;
-		private String location;
-
-		
-		public Job()
-		{
-			
-		}
-
-
-		public int getJobId() {
-			return jobId;
-		}
-
-
-		public void setJobId(int jobId) {
-			this.jobId = jobId;
-		}
+@Document("jobs")
+public class Job extends Organisation{
+	@Transient
+    public static final String SEQUENCE_NAME = "jobs_sequence";
+	
+	@Id
+	private String jId;
+	private String jTitle;
+	private String jDescription;
+	private ArrayList<String> skillList;
+	private String jSalary;
+	private String jRequiredExperience;
+	private Date jPublishDate = new Date();
+	private Date jApplicationCloseDate;
+	private ArrayList<Candidate> jAppliedCandidateList = new ArrayList();
+	private Organisation jOrganisation;
+	
+	
+//	public Job(String jId, String jTitle, String jDescription, ArrayList<String> skillList, String jSalary,
+//			String jRequiredExperience, Date jApplicationCloseDate,Organisation jOrganisation) {
+//		super();
+//		this.jId = jId;
+//		this.jTitle = jTitle;
+//		this.jDescription = jDescription;
+//		this.skillList = skillList;
+//		this.jSalary = jSalary;
+//		this.jRequiredExperience = jRequiredExperience;
+//		this.jApplicationCloseDate = jApplicationCloseDate;
+//		this.jOrganisation = jOrganisation;
+//	}
 
 
-		public String getDesignation() {
-			return designation;
-		}
-
-
-		public void setDesignation(String designation) {
-			this.designation = designation;
-		}
-
-
-		public String getJobRole() {
-			return jobRole;
-		}
-
-
-		public void setJobRole(String jobRole) {
-			this.jobRole = jobRole;
-		}
-
-
-		public String getJobDescription() {
-			return jobDescription;
-		}
-
-
-		public void setJobDescription(String jobDescription) {
-			this.jobDescription = jobDescription;
-		}
-
-
-		public String getEmploymentType() {
-			return employmentType;
-		}
-
-
-		public void setEmploymentType(String employmentType) {
-			this.employmentType = employmentType;
-		}
-
-
-		public String getSalary() {
-			return salary;
-		}
-
-
-		public void setSalary(String salary) {
-			this.salary = salary;
-		}
-
-
-		public String getLocation() {
-			return location;
-		}
-
-
-		public void setLocation(String location) {
-			this.location = location;
-		}
-
-
-		public Job(int jobId, String designation, String jobRole, String jobDescription, String employmentType,
-				String salary, String location) {
-			super();
-			this.jobId = jobId;
-			this.designation = designation;
-			this.jobRole = jobRole;
-			this.jobDescription = jobDescription;
-			this.employmentType = employmentType;
-			this.salary = salary;
-			this.location = location;
-		}
-		
-		
+	public String getjId() {
+		return jId;
 	}
+
+
+	public void setjId(String jId) {
+		this.jId = jId;
+	}
+
+
+	public String getjTitle() {
+		return jTitle;
+	}
+
+
+	public void setjTitle(String jTitle) {
+		this.jTitle = jTitle;
+	}
+
+
+	public String getjDescription() {
+		return jDescription;
+	}
+
+
+	public void setjDescription(String jDescription) {
+		this.jDescription = jDescription;
+	}
+
+
+	public ArrayList<String> getSkillList() {
+		return skillList;
+	}
+
+
+	public void setSkillList(ArrayList<String> skillList) {
+		this.skillList = skillList;
+	}
+
+
+	public String getjSalary() {
+		return jSalary;
+	}
+
+
+	public void setjSalary(String jSalary) {
+		this.jSalary = jSalary;
+	}
+
+
+	public String getjRequiredExperience() {
+		return jRequiredExperience;
+	}
+
+
+	public void setjRequiredExperience(String jRequiredExperience) {
+		this.jRequiredExperience = jRequiredExperience;
+	}
+
+
+	public Date getjApplicationCloseDate() {
+		return jApplicationCloseDate;
+	}
+
+
+	public void setjApplicationCloseDate(Date jApplicationCloseDate) {
+		this.jApplicationCloseDate = jApplicationCloseDate;
+	}
+
+
+	public ArrayList<Candidate> getjAppliedCandidateList() {
+		return jAppliedCandidateList;
+	}
+
+
+	public void setjAppliedCandidateList(ArrayList<Candidate> jAppliedCandidateList) {
+		this.jAppliedCandidateList = jAppliedCandidateList;
+	}
+
+
+	public Organisation getjOrganisation() {
+		return jOrganisation;
+	}
+
+
+	public void setjOrganisation(Organisation jOrganisation) {
+		this.jOrganisation = jOrganisation;
+	}
+
+
+	public Date getjPublishDate() {
+		return jPublishDate;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Job [jId=" + jId + ", jTitle=" + jTitle + ", jDescription=" + jDescription + ", skills=" + skillList
+				+ ", jSalary=" + jSalary + ", jRequiredExperience=" + jRequiredExperience + ", jPublishDate="
+				+ jPublishDate + ", jApplicationCloseDate=" + jApplicationCloseDate + ", jAppliedCandidateList="
+				+ jAppliedCandidateList + ", jOrganisation=" + jOrganisation + "]";
+	}
+	
+	
+}

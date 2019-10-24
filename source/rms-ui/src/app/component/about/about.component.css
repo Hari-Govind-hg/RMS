@@ -1,0 +1,42 @@
+.font-italic.text-muted{
+  font-size: 0.8em;
+}
+
+.bg-white.rounded.shadow-sm.py-5.px-4:hover .inside{
+  transform: rotate(360deg);
+}
+.inside {
+  height: 100px;
+  width: 100px;
+  border-width: 5px;
+  border-style: solid;
+  box-sizing: border-box;
+  border-color: #353535  #FEC007 #FEC007 #353535;
+  position: absolute;
+  border-radius: 50%;
+  transition: transform .5s;
+  align-items: center;
+  top: 48px;
+  left: 92px;
+ }
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .social-link:hover,
+  .social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+    color: #555;
+  }
+
+

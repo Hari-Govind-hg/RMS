@@ -1,55 +1,65 @@
 package com.ibm.rms.service;
 
-
-
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.util.descriptor.web.FilterDef;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import com.ibm.rms.exception.*;
-import com.ibm.rms.model.*;
+import com.ibm.rms.model.Job;
 import com.ibm.rms.repository.JobRepository;
+import com.mongodb.DB;
+//import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClient;
 
 @Service
 public class JobService {
-
-
+	
 	@Autowired
 	JobRepository jobRepo;
-
-	public JobService() {
-	}
-
-	public boolean create(Job job) throws ApplicationException {
-
+	SequenceGeneratorService sequenceGeneratorService;
+	
+	 MongoClient mongoClient = new MongoClient();
+	 DB db = mongoClient.getDB("test");
+	
+	public boolean jobCreate(Job job) {
 		try {
+			job.setjId(sequenceGeneratorService.generateSequence(db,Job.SEQUENCE_NAME));
 			jobRepo.save(job);
 			return true;
 		} catch (Exception e) {
-
-			throw new ApplicationException("Server Error. Please try after sometime. Cause: " + e.getMessage(), e);
+			e.printStackTrace();
 		}
+		return false;
 	}
-	
+
 	public List<Job> getAll() {
 		return jobRepo.findAll();
 	}
-	
-	public Job get(int id) {
+
+	public Job getById(String id) {
 		return jobRepo.findById(id).get();
 	}
 
-
-public boolean update(Job Job) {
-		jobRepo.save(Job);
+	public boolean updateJob(Job updatedJob) {
+		jobRepo.save(updatedJob);
 		return true;
 	}
 
-	public boolean delete(int id) {
+	public boolean deleteJob(String id) {
 		jobRepo.deleteById(id);
 		return true;
 	}
-}
 
+	public ArrayList<Job> filter(String skill) {
+		ArrayList<Job> filteredJobs = new ArrayList<Job>();
+		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
+		allJobs.forEach(a -> {
+			if(a.getSkillList().contains(skill)) {
+				filteredJobs.add(a);
+			}
+		});
+		return filteredJobs;
+	}
+}

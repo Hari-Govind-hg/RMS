@@ -1,31 +1,131 @@
 <div class="container">
         <div class="row">
-            <section class="col-sm-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-8">
                 <div class="jumbotron">
                     <h3 class="display-4">Welcome {{currentUser.firstName}}.</h3>
                     <a class="btn btn-primary btn-lg" routerLink="/jobs/addjob" role="button">Create New Job Posting</a>
+                    <form class="example-form col-md-12" #f="ngForm" style="margin-top: 20px;" [formGroup]="myControl">
+                      <div class="row">
+                      <div class="col-md-8">
+                      <input type="text" style="margin-top: 10px;" class="form-control" name="skill" placeholder="Search Based on Skill" formControlName="skill" [ngClass]="{ 'is-invalid': myControl.get('skill').touched && myControl.get('skill').invalid}">
+                    </div>
+                    <div class="col-md-2"> 
+                      <button type="submit" (click)="onSearchHandler(f)"  class="btn btn-default">
+                      <span>
+                        SEARCH
+                      </span>
+                    </button>
+                  </div>
                 </div>
-            </section>
+                    </form>
+                </div>
+            </div>    
         </div>
 
         <hr>
 
         <div class="row">
 
-            <div class="card col-sm-3 aqua-gradient animated fadeIn slower" id="addnewJob" routerLink="/jobs/addjob">
-                        <div class="upperContainerNewJob aqua-gradient">
+            <div class="card col-sm-3 aqua-gradient animated fadeIn slower container-fluid" id="addnewJob" routerLink="/jobs/addjob">
+                        <!-- <div class="upperContainerNewJob aqua-gradient"> -->
+                            <div class="row">
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                            <div class="col-md-8">   
                             <h1>+</h1>
                             <h2>New Job</h2>
-                        </div>
+                            </div>
+                            </div>
+                        <!-- </div> -->
             </div>
-    
-            <div class="card col-sm-3 blue-gradient animated fadeIn"  *ngFor = "let job of jobList" routerLink="/jobs/{{job.jobId}}">
-                <div class="card-body blue-gradient">
-                    <div class="upperContainer">
-                    <h5 class="card-title">{{job.designation}}</h5>
-                    <p>Role:{{job.jobRole}}</p>
+            <!-- routerLink="/jobs/{{job.jobId}}" -->
+            <div class="card col-sm-3 blue-gradient animated fadeIn"  *ngFor = "let job of jobList">
+                <div class="card-body blue-gradient bwaves-light">
+                    <div class="upperContainer" data-toggle="modal" data-target="#viewJobModal" (click)="onEditHandler(job.jId)">
+                    <h5 class="card-title">{{job.jTitle}}</h5>
+                    <p>Last Date:{{job.jApplicationCloseDate}}</p>
+                    </div>
+                    <hr>
+                    <div>
+                            <button type="button" class="btn btn-primary btn-md col-md-6" data-toggle="modal" data-target="#editJobModal" (click)="onEditHandler(job.jId)"><img src="../../../../assets/images/editJob.png" style="width: 20px;height: 20px;" alt="editButton"><br>Edit</button>
+                            <button type="button" class="btn btn-danger btn-md col-md-6" (click)="onDeleteHandler(job.jId)"><img src="../../../../assets/images/deleteJob.png" style="width: 20px;height: 20px;" alt="deleteButton">Delete</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- View Modal -->
+        <div class="modal fade" id="viewJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Job Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        <div class="modal-body" *ngIf="duplicateJobData">
+                                <h5><b>Id:</b> {{duplicateJobData.jTitle}}</h5>
+                                <hr>
+                                <p><b>Description:</b> {{duplicateJobData.jDescription}}</p>
+                                <hr>
+                                <p><b>Skills Needed:</b>{{duplicateJobData.skillList}}</p>
+                                <hr>
+                                <p><b>Experience Needed:</b>{{duplicateJobData.jRequiredExperience}} years</p>
+                                <hr>
+                                <p><b>Salary:</b> {{duplicateJobData.jSalary}}</p>
+                                <hr>
+                        </div>
+                        </div>
+                </div>
+        </div>
+
+        <!-- Edit Modal -->
+        <div class="modal fade" id="editJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Update Job</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body"*ngIf="duplicateJobData">
+                      <form ngNativeValidate #f="ngForm">
+                        <div class="form-group row">
+                          <label for="staticName" class="col-sm-3 col-form-label">Title</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="title" placeholder="Enter Title" [(ngModel)]="duplicateJobData.jTitle">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="staticAge" class="col-sm-3 col-form-label">Job Description</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="jDescription" placeholder="Enter Job Role" [(ngModel)]="duplicateJobData.jDescription">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="staticDepartment" class="col-sm-3 col-form-label">Required Experience</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="jRequiredExperience" placeholder="Enter Experience Required" [(ngModel)]="duplicateJobData.jRequiredExperience">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="staticCountry" class="col-sm-3 col-form-label">Salary</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" name="jSalary" placeholder="Enter Salary" [(ngModel)]="duplicateJobData.jSalary">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary" (click)="onUpdateHandler(f)" data-dismiss="modal">Save changes</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                </div>
 </div>

@@ -13,7 +13,7 @@ export class UserService {
 
     register(user: User) {
         console.log("Inside the register()")
-        return this.http.post(`/users/register`, user);
+        return this.http.post("http://localhost:80/register", user);
     }
 
     delete(id: number) {
