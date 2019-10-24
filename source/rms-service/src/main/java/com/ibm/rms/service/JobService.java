@@ -43,13 +43,23 @@ public class JobService {
 	}
 
 	public boolean updateJob(Job updatedJob) {
-		jobRepo.save(updatedJob);
-		return true;
+		try {
+			jobRepo.save(updatedJob);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	public boolean deleteJob(String id) {
-		jobRepo.deleteById(id);
-		return true;
+		try {
+			jobRepo.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	public ArrayList<Job> filter(String skill) {

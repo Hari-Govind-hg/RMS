@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,7 +43,7 @@ public class CandidateController {
 		//System.out.println(job);
 		// Exception Handling moved to @ExceptionHandler
 //		try {
-		candidateService.candidateCreate(candidate);
+		boolean x = candidateService.candidateCreate(candidate);
 //		} catch (ApplicationException e) {
 //			resMsg = new ResponseMessage("Failure", e.getMessage());
 //			return ResponseEntity.badRequest().body(resMsg);
@@ -53,9 +54,12 @@ public class CandidateController {
 //			resMsg = new ResponseMessage("Failure", "Validation Error");
 //			return ResponseEntity.badRequest().body(resMsg);			
 //		}
-
-		resMsg = new ResponseMessage("Success", new String[] {"Candidate created successfully"});
-
+		if(x) {
+			resMsg = new ResponseMessage("Success", new String[] {"Candidate created successfully"});
+		}
+		else {
+			resMsg = new ResponseMessage("Failed", new String[] {"Failed to create candidate"});
+		}
 		// Build newly created Employee resource URI - Employee ID is always 0 here.
 		// Need to get the new Employee ID.
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -88,11 +92,41 @@ public class CandidateController {
 	public ResponseEntity<ResponseMessage> applyJob(@PathVariable String id,@RequestParam(value="jid") String jid){
 		Candidate candidate = candidateService.getCandidateById(id);
 		ResponseMessage resMsg;
-		candidateService.applyForJob(id,jid);
-		resMsg = new ResponseMessage("Success", new String[] {"Applied for job successfully"});
+		boolean x = candidateService.applyForJob(id,jid);
+		if(x) {
+			resMsg = new ResponseMessage("Success", new String[] {"Applied for job successfully"});
+		}
+		else {
+			resMsg = new ResponseMessage("Failed", new String[] {"You have already applied for the job"});
+		}
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}/appliedjobs")
 				.buildAndExpand(candidate.getcId()).toUri();
 
 		return ResponseEntity.created(location).body(resMsg);
+	}
+	
+	@PutMapping(value = "/{id}/profile", consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> profileEdit(@PathVariable String id, @RequestBody Candidate c){
+		ResponseMessage resMsg;
+		c.setcId(id);
+		boolean x = candidateService.updateProfile(c);
+		if(x) {
+			resMsg = new ResponseMessage("Success", new String[] {"profile updated successfully"});
+		}
+		else {
+			resMsg = new ResponseMessage("Failed", new String[] {"profile update failed"});
+		}
+		
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}/appliedjobs")
+				.buildAndExpand(c.getcId()).toUri();
+		return ResponseEntity.created(location).body(resMsg);
+	}
+	
+	@GetMapping(value = "/{id}/profile", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@CrossOrigin("*")
+	public Candidate profileView(@PathVariable String id){
+		Candidate candidate = candidateService.getCandidateById(id);
+		return candidate;
 	}
 }
