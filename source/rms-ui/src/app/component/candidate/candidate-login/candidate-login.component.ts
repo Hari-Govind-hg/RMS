@@ -59,9 +59,19 @@ export class CandidateLoginComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                  console.log(data)
+                let userObj = JSON.parse(JSON.stringify(data));
+                console.log(userObj)
+                if(userObj.authorities[0].authority=="ROLE_CANDIDATE")
+                {
+                    console.log(data)
                   console.log("Inside candidate login data")
                   this.router.navigate([this.returnUrl]);
+
+                }
+                else
+                this.alertService.error("Login Failed")
+                this.loading = false;
+                  
               },
               error => {
                   this.alertService.error(error);

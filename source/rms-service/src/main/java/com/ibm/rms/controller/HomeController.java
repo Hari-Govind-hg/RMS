@@ -34,9 +34,6 @@ public class HomeController {
 	CredentialsRepository credentialsRepository;
 
 	@Autowired
-	Credentials credentials;
-
-	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@GetMapping("/")
@@ -59,12 +56,14 @@ public class HomeController {
 	@PostMapping(path = "/register", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void createEmployee(@RequestBody @Valid Credentials cred) {
 		String encodedPassword = bCryptPasswordEncoder.encode(cred.getPassword());
+		cred.setPassword(encodedPassword);
+		
+//		Credentials credentials  ne
+//		credentials.setUsername(cred.getUsername());
+//		credentials.setPassword(encodedPassword);
+//		credentials.setRole(cred.getRole());
 
-		credentials.setUsername(cred.getUsername());
-		credentials.setPassword(encodedPassword);
-		credentials.setRole(cred.getRole());
-
-		credentialsRepository.save(credentials);
+		credentialsRepository.save(cred);
 
 	}
 
