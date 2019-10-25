@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule,HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddjobComponent } from './component/HR/addjob/addjob.component';
 import { JobComponent } from './component/HR/job/job.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -34,6 +34,13 @@ import { ContactComponent } from './component/contact/contact.component';
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
 import { AuthenticationService } from './component/authentication/authentication.service';
+import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http:HttpClient){
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +89,13 @@ import { AuthenticationService } from './component/authentication/authentication
     MatNativeDateModule,
     MatSidenavModule, MatButtonModule, MatToolbarModule, MatIconModule, MatListModule,
     MDBBootstrapModule.forRoot(),
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:HttpLoaderFactory,
+        deps:[HttpClient]
+      }
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
