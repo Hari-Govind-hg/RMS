@@ -36,6 +36,7 @@ import { CandidateRegisterComponent } from './component/candidate/candidate-regi
 import { AuthenticationService } from './component/authentication/authentication.service';
 import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { CandidateRegisterDetailsComponent } from './component/candidate/candidate-register/candidate-register-details/candidate-register-details.component';
 
 export function HttpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http);
@@ -69,7 +70,8 @@ export function HttpLoaderFactory(http:HttpClient){
     MatDatepicker,
     // MatSelectTrigger,
     LoginLandingComponent,
-    ContactComponent
+    ContactComponent,
+    CandidateRegisterDetailsComponent,
   ],
   imports: [
     BrowserModule,

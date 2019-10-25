@@ -63,6 +63,10 @@ export class AuthenticationService {
                     this.currentUserSubject.next(user);
                     this.loggedIn.next(true);
                 }
+                else
+                {
+                    
+                }
             }
                 return user;
             }));

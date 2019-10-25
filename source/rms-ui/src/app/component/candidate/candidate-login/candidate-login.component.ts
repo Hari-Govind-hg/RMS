@@ -65,7 +65,8 @@ export class CandidateLoginComponent implements OnInit {
                 {
                     console.log(data)
                   console.log("Inside candidate login data")
-                  this.router.navigate([this.returnUrl]);
+                  // this.router.navigate([this.returnUrl]);
+                  this.router.navigate(['/registerdetails']);
 
                 }
                 else

@@ -16,6 +16,7 @@ import { AboutComponent } from './component/about/about.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
+import { CandidateRegisterDetailsComponent } from './component/candidate/candidate-register/candidate-register-details/candidate-register-details.component';
 
 const routes: Routes = [
   {path:'', component:HomeImageComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'contact', component:ContactComponent},
   {path:'candidatelogin',component:CandidateLoginComponent},
   {path:'candidateRegister',component:CandidateRegisterComponent},
+  {path:'registerdetails',component:CandidateRegisterDetailsComponent},
   { path: '**', redirectTo: '' }
 ];
 
