@@ -38,11 +38,11 @@
      <!-- Card for listing all jobs -->
      <div class="card animated fadeIn" *ngFor="let job of jobList">
        <div data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
-         <h4 class="title">{{job.jTitle}}</h4>
-         <div class="bar">
+         <h4 class="title" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">{{job.jTitle}}</h4>
+         <div class="bar" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
            <div class="emptybar"></div>
          </div>
-         <div class="details">
+         <div class="details" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
            <p><b>Description: </b>{{job.jDescription}}</p>
            <hr>
          </div>
@@ -51,7 +51,7 @@
          <div class="row">
            <div class="col-md-3">
            </div>
-           <div class="col-md-6">
+           <div class="col-md-6" (click)="onApplyHandler(job.jId)">
              <img src="../../../../assets/images/addJob.png" style="width: 40px;" alt="">
            </div>
            <div class="col-md-2">
