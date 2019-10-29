@@ -28,6 +28,7 @@ export class JobComponent implements OnInit {
   isSaved:boolean;
   jobData:any;
   skill:String;
+  isEmpty:boolean;
 
   constructor(private jobService: JobServiceService,private authenticationService: AuthenticationService,
     private userService: UserService,public nav: NavService,private router:Router,private route:ActivatedRoute) 
@@ -45,6 +46,8 @@ export class JobComponent implements OnInit {
     console.log("inside ngOnInit");
     this.isLoggedIn$ = this.authenticationService.loggedIn;
     console.log(this.isLoggedIn$);
+
+    // Calls all the jobs in the db
     this.jobSubscription= this.jobService.getJobs()
     .subscribe((res:any[])=>{
       console.log(res);
@@ -59,11 +62,14 @@ export class JobComponent implements OnInit {
     .subscribe((res:any)=>{
       console.log(res);
       this.duplicateJobData = res;
+      console.log(this.duplicateJobData.jAppliedCandidateList);
+      if(this.duplicateJobData.jAppliedCandidateList==""){
+        this.isEmpty = true;
+      }
+      else{
+        this.isEmpty = false;
+      }
     });
-    //duplicating object
-    // console.log("editHandler passed id is="+id);
-    // this.duplicateJobData=JSON.parse(JSON.stringify(this.jobData));
-    // console.log(this.duplicateJobData);
     }
 
     onSearchHandler(searchForm){
@@ -101,7 +107,11 @@ export class JobComponent implements OnInit {
     if(res){
       this.isSaved = true;
       console.log(res);
-      this.router.navigate(['/jobs']);
+      this.jobSubscription= this.jobService.getJobs()
+    .subscribe((res:any[])=>{
+      console.log(res);
+      this.jobList = res;
+  });
     }
   }
 
@@ -110,7 +120,11 @@ export class JobComponent implements OnInit {
     let res = await this.jobService.deleteJob(id);
     if(res){
       this.isDeleted = true;
-      window.location.reload();
+      this.jobSubscription= this.jobService.getJobs()
+    .subscribe((res:any[])=>{
+      console.log(res);
+      this.jobList = res;
+  });
     }
   }
 

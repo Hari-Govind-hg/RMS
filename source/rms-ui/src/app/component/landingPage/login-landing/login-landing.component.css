@@ -32,4 +32,8 @@ div.card{
 }
 img{
     margin-left: -25px;
+    transition: box-shadow .3s;
+}
+mat-card{
+    font-family: 'Comfortaa', cursive;
 }

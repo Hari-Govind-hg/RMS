@@ -11,11 +11,11 @@ import { LoginLandingComponent } from './component/landingPage/login-landing/log
 import { LandingComponent } from './component/candidate/landing/landing.component';
 import { ProfileComponent } from './component/candidate/profile/profile.component';
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
-import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails.component';
 import { AboutComponent } from './component/about/about.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
+import { CandidateRegisterDetailsComponent } from './component/candidate/candidate-register/candidate-register-details/candidate-register-details.component';
 
 const routes: Routes = [
   {path:'', component:HomeImageComponent},
@@ -28,11 +28,11 @@ const routes: Routes = [
   {path : 'landing', component : LandingComponent},
   {path:'profile',component:ProfileComponent},
   {path:'listjobs',component:ViewjobsComponent},
-  {path:'jobdetails',component:JobdetailsComponent},
   {path: 'about', component:AboutComponent},
   {path: 'contact', component:ContactComponent},
   {path:'candidatelogin',component:CandidateLoginComponent},
   {path:'candidateRegister',component:CandidateRegisterComponent},
+  {path:'registerdetails',component:CandidateRegisterDetailsComponent},
   { path: '**', redirectTo: '' }
 ];
 

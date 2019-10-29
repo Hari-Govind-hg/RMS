@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule,HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddjobComponent } from './component/HR/addjob/addjob.component';
 import { JobComponent } from './component/HR/job/job.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -29,11 +29,18 @@ import { NavService } from './component/nav/nav.service';
 import { LandingComponent } from './component/candidate/landing/landing.component';
 import { ProfileComponent } from './component/candidate/profile/profile.component';
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
-import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
 import { AuthenticationService } from './component/authentication/authentication.service';
+import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { CandidateRegisterDetailsComponent } from './component/candidate/candidate-register/candidate-register-details/candidate-register-details.component';
+
+export function HttpLoaderFactory(http:HttpClient){
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +60,6 @@ import { AuthenticationService } from './component/authentication/authentication
     AddjobComponent,
     AboutComponent,
     ViewjobsComponent,
-    JobdetailsComponent,
     SidenavComponent,
     HomeImageComponent,
     CardViewComponent,
@@ -62,7 +68,8 @@ import { AuthenticationService } from './component/authentication/authentication
     MatDatepicker,
     // MatSelectTrigger,
     LoginLandingComponent,
-    ContactComponent
+    ContactComponent,
+    CandidateRegisterDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +89,13 @@ import { AuthenticationService } from './component/authentication/authentication
     MatNativeDateModule,
     MatSidenavModule, MatButtonModule, MatToolbarModule, MatIconModule, MatListModule,
     MDBBootstrapModule.forRoot(),
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:HttpLoaderFactory,
+        deps:[HttpClient]
+      }
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

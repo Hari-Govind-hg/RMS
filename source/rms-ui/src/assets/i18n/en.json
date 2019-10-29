@@ -1,0 +1,27 @@
+{
+	"ABOUT": {
+		"A1": "About HIRE Team",
+		"A10": "",
+		"A11": "",
+		"A2": "Create a minimal about us page using Bootstrap 4.",
+		"A3": "OUR MISSION",
+		"A5": "To become your favorite place to learn management, leadership and personal excellence skills.",
+		"A6": "About RMS",
+		"A7": "RMS is a job portal of IBM where we hire the applicants according to their skills and specialities. Applicants go through various filters and the most deserving ones who match the criteria are the ones who get the job. Here we provide platform to candidates ,freshers or experienced ,toshow their technical skills and knowledge and be part of the Company and a proud IBMer..",
+		"A8": "How we work!",
+		"A9": "Users first need to sign up and then login to the portal and after providing their skills their resumes will be gone through the filteration process.The HRs of IBM will then get the filtered resumes of he applicants and will then further shortlist them and scheduling of the interviews will be done.Then the scheduled interviews date would be reflected on the page and the selected ones will be getting the mail."
+	},
+	"HOME": {
+		"SELECT": "Select language",
+		"TEXT": "This is demo",
+		"TITLE": "Hello Angular with Ngx Translate"
+	},
+	"NAV": {
+		"N1": "Jobs",
+		"N2": "About",
+		"N3": "Contact",
+		"N4": "Login",
+		"N5": "Language",
+		"N6": "Logout"
+	}
+}

@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
 
     onLogin() {
         this.submitted = true;
+        console.log("Inside onLogin UI");
 
         // stop here if form is invalid
         if (this.loginForm.invalid) {
@@ -59,7 +60,17 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
+                    let userObj = JSON.parse(JSON.stringify(data));
+                    console.log(userObj)
+                    if(userObj.authorities[0].authority==="ROLE_HR")
+                    {
                     this.router.navigate([this.returnUrl]);
+                }
+                else
+                {
+                this.alertService.error("Login Failed");
+                    this.loading = false;
+                }
                 },
                 error => {
                     this.alertService.error(error);

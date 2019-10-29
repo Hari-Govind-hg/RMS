@@ -26,8 +26,9 @@ public class CandidateService {
 	
 	@Autowired
 	JobRepository jobRepo;
-
+	
 	Candidate candidate;
+	
 	Job job;
 	SequenceGeneratorService sequenceGeneratorService;
 	
@@ -35,6 +36,7 @@ public class CandidateService {
 	ArrayList<String> candidateSkills = new ArrayList<String>();
 	ArrayList<Job> jobList = new ArrayList<Job>();
 	ArrayList<Job> preferedJobList = new ArrayList<Job>();
+	ArrayList<Job> appliedJobList = new ArrayList<Job>();
 	
 	 MongoClient mongoClient = new MongoClient();
 	 DB db = mongoClient.getDB("test");
@@ -49,10 +51,29 @@ public class CandidateService {
 		}
 		return false;
 	}
+	
+	
+	
+	public Candidate findByCandidate(String candidateName)
+	{
+		return candidateRepo.findBycName(candidateName);
+	}
 
+	
+	
+	
+	
 	public List<Job> getAllAppliedJobs(String id) {
-		Optional<Candidate> c = candidateRepo.findById(id);
-		return c.get().getcAppliedJobList();
+		candidate = candidateRepo.findById(id).get();
+		jobList = (ArrayList<Job>) jobRepo.findAll();
+		jobList.forEach( j -> {
+			ArrayList<Candidate> candidateList = j.getjAppliedCandidateList();
+			if(candidateList.contains(candidate)) {
+				appliedJobList.add(j);
+			}
+		});
+//		Optional<Candidate> c = candidateRepo.findById(id);
+		return appliedJobList;
 	}
 
 	public List<Job> getAllJobsForApply() {
@@ -61,6 +82,7 @@ public class CandidateService {
 	
 	public List<Job> getJobsByPreference(String id) {
 		jobList = (ArrayList<Job>) jobRepo.findAll();
+		ArrayList<Job> preferedJobList = new ArrayList<Job>();
 		candidateSkills = candidateRepo.findById(id).get().getSkillList();
 		jobList.forEach(j -> {
 			candidateSkills.forEach(s -> {
@@ -82,8 +104,8 @@ public class CandidateService {
 		job = jobRepo.findById(jid).get();
 		System.out.println(job);
 		if(!job.getjAppliedCandidateList().contains(candidate)) {
-//			job.getjAppliedCandidateList().add(candidate);
-//			jobRepo.save(job);
+			job.getjAppliedCandidateList().add(candidate);
+			jobRepo.save(job);
 			System.out.println(job.getjAppliedCandidateList());
 			
 			return true;
@@ -94,6 +116,16 @@ public class CandidateService {
 
 	public Candidate getCandidateById(String id) {
 		return candidateRepo.findById(id).get();
+	}
+
+	public boolean updateProfile(Candidate c) {
+		try {
+			candidateRepo.save(c);
+			return true;
+		} catch (Exception e) {
+			
+		}
+		return false;
 	}
 
 }

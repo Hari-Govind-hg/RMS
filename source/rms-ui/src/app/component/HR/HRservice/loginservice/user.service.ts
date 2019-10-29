@@ -12,6 +12,7 @@ export class UserService {
     }
 
     register(user: User) {
+        user.role="HR"
         console.log("Inside the register()")
         return this.http.post("http://localhost:80/register", user);
     }

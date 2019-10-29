@@ -22,16 +22,23 @@ export class AuthenticationService {
 
     Candidatelogin(username: string, password: string) {
         const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+        let credentials=btoa(username + ':' + password)
         return this.http.post<User>(`http://localhost:80/authenticate`, { username, password },{headers})
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user) {
-                    console.log(user)
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    let userObj = JSON.parse(JSON.stringify(user));
+                    console.log(userObj)
+                    if(userObj.authorities[0].authority==="ROLE_CANDIDATE")
+                    {
+                                        // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                    let temp = JSON.parse(localStorage.getItem('currentUser'));
+                    
                     console.log("Making localstorage...")
                     this.currentUserSubject.next(user);
                     this.loggedIn.next(true);
+                }
                 }
 
                 return user;
@@ -45,6 +52,10 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user) {
+                    let userObj = JSON.parse(JSON.stringify(user));
+                    console.log(userObj)
+                    if(userObj.authorities[0].authority==="ROLE_HR")
+                    {
                     console.log(user)
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
@@ -52,7 +63,11 @@ export class AuthenticationService {
                     this.currentUserSubject.next(user);
                     this.loggedIn.next(true);
                 }
-
+                else
+                {
+                    
+                }
+            }
                 return user;
             }));
     }
