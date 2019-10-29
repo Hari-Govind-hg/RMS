@@ -24,11 +24,14 @@ export class JobComponent implements OnInit {
   currentUserSubscription: Subscription;
   isLoggedIn$: Observable<boolean>;
   duplicateJobData:any;
+  scheduledJob:any;
+  scheduleTest:FormGroup;
   isDeleted:boolean;
   isSaved:boolean;
   jobData:any;
   skill:String;
   isEmpty:boolean;
+  date:any;
 
   constructor(private jobService: JobServiceService,private authenticationService: AuthenticationService,
     private userService: UserService,public nav: NavService,private router:Router,private route:ActivatedRoute) 
@@ -38,6 +41,9 @@ export class JobComponent implements OnInit {
       });
       this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
+  });
+  this.scheduleTest=new FormGroup({
+    date :new FormControl('')
   });
 }
 
@@ -70,6 +76,39 @@ export class JobComponent implements OnInit {
         this.isEmpty = false;
       }
     });
+    }
+    onInteviewScheduler(jId){
+      this.jobSubscription= this.jobService.getJobById(jId)
+      .subscribe((res:any)=>{
+        console.log(res);
+        this.scheduledJob=res;
+
+        let temp=JSON.parse(JSON.stringify(res))
+        temp.jExamDate=this.scheduleTest.value.date;
+        
+        console.log(temp);
+
+      });
+          
+      console.log(this.scheduleTest.value.date);
+      console.log("inside date picker");
+    }
+
+    ongetAppliedCandidatesList(id){
+      this.jobSubscription= this.jobService.getJobById(id)
+      .subscribe((res:any)=>{
+        console.log(res);
+        this.duplicateJobData = res;
+        console.log(this.duplicateJobData.jAppliedCandidateList);
+        if(this.duplicateJobData.jAppliedCandidateList==""){
+          console.log("inside if");
+          this.isEmpty = true;
+        }
+        else{
+          console.log("inside else");
+          this.isEmpty = false;
+        }
+      });
     }
 
     onSearchHandler(searchForm){
