@@ -178,7 +178,7 @@
 	},
 	"FOOTER": {
 		"FO1": "Name der Firma",
-		"FO2": "IBM INDIA PVT. GMBH.",
+		"FO2": "IBM INDIA PVT. LTD.",
 		"FO3": "Produkte",
 		"FO4": "WATSON",
 		"FO5": "LAPTOPS",
@@ -190,9 +190,9 @@
 		"FOB": "Über uns",
 		"FOC": "Entwickler",
 		"FOD": "Kontakt",
-		"FOE": "BANGALORE, KARNATAKA, INDIEN",
+		"FOE": "BANGALORE, INDIA",
 		"FOF": "info@example.com",
-		"FOG": "© 2018 Urheberrecht:"
+		"FOG": "© 2019 Urheberrecht:"
 	},
 	"HEADER": {
 		"H1": "Speisekarte",
@@ -205,6 +205,53 @@
 		"SELECT": "Sprache auswählen",
 		"TEXT": "Dies ist eine Demo",
 		"TITLE": "Hallo Angular mit Ngx Translate"
+	},
+	"HR_AJ": {
+		"ADDJOB01": "Erstellen Sie eine neue Stellenanzeige",
+		"ADDJOB02": "Berufsbezeichnung",
+		"ADDJOB03": "Geben Sie die Berufsbezeichnung ein",
+		"ADDJOB04": "Berufsbezeichnung ist erforderlich",
+		"ADDJOB05": "Bezeichnung",
+		"ADDJOB06": "Bezeichnung eingeben",
+		"ADDJOB07": "Benennung erforderlich",
+		"ADDJOB08": "Erforderliche Fähigkeitsliste",
+		"ADDJOB09": "Kompetenzen",
+		"ADDJOB10": "Angebotene Gehalt",
+		"ADDJOB11": "Gehalt in INR eingeben",
+		"ADDJOB12": "Gehalt ist erforderlich",
+		"ADDJOB13": "Erforderliche Erfahrung",
+		"ADDJOB14": "Erforderliche Erfahrung in Jahren eingeben",
+		"ADDJOB15": "Erfahrungsdetails sind erforderlich",
+		"ADDJOB16": "BEWERBUNGSSCHLUSS",
+		"ADDJOB17": "Bewerbungsschluss ist erforderlich",
+		"ADDJOB18": "Erfolgreich gespeichert",
+		"ADDJOB19": "einreichen",
+		"ADDJOB20": "Zurücksetzen"
+	},
+	"HR_LOGIN": {
+		"L01": "Einloggen",
+		"L02": "Anmelden",
+		"L03": "HR Login",
+		"L04": "Nutzername",
+		"L05": "Passwort",
+		"L06": "Einloggen",
+		"L07": "Zurück"
+	},
+	"HR_REGISTER": {
+		"R01": "Einloggen",
+		"R02": "Anmelden",
+		"R03": "HR-Registrierung",
+		"R04": "Vorname",
+		"R05": "Vorname ist erforderlich",
+		"R06": "Nachname",
+		"R07": "Nachname ist erforderlich",
+		"R08": "Nutzername",
+		"R09": "Ein Benutzername ist erforderlich",
+		"R10": "Passwort",
+		"R11": "Passwort wird benötigt",
+		"R12": "Passwort muss mindestens 6 Zeichen lang sein",
+		"R13": "Anmelden",
+		"R14": "Back"
 	},
 	"JOBCOMP": {
 		"JC1": "Herzlich willkommen",
@@ -289,14 +336,14 @@
 		"LL2": "Kandidat",
 		"LL3": "ANMELDUNG REGISTRIEREN",
 		"LL4": "HR",
-		"LL5": "Anmeldung"
+		"LL5": "ANMELDUNG REGISTRIEREN"
 	},
 	"NAV": {
 		"N1": "Arbeitsplätze",
 		"N2": "Über",
 		"N3": "Kontakt",
 		"N4": "Anmeldung",
-		"N5": "Language",
+		"N5": "DE",
 		"N6": "Ausloggen"
 	},
 	"REGISTER": {

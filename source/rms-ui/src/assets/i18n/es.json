@@ -178,9 +178,9 @@
 	},
 	"FOOTER": {
 		"FO1": "Nombre de empresa",
-		"FO2": "IBM INDIA PVT. LIMITADO.",
+		"FO2": "IBM INDIA PVT. LTD.",
 		"FO3": "productos",
-		"FO4": "Watson",
+		"FO4": "WATSON",
 		"FO5": "Portátiles",
 		"FO6": "MOBILES",
 		"FO7": "tabletas",
@@ -190,9 +190,9 @@
 		"FOB": "Sobre nosotros",
 		"FOC": "Desarrolladores",
 		"FOD": "Contacto",
-		"FOE": "BANGALORE, KARNATAKA, INDIA",
-		"FOF": "info@ejemplo.com",
-		"FOG": "© 2018 Copyright:"
+		"FOE": "BANGALORE, INDIA",
+		"FOF": "info@example.com",
+		"FOG": "© 2019 Copyright:"
 	},
 	"HEADER": {
 		"H1": "menú",
@@ -205,6 +205,53 @@
 		"SELECT": "Seleccione el idioma",
 		"TEXT": "Esto es demo",
 		"TITLE": "Hola Angular con Ngx Traducir"
+	},
+	"HR_AJ": {
+		"ADDJOB01": "Crear nuevo anuncio de trabajo",
+		"ADDJOB02": "Título profesional",
+		"ADDJOB03": "Ingrese el título del trabajo",
+		"ADDJOB04": "Título del trabajo es obligatorio",
+		"ADDJOB05": "designación",
+		"ADDJOB06": "Ingresar designación",
+		"ADDJOB07": "Se requiere designación",
+		"ADDJOB08": "Lista de habilidades requeridas",
+		"ADDJOB09": "Habilidades",
+		"ADDJOB10": "Salario ofrecido",
+		"ADDJOB11": "Ingresar salario en INR",
+		"ADDJOB12": "Salario es requerido",
+		"ADDJOB13": "Experiencia requerida",
+		"ADDJOB14": "Ingrese la experiencia requerida en años",
+		"ADDJOB15": "Se requieren detalles de experiencia",
+		"ADDJOB16": "Fecha de cierre de la solicitud",
+		"ADDJOB17": "Se requiere la fecha de cierre de la solicitud",
+		"ADDJOB18": "Guardado exitosamente",
+		"ADDJOB19": "Enviar",
+		"ADDJOB20": "Reiniciar"
+	},
+	"HR_LOGIN": {
+		"L01": "Registrarse",
+		"L02": "Regístrate",
+		"L03": "Inicio de sesión de recursos humanos",
+		"L04": "Nombre de usuario",
+		"L05": "Contraseña",
+		"L06": "Registrarse",
+		"L07": "atrás"
+	},
+	"HR_REGISTER": {
+		"R01": "Registrarse",
+		"R02": "Regístrate",
+		"R03": "Registro de recursos humanos",
+		"R04": "Nombre de pila",
+		"R05": "Se requiere el primer nombre",
+		"R06": "Apellido",
+		"R07": "Se requiere apellido",
+		"R08": "Nombre de usuario",
+		"R09": "Se requiere nombre de usuario",
+		"R10": "Contraseña",
+		"R11": "se requiere contraseña",
+		"R12": "La contraseña debe tener al menos 6 caracteres",
+		"R13": "Regístrate",
+		"R14": "Regresa"
 	},
 	"JOBCOMP": {
 		"JC1": "Bienvenido",
@@ -289,14 +336,14 @@
 		"LL2": "Candidato",
 		"LL3": "Iniciar sesión / Registrarse",
 		"LL4": "hora",
-		"LL5": "Iniciar sesión"
+		"LL5": "Iniciar sesión / Registrarse"
 	},
 	"NAV": {
 		"N1": "Trabajos",
 		"N2": "Acerca de",
 		"N3": "Contacto",
 		"N4": "Iniciar sesión",
-		"N5": "Language",
+		"N5": "ES",
 		"N6": "Cerrar sesión"
 	},
 	"REGISTER": {

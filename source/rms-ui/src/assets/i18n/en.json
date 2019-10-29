@@ -177,7 +177,7 @@
 		"F9": "Recruitment Management"
 	},
 	"FOOTER": {
-		"FO1": "Company name",
+		"FO1": "Company Name",
 		"FO2": "IBM INDIA PVT. LTD.",
 		"FO3": "Products",
 		"FO4": "WATSON",
@@ -190,9 +190,9 @@
 		"FOB": "ABOUT US",
 		"FOC": "DEVELOPERS",
 		"FOD": "Contact",
-		"FOE": "BANGALORE,KARNATAKA,INDIA",
+		"FOE": "BANGALORE, INDIA",
 		"FOF": "info@example.com",
-		"FOG": "© 2018 Copyright:"
+		"FOG": "© 2019 Copyright:"
 	},
 	"HEADER": {
 		"H1": "menu",
@@ -205,6 +205,53 @@
 		"SELECT": "Select language",
 		"TEXT": "This is demo",
 		"TITLE": "Hello Angular with Ngx Translate"
+	},
+	"HR_AJ": {
+		"ADDJOB01": "Create new Job posting",
+		"ADDJOB02": "Job Title",
+		"ADDJOB03": "Enter Job Title",
+		"ADDJOB04": "Job Title is required",
+		"ADDJOB05": "Designation",
+		"ADDJOB06": "Enter Designation",
+		"ADDJOB07": "Designation is required",
+		"ADDJOB08": "Required Skill List",
+		"ADDJOB09": "Skills",
+		"ADDJOB10": "Offered Salary",
+		"ADDJOB11": "Enter Salary in INR",
+		"ADDJOB12": "Salary is required",
+		"ADDJOB13": "Required Experience",
+		"ADDJOB14": "Enter Required Experience in Years",
+		"ADDJOB15": "Experience Details is required",
+		"ADDJOB16": "Application Closing Date",
+		"ADDJOB17": "Application Closing Date is required",
+		"ADDJOB18": "Saved Successfully",
+		"ADDJOB19": "Submit",
+		"ADDJOB20": "Reset"
+	},
+	"HR_LOGIN": {
+		"L01": "Sign In",
+		"L02": "Sign Up",
+		"L03": "HR Login",
+		"L04": "Username",
+		"L05": "Password",
+		"L06": "Sign In",
+		"L07": "Back"
+	},
+	"HR_REGISTER": {
+		"R01": "Sign In",
+		"R02": "Sign Up",
+		"R03": "HR Registration",
+		"R04": "First Name",
+		"R05": "First Name is required",
+		"R06": "Last Name",
+		"R07": "Last Name is required",
+		"R08": "Username",
+		"R09": "Username is required",
+		"R10": "password",
+		"R11": "Password is required",
+		"R12": "Password must be at least 6 characters",
+		"R13": "Sign Up",
+		"R14": "Go Back"
 	},
 	"JOBCOMP": {
 		"JC1": "Welcome ",
@@ -260,7 +307,7 @@
 	},
 	"LANDINGCOMP": {
 		"LC1": "Welcome",
-		"LC2": "Apply For  Job",
+		"LC2": "Apply For Job",
 		"LC3": "List of Jobs",
 		"LC4": "Apply Filtering",
 		"LC5": "Click here To list the jobs that match your skills",
@@ -289,14 +336,14 @@
 		"LL2": "CANDIDATE",
 		"LL3": "Login/Register",
 		"LL4": "HR ",
-		"LL5": "Login"
+		"LL5": "Login/Register"
 	},
 	"NAV": {
 		"N1": "Jobs",
 		"N2": "About",
 		"N3": "Contact",
 		"N4": "Login",
-		"N5": "Language",
+		"N5": "EN",
 		"N6": "Logout"
 	},
 	"REGISTER": {

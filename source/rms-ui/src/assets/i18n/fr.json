@@ -178,7 +178,7 @@
 	},
 	"FOOTER": {
 		"FO1": "Nom de la compagnie",
-		"FO2": "IBM Inde PVT. LTD.",
+		"FO2": "IBM INDIA PVT. LTD.",
 		"FO3": "Des produits",
 		"FO4": "WATSON",
 		"FO5": "LAPTOPS",
@@ -190,9 +190,9 @@
 		"FOB": "À propos de nous",
 		"FOC": "DÉVELOPPEURS",
 		"FOD": "Contact",
-		"FOE": "BANGALORE, KARNATAKA, INDE",
+		"FOE": "BANGALORE, INDIA",
 		"FOF": "info@example.com",
-		"FOG": "© 2018 Copyright:"
+		"FOG": "© 2019 Copyright:"
 	},
 	"HEADER": {
 		"H1": "menu",
@@ -205,6 +205,53 @@
 		"SELECT": "Choisir la langue",
 		"TEXT": "C'est démo",
 		"TITLE": "Bonjour angulaire avec Ngx Traduire"
+	},
+	"HR_AJ": {
+		"ADDJOB01": "Créer une nouvelle offre d'emploi",
+		"ADDJOB02": "Emploi Titre",
+		"ADDJOB03": "Entrez le titre du poste",
+		"ADDJOB04": "Titre du poste requis",
+		"ADDJOB05": "La désignation",
+		"ADDJOB06": "Entrer désignation",
+		"ADDJOB07": "La désignation est requise",
+		"ADDJOB08": "Liste de compétences requises",
+		"ADDJOB09": "compétences",
+		"ADDJOB10": "Salaire offert",
+		"ADDJOB11": "Entrer le salaire en INR",
+		"ADDJOB12": "Salaire requis",
+		"ADDJOB13": "Expérience requise",
+		"ADDJOB14": "Entrez l'expérience requise en années",
+		"ADDJOB15": "Les détails de l'expérience sont requis",
+		"ADDJOB16": "Date de clôture de l'application",
+		"ADDJOB17": "La date de clôture de l'application est requise",
+		"ADDJOB18": "Enregistré avec succès",
+		"ADDJOB19": "Soumettre",
+		"ADDJOB20": "Réinitialiser"
+	},
+	"HR_LOGIN": {
+		"L01": "se connecter",
+		"L02": "S'inscrire",
+		"L03": "Connexion RH",
+		"L04": "Nom d'utilisateur",
+		"L05": "Mot de passe",
+		"L06": "se connecter",
+		"L07": "Back"
+	},
+	"HR_REGISTER": {
+		"R01": "se connecter",
+		"R02": "S'inscrire",
+		"R03": "Enregistrement RH",
+		"R04": "Prénom",
+		"R05": "Le prénom est requis",
+		"R06": "Nom de famille",
+		"R07": "Le nom est requis",
+		"R08": "Nom d'utilisateur",
+		"R09": "Nom d'utilisateur est nécessaire",
+		"R10": "Mot de passe",
+		"R11": "Mot de passe requis",
+		"R12": "Le mot de passe doit être au moins de 6 caractères",
+		"R13": "S'inscrire",
+		"R14": "Retourner"
 	},
 	"JOBCOMP": {
 		"JC1": "Bienvenue",
@@ -289,14 +336,14 @@
 		"LL2": "Candidat",
 		"LL3": "Connexion / S'inscrire",
 		"LL4": "heure",
-		"LL5": "S'identifier"
+		"LL5": "Connexion / S'inscrire"
 	},
 	"NAV": {
 		"N1": "Emplois",
 		"N2": "sur",
 		"N3": "Contact",
 		"N4": "S'identifier",
-		"N5": "Language",
+		"N5": "FR",
 		"N6": "Connectez - Out"
 	},
 	"REGISTER": {
