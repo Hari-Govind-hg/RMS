@@ -1,40 +1,40 @@
 <div class="container">
-                <div class="wrapper">
-                <div id="formContent" style="padding-bottom: 50px;">
-                        <!-- Tabs Titles -->
-                        <h2 class="inactive underlineHover" routerLink="/candidatelogin"> Sign In </h2>
-                        <h2 class="active" routerLink="/candidateRegister">Sign Up </h2>
-                    
-                        <!-- Icon -->
-                        <div class="fadeIn first">
-                          <img src="../../../../assets/images/avatar-icon.png" style="width: 40px;" id="icon" alt="User Icon" />
-                          <h6>Candidate Registration</h6>
-                        </div>
-                    
-                        <!-- Login Form -->
-                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                          <input type="text" id="firstName" class="fadeIn second" formControlName="firstName" name="firstName" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
-                          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                            </div>
-                          <input type="text" id="lastName" class="fadeIn second" formControlName="lastName" name="lastName" placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
-                          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                            </div>
-                          <input type="text" id="login" class="fadeIn third" formControlName="username" name="login" placeholder="login" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-                          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                                <div *ngIf="f.username.errors.required">Username is required</div>
-                            </div>
-                          <input type="password" id="password" class="fadeIn third" formControlName="password" name="login" placeholder="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                <div *ngIf="f.password.errors.required">Password is required</div>
-                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                            </div>
-                          <button [disabled]="loading" class="fadeIn fourth btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Sign Up
-                </button>
-                        </form>
-                </div>
-                </div>
-                </div>
+  <div class="wrapper">
+  <div id="formContent" style="padding-bottom: 50px;">
+          <!-- Tabs Titles -->
+          <h2 class="inactive underlineHover" routerLink="/candidatelogin">{{ 'CANDREGISTER.CR1' | translate }} </h2>
+          <h2 class="active" routerLink="/candidateRegister">{{ 'CANDREGISTER.CR2' | translate }} </h2>
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="../../../../assets/images/avatar-icon.png" style="width: 40px;" id="icon" alt="User Icon" />
+            <h6>{{ 'CANDREGISTER.CR3' | translate }}</h6>
+          </div>
+      
+          <!-- Login Form -->
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <input type="text" id="firstName" class="fadeIn second" formControlName="firstName" name="firstName" placeholder="{{ 'CANDREGISTER.CR4' | translate }}" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                  <div *ngIf="f.firstName.errors.required">{{ 'CANDREGISTER.CR5' | translate }}</div>
+              </div>
+            <input type="text" id="lastName" class="fadeIn second" formControlName="lastName" name="lastName" placeholder="{{ 'CANDREGISTER.CR6' | translate }}" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                  <div *ngIf="f.lastName.errors.required">{{ 'CANDREGISTER.CR7' | translate }}</div>
+              </div>
+            <input type="text" id="login" class="fadeIn third" formControlName="username" name="login" placeholder="{{ 'CANDREGISTER.CR8' | translate }}" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">{{ 'CANDREGISTER.CR9' | translate }}</div>
+              </div>
+            <input type="password" id="password" class="fadeIn third" formControlName="password" name="login" placeholder="{{ 'CANDREGISTER.CRA' | translate }}" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">{{ 'CANDREGISTER.CRB' | translate }}</div>
+                  <div *ngIf="f.password.errors.minlength">{{ 'CANDREGISTER.CRC' | translate }}</div>
+              </div>
+            <button [disabled]="loading" class="fadeIn fourth btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      {{ 'CANDREGISTER.CRD' | translate }}  
+  </button>
+          </form>
+  </div>
+  </div>
+  </div>
