@@ -1,16 +1,26 @@
 {
 	"ABOUT": {
-		"A1": "Über das HIRE Team",
-		"A10": "",
-		"A11": "",
-		"A2": "Erstellen Sie mit Bootstrap 4 eine minimale About Us-Seite.",
+		"A1": "Über das RMS Team",
+		"A2": "Teamwork ist ein zusammengesetztes Wort, das Team und Arbeit verbindet. Teams sind eine Form der Gruppe, die sich normalerweise der Produktion oder Problemlösung widmet. Das lässt uns mit der Arbeit. Hier kann uns unser bisheriges Beispiel zur Problemlösung weiterhelfen. Jedes Mitglied des Teams verfügt über Fähigkeiten, Talente, Erfahrung und Ausbildung",
 		"A3": "Unsere Aufgabe",
-		"A5": "Zu Ihrem Lieblingsort werden, um Management-, Führungs- und herausragende Fähigkeiten zu erlernen.",
-		"A6": "Über RMS",
-		"A7": "RMS is a job portal of IBM where we hire the applicants according to their skills and specialities. Applicants go through various filters and the most deserving ones who match the criteria are the ones who get the job. Here we provide platform to candidates ,freshers or experienced ,toshow their technical skills and knowledge and be part of the Company and a proud IBMer..",
-		"A8": "Wie wir arbeiten!",
-		"A9": "Users first need to sign up and then login to the portal and after providing their skills their resumes will be gone through the filteration process.The HRs of IBM will then get the filtered resumes of he applicants and will then further shortlist them and scheduling of the interviews will be done.Then the scheduled interviews date would be reflected on the page and the selected ones will be getting the mail."
+		"A4": "Zu Ihrem Lieblingsort werden, um Management-, Führungs- und herausragende Fähigkeiten zu erlernen.",
+		"A5": "Über RMS",
+		"A6": "RMS ist ein Jobportal von IBM, in dem wir die Bewerber nach ihren Fähigkeiten und Fachgebieten einstellen. Die Bewerber durchlaufen verschiedene Filter und die verdientesten, die den Kriterien entsprechen, sind diejenigen, die den Job bekommen. Hier bieten wir Kandidaten, Anfängern oder erfahrenen Bewerbern eine Plattform, um ihre technischen Fähigkeiten und ihr Wissen unter Beweis zu stellen und Teil des Unternehmens und ein stolzer IBMer zu sein...",
+		"A7": "Wie wir arbeiten!",
+		"A8": "Benutzer müssen sich zuerst anmelden und sich dann beim Portal anmelden. Nachdem sie ihre Kenntnisse vermittelt haben, werden ihre Lebensläufe durch den Filterungsprozess geführt. Die Personalabteilung von IBM erhält dann die gefilterten Lebensläufe der Bewerber und setzt sie in die engere Auswahl ein. Die Planung der Interviews erfolgt. Das geplante Interviewdatum wird dann auf der Seite angezeigt und die ausgewählten Personen erhalten die E-Mail ...",
+		"A9": "Unser Team",
+		"AA1": "Wir inspirieren die Zukunft!",
+		"AA2": "Das Setzen von Zielen ist der erste Schritt, um das Unsichtbare in das Sichtbare zu verwandeln",
+		"AA3": "Es ist in Ihren Momenten der Entscheidung, dass Ihr Schicksal geprägt ist",
+		"AA4": "Man muss nicht großartig sein, um anzufangen, aber man muss großartig sein",
+		"AA5": "Die beste Vorbereitung für morgen ist heute Ihr Bestes zu geben",
+		"AA6": "Ändere deine Gedanken und damit du deine Welt veränderst",
+		"AA7": "Was wäre das Leben, wenn wir nicht den Mut hätten, etwas zu versuchen?",
+		"AA8": "Lassen Sie uns unser Heute opfern, damit unsere Kinder ein besseres Morgen haben können",
+		"AA9": "Wenn du wie eine Sonne scheinen willst, musst du zuerst wie eine Sonne brennen",
+		"AB1": ""
 	},
+
 	"ADDJOB": {
 		"AJ1": "Erstellen Sie eine neue Stellenanzeige",
 		"AJ2": "Berufsbezeichnung",
@@ -257,7 +267,7 @@
 		"N2": "Über",
 		"N3": "Kontakt",
 		"N4": "Anmeldung",
-		"N5": "Language",
+		"N5": "DE",
 		"N6": "Ausloggen"
 	},
 	"REGISTER": {

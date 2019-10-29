@@ -1,15 +1,24 @@
 {
 	"ABOUT": {
-		"A1": "A propos de l'équipe HIRE",
-		"A10": "",
-		"A11": "",
-		"A2": "Créez une page minimale sur nous à l’aide de Bootstrap 4.",
+		"A1": "A propos de l'équipe RMS",
+		"A2": "Le travail d'équipe est un mot composé, combinant équipe et travail. Les équipes sont une forme de groupe normalement dédiée à la production ou à la résolution de problèmes. Cela nous laisse avec le travail. C’est là que notre exemple précédent de résolution de problèmes peut nous être très utile. Chaque membre de l'équipe a des compétences, des talents, une expérience et une éducation.",
 		"A3": "Notre mission",
-		"A5": "Pour devenir votre lieu de prédilection pour acquérir des compétences en gestion, en leadership et en excellence personnelle.",
-		"A6": "À propos de RMS",
-		"A7": "RMS is a job portal of IBM where we hire the applicants according to their skills and specialities. Applicants go through various filters and the most deserving ones who match the criteria are the ones who get the job. Here we provide platform to candidates ,freshers or experienced ,toshow their technical skills and knowledge and be part of the Company and a proud IBMer..",
-		"A8": "Comment nous travaillons!",
-		"A9": "Users first need to sign up and then login to the portal and after providing their skills their resumes will be gone through the filteration process.The HRs of IBM will then get the filtered resumes of he applicants and will then further shortlist them and scheduling of the interviews will be done.Then the scheduled interviews date would be reflected on the page and the selected ones will be getting the mail."
+		"A4": "Pour devenir votre lieu de prédilection pour acquérir des compétences en gestion, en leadership et en excellence personnelle.",
+		"A5": "À propos de RMS",
+		"A6": "RMS est un portail d'emploi d'IBM où nous embauchons les candidats en fonction de leurs compétences et de leurs spécialités. Les candidats passent par différents filtres et les plus méritants correspondant aux critères sont ceux qui obtiennent le poste. Ici, nous fournissons une plate-forme aux candidats, débutants ou expérimentés, pour montrer leurs compétences et leurs connaissances techniques et faire partie de la Société et d'un fier IBMer...",
+		"A7": "Comment nous travaillons!",
+		"A8": "Les utilisateurs doivent d'abord s'inscrire, puis se connecter au portail et, après avoir fourni leurs compétences, leur curriculum vitae sera traité dans le processus de filtrage. Les RH d’IBM recevront ensuite les curriculum vitae filtrés des candidats, les présélectionneront ensuite et la planification des entretiens sera effectuée. La date des entretiens programmés sera ensuite indiquée sur la page et les personnes sélectionnées recevront le courrier ...",
+		"A9": "Notre équipe",
+		"AA1": "Nous inspirons l'avenir!",
+		"AA2": "Fixer des objectifs est la première étape pour transformer l'invisible en visible",
+		"AA3": "C'est dans vos moments de décision que votre destin est façonné",
+		"AA4": "Vous n'avez pas besoin d'être bon pour commencer, mais vous devez commencer à être bon",
+		"AA5": "La meilleure préparation pour demain consiste à faire de votre mieux aujourd'hui",
+		"AA6": "Change tes pensées et pour que tu changes de monde",
+		"AA7": "Que serait la vie si nous n'avions pas le courage d'essayer quoi que ce soit",
+		"AA8": "Laissez-nous sacrifier notre aujourd'hui pour que nos enfants puissent avoir un avenir meilleur",
+		"AA9": "Si vous voulez briller comme un soleil, vous devez d'abord brûler comme un soleil",
+		"AB1": ""
 	},
 	"ADDJOB": {
 		"AJ1": "Créer une nouvelle offre d'emploi",
@@ -257,7 +266,7 @@
 		"N2": "sur",
 		"N3": "Contact",
 		"N4": "S'identifier",
-		"N5": "Language",
+		"N5": "FR",
 		"N6": "Connectez - Out"
 	},
 	"REGISTER": {

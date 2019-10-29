@@ -1,15 +1,24 @@
 {
 	"ABOUT": {
-		"A1": "About HIRE Team",
-		"A10": "",
-		"A11": "",
-		"A2": "Create a minimal about us page using Bootstrap 4.",
+		"A1": "About RMS Team",
+		"A2": "Teamwork is a compound word, combining team and work. Teams are a form of group normally dedicated to production or problem solving. That leaves us with the work. This is where our previous example on problem solving can serve us well. Each member of the team has skills, talents, experience, and education.",
 		"A3": "OUR MISSION",
-		"A5": "To become your favorite place to learn management, leadership and personal excellence skills.",
-		"A6": "About RMS",
-		"A7": "RMS is a job portal of IBM where we hire the applicants according to their skills and specialities. Applicants go through various filters and the most deserving ones who match the criteria are the ones who get the job. Here we provide platform to candidates ,freshers or experienced ,toshow their technical skills and knowledge and be part of the Company and a proud IBMer..",
-		"A8": "How we work!",
-		"A9": "Users first need to sign up and then login to the portal and after providing their skills their resumes will be gone through the filteration process.The HRs of IBM will then get the filtered resumes of he applicants and will then further shortlist them and scheduling of the interviews will be done.Then the scheduled interviews date would be reflected on the page and the selected ones will be getting the mail."
+		"A4": "To become your favorite place to learn management, leadership and personal excellence skills.",
+		"A5": "About RMS",
+		"A6": "RMS is a job portal of IBM where we hire the applicants according to their skills and specialities. Applicants go through various filters and the most deserving ones who match the criteria are the ones who get the job. Here we provide platform to candidates, freshers or experienced, to show their technical skills and knowledge and be part of theCompany and a proud IBMer...",
+		"A7": "How we work!",
+		"A8": "Users first need to sign up and then login to the portal and after providing their skills their resumes will be gone through the filteration process.The HRs of IBM will then get the filtered resumes of he applicants and will then further shortlist them and scheduling of the interviews will be done.Then the scheduled interviews date would be reflected on the page and the selected ones will be getting the mail.",
+		"A9": "Our team",
+		"AA1": "We inspire the future!",
+		"AA2": "Setting goals is the first step in turning the invisible into the visible",
+		"AA3": "It is in your moments of decision that your destiny is shaped",
+		"AA4": "You don't have to be great to start, but you have to start to be great",
+		"AA5": "The best preparation for tomorrow is doing your best today",
+		"AA6": "Change your thoughts and so that you change your world",
+		"AA7": "What would life be if we had no courage to attempt anything",
+		"AA8": "Let us sacrifice our today so that our children can have a better tomorrow",
+		"AA9": "If you want to shine like a sun, then you have to first burn like a sun",
+		"AB1": ""
 	},
 	"ADDJOB": {
 		"AJ1": "Create new Job posting",
@@ -257,7 +266,7 @@
 		"N2": "About",
 		"N3": "Contact",
 		"N4": "Login",
-		"N5": "Language",
+		"N5": "EN",
 		"N6": "Logout"
 	},
 	"REGISTER": {
