@@ -59,7 +59,7 @@ export class LandingComponent implements OnInit,OnDestroy {
     });
   }
   
-async onApplyHandler(cId,jId){
+async onApplyHandler(jId){
     console.log("inside applyhandler");
     let name = this.currentUser.principal.username;
     console.log(name);
