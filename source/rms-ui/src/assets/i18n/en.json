@@ -61,21 +61,21 @@
 		"CJD5": "Employeement Type:Full Time",
 		"CJD6": "Offered Salary:45000",
 		"CJD7": "Experience Needed: 3 years",
-		"CJD8": "Apply Now",
-		"CJD9": "JobId:13",
-		"CJDA": "Designation: HR",
-		"CJDB": "JobRole:",
-		"CJDC": "Employeement Type:Full Time",
-		"CJDD": "Offered Salary:65000",
-		"CJDE": "Experience Needed: 5 years",
-		"CJDF": "Apply Now",
-		"CJDG": "JobId:14",
-		"CJDH": "Designation: Associate Software Engineer",
-		"CJDI": "JobRole:",
-		"CJDJ": "Employeement Type:Full Time",
-		"CJDK": "Offered Salary:25000",
-		"CJDL": "Experience Needed: 0 years",
-		"CJDM": "Apply Now"
+		"CJD8": "JobId:13",
+		"CJD9": "Designation: HR",
+		"CJDA": "JobRole:",
+		"CJDB": "Employeement Type:Full Time",
+		"CJDC": "Offered Salary:65000",
+		"CJDD": "Experience Needed: 5 years",
+		"CJDE": "Apply Now",
+		"CJDF": "JobId:14",
+		"CJDG": "Designation: Associate Software Engineer",
+		"CJDH": "JobRole:",
+		"CJDI": "Employeement Type:Full Time",
+		"CJDJ": "Offered Salary:25000",
+		"CJDK": "Experience Needed: 0 years",
+		"CJDL": "Apply Now",
+		"CJDM": ""
 	},
 	"CANDPROFILE": {
 		"CP1": "Go Back",
@@ -113,6 +113,21 @@
 		"CPX": "Saved Successfully",
 		"CPY": "Save",
 		"CPZ": "Save"
+	},
+	"CANDREGDETAIL": {
+		"CRD1": "Candidate Details",
+		"CRD2": "Enter Name",
+		"CRD3": "Name is required",
+		"CRD4": "Enter Email",
+		"CRD5": "Email is required",
+		"CRD6": "Enter Phone",
+		"CRD7": "Phone No is required",
+		"CRD8": "Skills",
+		"CRD9": "Enter Salary",
+		"CRDA": "Enter Experience",
+		"CRDB": "Experience is required",
+		"CRDC": "Submit",
+		"CRDD": "Reset"
 	},
 	"CANDREGISTER": {
 		"CR1": "Sign In ",
@@ -179,6 +194,13 @@
 		"FOF": "info@example.com",
 		"FOG": "© 2018 Copyright:"
 	},
+	"HEADER": {
+		"H1": "menu",
+		"H2": "input",
+		"H3": "Login",
+		"H4": "help",
+		"H5": "HELP"
+	},
 	"HOME": {
 		"SELECT": "Select language",
 		"TEXT": "This is demo",
@@ -238,9 +260,17 @@
 	},
 	"LANDINGCOMP": {
 		"LC1": "Welcome",
-		"LC2": "Apply For Job",
-		"LC3": "Applied Jobs",
-		"LC4": "Edit Profile"
+		"LC2": "Apply For  Job",
+		"LC3": "List of Jobs",
+		"LC4": "Apply Filtering",
+		"LC5": "Click here To list the jobs that match your skills",
+		"LC6": "Description:",
+		"LC7": "Job Details",
+		"LC8": "Id:",
+		"LC9": "Description:",
+		"LCA": "Skills Needed:",
+		"LCB": "Experience Needed:",
+		"LCC": "Salary:"
 	},
 	"LOGINCOMP": {
 		"LOC1": "Go Back",
@@ -266,7 +296,7 @@
 		"N2": "About",
 		"N3": "Contact",
 		"N4": "Login",
-		"N5": "EN",
+		"N5": "Language",
 		"N6": "Logout"
 	},
 	"REGISTER": {

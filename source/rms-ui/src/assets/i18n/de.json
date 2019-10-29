@@ -20,7 +20,6 @@
 		"AA9": "Wenn du wie eine Sonne scheinen willst, musst du zuerst wie eine Sonne brennen",
 		"AB1": ""
 	},
-
 	"ADDJOB": {
 		"AJ1": "Erstellen Sie eine neue Stellenanzeige",
 		"AJ2": "Berufsbezeichnung",
@@ -115,6 +114,21 @@
 		"CPY": "sparen",
 		"CPZ": "sparen"
 	},
+	"CANDREGDETAIL": {
+		"CRD1": "Kandidatendetails",
+		"CRD2": "Name eingeben",
+		"CRD3": "Name ist erforderlich",
+		"CRD4": "Email eingeben",
+		"CRD5": "E-Mail ist erforderlich",
+		"CRD6": "Telefon eingeben",
+		"CRD7": "Telefonnummer ist erforderlich",
+		"CRD8": "Kompetenzen",
+		"CRD9": "Gehalt eingeben",
+		"CRDA": "Erfahrung eingeben",
+		"CRDB": "Erfahrung ist erforderlich",
+		"CRDC": "einreichen",
+		"CRDD": "Zurücksetzen"
+	},
 	"CANDREGISTER": {
 		"CR1": "Anmelden",
 		"CR2": "Vorname",
@@ -164,7 +178,7 @@
 	},
 	"FOOTER": {
 		"FO1": "Name der Firma",
-		"FO2": "IBM INDIA PVT. LTD.",
+		"FO2": "IBM INDIA PVT. GMBH.",
 		"FO3": "Produkte",
 		"FO4": "WATSON",
 		"FO5": "LAPTOPS",
@@ -179,6 +193,13 @@
 		"FOE": "BANGALORE, KARNATAKA, INDIEN",
 		"FOF": "info@example.com",
 		"FOG": "© 2018 Urheberrecht:"
+	},
+	"HEADER": {
+		"H1": "Speisekarte",
+		"H2": "Eingang",
+		"H3": "Anmeldung",
+		"H4": "Hilfe",
+		"H5": "Hilfe"
 	},
 	"HOME": {
 		"SELECT": "Sprache auswählen",
@@ -241,7 +262,15 @@
 		"LC1": "Herzlich willkommen",
 		"LC2": "Sich für eine Stelle bewerben",
 		"LC3": "Angewandte Jobs",
-		"LC4": "Profil bearbeiten"
+		"LC4": "Profil bearbeiten",
+		"LC5": "Klicken Sie hier, um die Jobs aufzulisten, die Ihren Fähigkeiten entsprechen",
+		"LC6": "Beschreibung:",
+		"LC7": "Job Details",
+		"LC8": "Ich würde:",
+		"LC9": "Beschreibung:",
+		"LCA": "Benötigte Fähigkeiten:",
+		"LCB": "Erforderliche Erfahrung:",
+		"LCC": "Gehalt:"
 	},
 	"LOGINCOMP": {
 		"LOC1": "Geh zurück",
@@ -267,7 +296,7 @@
 		"N2": "Über",
 		"N3": "Kontakt",
 		"N4": "Anmeldung",
-		"N5": "DE",
+		"N5": "Language",
 		"N6": "Ausloggen"
 	},
 	"REGISTER": {

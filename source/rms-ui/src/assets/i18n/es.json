@@ -20,8 +20,6 @@
 		"AA9": "Si quieres brillar como un sol, primero debes quemar como un sol",
 		"AB1": ""
 	},
-
-
 	"ADDJOB": {
 		"AJ1": "Crear nuevo anuncio de trabajo",
 		"AJ2": "Título profesional",
@@ -116,6 +114,21 @@
 		"CPY": "Salvar",
 		"CPZ": "Salvar"
 	},
+	"CANDREGDETAIL": {
+		"CRD1": "Detalles del candidato",
+		"CRD2": "Ingrese su nombre",
+		"CRD3": "Se requiere el nombre",
+		"CRD4": "Ingrese correo electrónico",
+		"CRD5": "correo electronico es requerido",
+		"CRD6": "Ingresar teléfono",
+		"CRD7": "No se requiere teléfono",
+		"CRD8": "Habilidades",
+		"CRD9": "Ingresar salario",
+		"CRDA": "Ingrese experiencia",
+		"CRDB": "Se requiere experiencia",
+		"CRDC": "Enviar",
+		"CRDD": "Reiniciar"
+	},
 	"CANDREGISTER": {
 		"CR1": "Regístrate",
 		"CR2": "Nombre de pila",
@@ -165,7 +178,7 @@
 	},
 	"FOOTER": {
 		"FO1": "Nombre de empresa",
-		"FO2": "IBM INDIA PVT. LTD.",
+		"FO2": "IBM INDIA PVT. LIMITADO.",
 		"FO3": "productos",
 		"FO4": "Watson",
 		"FO5": "Portátiles",
@@ -180,6 +193,13 @@
 		"FOE": "BANGALORE, KARNATAKA, INDIA",
 		"FOF": "info@ejemplo.com",
 		"FOG": "© 2018 Copyright:"
+	},
+	"HEADER": {
+		"H1": "menú",
+		"H2": "entrada",
+		"H3": "Iniciar sesión",
+		"H4": "Ayuda",
+		"H5": "Ayuda"
 	},
 	"HOME": {
 		"SELECT": "Seleccione el idioma",
@@ -242,7 +262,15 @@
 		"LC1": "Bienvenido",
 		"LC2": "Solicitar trabajo",
 		"LC3": "Empleos aplicados",
-		"LC4": "Editar Perfil"
+		"LC4": "Editar Perfil",
+		"LC5": "Haga clic aquí para enumerar los trabajos que coinciden con sus habilidades",
+		"LC6": "Descripción:",
+		"LC7": "Detalles del trabajo",
+		"LC8": "Carné de identidad:",
+		"LC9": "Descripción:",
+		"LCA": "Habilidades necesarias:",
+		"LCB": "Experiencia necesaria:",
+		"LCC": "Salario:"
 	},
 	"LOGINCOMP": {
 		"LOC1": "Regresa",
@@ -268,7 +296,7 @@
 		"N2": "Acerca de",
 		"N3": "Contacto",
 		"N4": "Iniciar sesión",
-		"N5": "ES",
+		"N5": "Language",
 		"N6": "Cerrar sesión"
 	},
 	"REGISTER": {

@@ -1,143 +1,143 @@
- <div class="container">
-   <div class="row">
-     <div class="col-md-12">
-       <div class="jumbotron">
-         <h5 class="display-4">Welcome {{currentUser.principal.username}}.</h5>
-         <button class="btn btn-primary btn-md" (click)="onViewAllJob()" role="button">Apply for a Job</button>
-       </div>
-     </div>
-   </div>
-   <b>List of Jobs</b>
-   <hr>
-   <div class="row">
-       
-     <!-- Card for Filter the Job List -->
-     <div class="card newjobcard col-sm-3 animated fadeIn" style="background-color: rgb(148, 148, 148);" id="addnewJob"
-       (click)="showJobByPreference(currentUser.principal.username)">
-       <h4 class="title">Apply Filtering</h4>
-       <div class="bar">
-         <div class="emptybar"></div>
-       </div>
-       <div class="details">
-         <p>Click here To list the jobs that match your skills</p>
-         <hr>
-       </div>
-       <div class="circlenew">
-         <div class="row">
-           <div class="col-md-3">
-           </div>
-           <div class="col-md-6">
-             <img src="../../../../assets/images/addJob.png" style="width: 40px;" alt="">
-           </div>
-           <div class="col-md-2">
-           </div>
-         </div>
-       </div>
-     </div>
-
-     <!-- Card for listing all jobs -->
-     <div class="card animated fadeIn" *ngFor="let job of jobList">
-       <div data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
-         <h4 class="title" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">{{job.jTitle}}</h4>
-         <div class="bar" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
-           <div class="emptybar"></div>
-         </div>
-         <div class="details" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
-           <p><b>Description: </b>{{job.jDescription}}</p>
-           <hr>
-         </div>
-       </div>
-       <div class="circlenew">
-         <div class="row">
-           <div class="col-md-3">
-           </div>
-           <div class="col-md-6" (click)="onApplyHandler(job.jId)">
-             <img src="../../../../assets/images/addJob.png" style="width: 40px;" alt="">
-           </div>
-           <div class="col-md-2">
-           </div>
-         </div>
-       </div>
-     </div>
-
-   </div>
-
-   <!-- View Modal -->
-   <div class="modal fade" id="viewJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-     <div class="modal-dialog" role="document">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Job Details</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-           </button>
-         </div>
-         <div class="modal-body" *ngIf="cJob">
-           <h5><b>Id:</b> {{cJob.jTitle}}</h5>
-           <hr>
-           <p><b>Description:</b> {{cJob.jDescription}}</p>
-           <hr>
-           <p><b>Skills Needed:</b>{{cJob.skillList}}</p>
-           <hr>
-           <p><b>Experience Needed:</b>{{cJob.jRequiredExperience}} years</p>
-           <hr>
-           <p><b>Salary:</b> {{cJob.jSalary}}</p>
-         </div>
-       </div>
-     </div>
-   </div>
-
-
-
-
-
-
-
-   <!-- OLD OLD OLD OLD OLD OLD OLD -->
-   <!-- OLD OLD OLD OLD OLD OLD OLD -->
-   <!-- OLD OLD OLD OLD OLD OLD OLD -->
-   <!-- OLD OLD OLD OLD OLD OLD OLD -->
-   <!-- <div class="row">
-    
-            <div class="card col-sm-3 aqua-gradient animated fadeIn slower" id="applyForJob" (click)="onViewAllJob()">
-                        <div class="upperContainerNewJob aqua-gradient">
-                            <h1>+</h1>
-                            <h2>Apply For Job</h2>
-                        </div>
-            </div>
-
-            <div class="card col-sm-3 blue-gradient animated fadeIn"  *ngFor = "let job of jobList">
-                <div class="card-body blue-gradient bwaves-light">
-                    <div class="upperContainer" data-toggle="modal" data-target="#viewJobModal">
-                    <h5 class="card-title">{{job.jTitle}}</h5>
-                    <p>Last Date:{{job.jApplicationCloseDate}}</p>
-                    </div>
-                    <hr>
-                    <div>
-                            <button type="button" class="btn btn-primary btn-md col-md-6" data-toggle="modal" data-target="#applyJobModal" (click)="onApplyHandler(currentUser.principal.cId,job.jId)"><img src="../../../../assets/images/editJob.png" style="width: 20px;height: 20px;" alt="editButton"><br>Apply</button> 
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary btn-md col-md-6"  (click)="showJobByPreference(currentUser.principal.cId)"><img src="../../../../assets/images/editJob.png" style="width: 20px;height: 20px;" alt="editButton"><br>Show Jobs By preference</button>
-        <hr>
-        
-        <div class="modal fade" id="applyJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Apply to Job</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                    <div class="modal-body">
-                        <h4>Applied Successfully</h4>
-                            
-                    </div>
-                    </div>
-            </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h5 class="display-4">{{ 'LANDINGCOMP.LC1' | translate }}{{currentUser.principal.username}}.</h5>
+        <button class="btn btn-primary btn-md" (click)="onViewAllJob()" role="button">{{ 'LANDINGCOMP.LC2' | translate }}</button>
+      </div>
     </div>
-    </div> -->
+  </div>
+  <b>{{ 'LANDINGCOMP.LC3' | translate }}</b>
+  <hr>
+  <div class="row">
+      
+    <!-- Card for Filter the Job List -->
+    <div class="card newjobcard col-sm-3 animated fadeIn" style="background-color: rgb(148, 148, 148);" id="addnewJob"
+      (click)="showJobByPreference(currentUser.principal.username)">
+      <h4 class="title">{{ 'LANDINGCOMP.LC4' | translate }}</h4>
+      <div class="bar">
+        <div class="emptybar"></div>
+      </div>
+      <div class="details">
+        <p>{{ 'LANDINGCOMP.LC5' | translate }}</p>
+        <hr>
+      </div>
+      <div class="circlenew">
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <img src="../../../../assets/images/addJob.png" style="width: 40px;" alt="">
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for listing all jobs -->
+    <div class="card animated fadeIn" *ngFor="let job of jobList">
+      <div data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
+        <h4 class="title" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">{{job.jTitle}}</h4>
+        <div class="bar" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
+          <div class="emptybar"></div>
+        </div>
+        <div class="details" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
+          <p><b>{{ 'LANDINGCOMP.LC6' | translate }} </b>{{job.jDescription}}</p>
+          <hr>
+        </div>
+      </div>
+      <div class="circlenew">
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6" (click)="onApplyHandler(job.jId)">
+            <img src="../../../../assets/images/addJob.png" style="width: 40px;" alt="">
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- View Modal -->
+  <div class="modal fade" id="viewJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ 'LANDINGCOMP.LC7' | translate }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" *ngIf="cJob">
+          <h5><b>{{ 'LANDINGCOMP.LC8' | translate }}</b> {{cJob.jTitle}}</h5>
+          <hr>
+          <p><b>{{ 'LANDINGCOMP.LC9' | translate }}</b> {{cJob.jDescription}}</p>
+          <hr>
+          <p><b>{{ 'LANDINGCOMP.LCA' | translate }}</b>{{cJob.skillList}}</p>
+          <hr>
+          <p><b>{{ 'LANDINGCOMP.LCB' | translate }}</b>{{cJob.jRequiredExperience}} years</p>
+          <hr>
+          <p><b>{{ 'LANDINGCOMP.LCC' | translate }}</b> {{cJob.jSalary}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- OLD OLD OLD OLD OLD OLD OLD -->
+  <!-- OLD OLD OLD OLD OLD OLD OLD -->
+  <!-- OLD OLD OLD OLD OLD OLD OLD -->
+  <!-- OLD OLD OLD OLD OLD OLD OLD -->
+  <!-- <div class="row">
+   
+           <div class="card col-sm-3 aqua-gradient animated fadeIn slower" id="applyForJob" (click)="onViewAllJob()">
+                       <div class="upperContainerNewJob aqua-gradient">
+                           <h1>+</h1>
+                           <h2>Apply For Job</h2>
+                       </div>
+           </div>
+
+           <div class="card col-sm-3 blue-gradient animated fadeIn"  *ngFor = "let job of jobList">
+               <div class="card-body blue-gradient bwaves-light">
+                   <div class="upperContainer" data-toggle="modal" data-target="#viewJobModal">
+                   <h5 class="card-title">{{job.jTitle}}</h5>
+                   <p>Last Date:{{job.jApplicationCloseDate}}</p>
+                   </div>
+                   <hr>
+                   <div>
+                           <button type="button" class="btn btn-primary btn-md col-md-6" data-toggle="modal" data-target="#applyJobModal" (click)="onApplyHandler(currentUser.principal.cId,job.jId)"><img src="../../../../assets/images/editJob.png" style="width: 20px;height: 20px;" alt="editButton"><br>Apply</button> 
+                       
+                   </div>
+               </div>
+           </div>
+       </div>
+       <button type="button" class="btn btn-primary btn-md col-md-6"  (click)="showJobByPreference(currentUser.principal.cId)"><img src="../../../../assets/images/editJob.png" style="width: 20px;height: 20px;" alt="editButton"><br>Show Jobs By preference</button>
+       <hr>
+       
+       <div class="modal fade" id="applyJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                       <h5 class="modal-title" id="exampleModalLabel">Apply to Job</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                       </div>
+                   <div class="modal-body">
+                       <h4>Applied Successfully</h4>
+                           
+                   </div>
+                   </div>
+           </div>
+   </div>
+   </div> -->
