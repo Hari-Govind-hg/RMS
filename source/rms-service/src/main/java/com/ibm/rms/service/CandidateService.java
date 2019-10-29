@@ -1,9 +1,12 @@
 package com.ibm.rms.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,9 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import com.ibm.rms.exception.RmsApplicationException;
 import com.ibm.rms.model.Candidate;
+import com.ibm.rms.model.EmailMessage;
 import com.ibm.rms.model.Job;
 import com.ibm.rms.repository.CandidateRepository;
 import com.ibm.rms.repository.JobRepository;
@@ -26,43 +31,34 @@ public class CandidateService {
 	
 	@Autowired
 	JobRepository jobRepo;
+
+	@Autowired
+	EmailService emailService;
 	
 	Candidate candidate;
-	
 	Job job;
 	SequenceGeneratorService sequenceGeneratorService;
 	
 	
 	ArrayList<String> candidateSkills = new ArrayList<String>();
 	ArrayList<Job> jobList = new ArrayList<Job>();
-	ArrayList<Job> preferedJobList = new ArrayList<Job>();
+	ArrayList<Job> preferedJobList;
 	ArrayList<Job> appliedJobList = new ArrayList<Job>();
 	
 	 MongoClient mongoClient = new MongoClient();
 	 DB db = mongoClient.getDB("test");
 	
-	public boolean candidateCreate(@Valid Candidate candidate) {
+	public boolean candidateCreate(@Valid Candidate candidate) throws RmsApplicationException {
 		try {
 			candidate.setcId(SequenceGeneratorService.generateSequence(db,Candidate.SEQUENCE_NAME));
 			candidateRepo.save(candidate);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new RmsApplicationException("Can not create candidate now; try after sometime",e);
 		}
-		return false;
-	}
-	
-	
-	
-	public Candidate findByCandidate(String candidateName)
-	{
-		return candidateRepo.findBycName(candidateName);
 	}
 
-	
-	
-	
-	
 	public List<Job> getAllAppliedJobs(String id) {
 		candidate = candidateRepo.findById(id).get();
 		jobList = (ArrayList<Job>) jobRepo.findAll();
@@ -81,8 +77,8 @@ public class CandidateService {
 	}
 	
 	public List<Job> getJobsByPreference(String id) {
+		preferedJobList=new ArrayList<Job>();
 		jobList = (ArrayList<Job>) jobRepo.findAll();
-		ArrayList<Job> preferedJobList = new ArrayList<Job>();
 		candidateSkills = candidateRepo.findById(id).get().getSkillList();
 		jobList.forEach(j -> {
 			candidateSkills.forEach(s -> {
@@ -96,21 +92,26 @@ public class CandidateService {
 		return preferedJobList;
 	}
 
-	public boolean applyForJob(String id, String jid) {
+	public boolean applyForJob(String id, String jid) throws RmsApplicationException {
 		candidate = candidateRepo.findById(id).get();
 		
 //		candidateRepo.findAll(Query.query(Criteria.where("jAppliedCandidateList.cid").is(id)))
-		System.out.println(candidate);
+//		System.out.println(candidate);
 		job = jobRepo.findById(jid).get();
-		System.out.println(job);
+//		System.out.println(job);
 		if(!job.getjAppliedCandidateList().contains(candidate)) {
 			job.getjAppliedCandidateList().add(candidate);
 			jobRepo.save(job);
-			System.out.println(job.getjAppliedCandidateList());
-			
+//			System.out.println(job.getjAppliedCandidateList());
+			EmailMessage emailMessage = new EmailMessage();
+			emailMessage.setTo_address(candidate.getcEmail());
+			emailMessage.setSubject("Your job application update");
+			emailMessage.setBody("Dear " +candidate.getcName()+","+ "\r\n" + 
+					"Congratulations, you have successfully applied for " +job.getjTitle()+"from "+job.getjOrganisation().getoName()+".");
+			emailService.sendmail(emailMessage);
 			return true;
 		}
-		System.out.println(job.getjAppliedCandidateList().contains(candidate));
+//		System.out.println(job.getjAppliedCandidateList().contains(candidate));
 		return false;
 	}
 

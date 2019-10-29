@@ -23,6 +23,7 @@ public class Job extends Organisation{
 	private String jRequiredExperience;
 	private Date jPublishDate = new Date();
 	private Date jApplicationCloseDate;
+	private Date jInterviewDate;
 	private ArrayList<Candidate> jAppliedCandidateList = new ArrayList();
 	private Organisation jOrganisation;
 	
@@ -134,7 +135,15 @@ public class Job extends Organisation{
 	public Date getjPublishDate() {
 		return jPublishDate;
 	}
+	
+	public Date getjInterviewDate() {
+		return jInterviewDate;
+	}
 
+
+	public void setjInterviewDate(Date jInterviewDate) {
+		this.jInterviewDate = jInterviewDate;
+	}
 
 	@Override
 	public String toString() {
