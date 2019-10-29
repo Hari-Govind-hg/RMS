@@ -26,8 +26,9 @@ public class CandidateService {
 	
 	@Autowired
 	JobRepository jobRepo;
-
+	
 	Candidate candidate;
+	
 	Job job;
 	SequenceGeneratorService sequenceGeneratorService;
 	
@@ -50,7 +51,18 @@ public class CandidateService {
 		}
 		return false;
 	}
+	
+	
+	
+	public Candidate findByCandidate(String candidateName)
+	{
+		return candidateRepo.findBycName(candidateName);
+	}
 
+	
+	
+	
+	
 	public List<Job> getAllAppliedJobs(String id) {
 		candidate = candidateRepo.findById(id).get();
 		jobList = (ArrayList<Job>) jobRepo.findAll();
@@ -70,6 +82,7 @@ public class CandidateService {
 	
 	public List<Job> getJobsByPreference(String id) {
 		jobList = (ArrayList<Job>) jobRepo.findAll();
+		ArrayList<Job> preferedJobList = new ArrayList<Job>();
 		candidateSkills = candidateRepo.findById(id).get().getSkillList();
 		jobList.forEach(j -> {
 			candidateSkills.forEach(s -> {

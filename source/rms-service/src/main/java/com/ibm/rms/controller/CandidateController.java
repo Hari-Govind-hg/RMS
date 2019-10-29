@@ -22,9 +22,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.ibm.rms.model.Candidate;
 import com.ibm.rms.model.Job;
 import com.ibm.rms.model.ResponseMessage;
+import com.ibm.rms.repository.CandidateRepository;
 import com.ibm.rms.service.CandidateService;
 import com.ibm.rms.service.JobService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/candidates")
 public class CandidateController {
@@ -32,6 +34,10 @@ public class CandidateController {
 	
 	@Autowired
 	CandidateService candidateService;
+	
+//	@Autowired 
+//	CandidateRepository crepo;
+	
 //	@Autowired
 //	JobService jobService;
 	
@@ -81,6 +87,13 @@ public class CandidateController {
 		return candidateService.getAllJobsForApply();
 	}
 	
+	@PostMapping(value="/detail", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@CrossOrigin("*")
+	public Candidate returnCandidateDetails(@RequestBody @Valid String candidateName){
+		System.out.println("Inside details component backend");
+		return candidateService.findByCandidate(candidateName);
+	}
+	
 	@GetMapping(value="/{id}/applynewjobbypreference", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
 	public List<Job> showJobsAvailableByPreference(@PathVariable String id){
@@ -105,6 +118,14 @@ public class CandidateController {
 		return ResponseEntity.created(location).body(resMsg);
 	}
 	
+//	@PostMapping(value="/candidatedetails", consumes = { MediaType.APPLICATION_JSON_VALUE })
+//	public  Candidate findCandidate(@RequestBody @Valid Candidate candidate)
+//	{
+//		System.out.println("Inside postmapping candidatedetails");
+//		return candidateService.findByCandidate(candidate);
+//		
+//		
+//	}
 	@PutMapping(value = "/{id}/profile", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> profileEdit(@PathVariable String id, @RequestBody Candidate c){

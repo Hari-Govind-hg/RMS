@@ -1,26 +1,19 @@
 <!-- <app-header></app-header> -->
 <div class="container">
-    <div class="row">
-        <section class="col-sm-12 main-section ">
-            <div class="card" id="binding-card">
-                <h1 class="display-4">Welcome To the RMS</h1>
-                    <div class="row">
-                        <mat-card class="card cardlayout" routerLink = "/candidatelogin">
-                            <mat-card-content routerLink = "/candidatelogin">
-                                 <mat-card-title class="title">CANDIDATE</mat-card-title>
-                                 <mat-card-subtitle class="title"> Login/Register </mat-card-subtitle>
-                                 <img src="/assets/images/candidate-avatar.png" alt="Candidate Image">
-                            </mat-card-content>
-                       </mat-card>
-                        <mat-card class="card cardlayout" routerLink = "/hrlogin">
-                        <mat-card-content routerLink = "/hrlogin">
-                             <mat-card-title class="title">HR </mat-card-title>
-                             <mat-card-subtitle class="title"> Login</mat-card-subtitle>
-                             <img src="/assets/images/hr-avatar.png" alt="HR Image">
-                        </mat-card-content>
-                        </mat-card>
-                    </div>
-            </div>
-        </section>
-    </div>
+  <div class="row">
+    <mat-card class="card cardlayout" routerLink="/hrlogin">
+      <mat-card-content routerLink="/hrlogin">
+        <mat-card-title class="title">HR </mat-card-title>
+        <mat-card-subtitle class="title"> Login</mat-card-subtitle>
+        <img src="/assets/images/hr-avatar.png" alt="HR Image">
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="card cardlayout" routerLink="/candidatelogin">
+      <mat-card-content routerLink="/candidatelogin">
+        <mat-card-title class="title">CANDIDATE</mat-card-title>
+        <mat-card-subtitle class="title"> Login/Register </mat-card-subtitle>
+        <img src="/assets/images/candidate-avatar.png" alt="Candidate Image">
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

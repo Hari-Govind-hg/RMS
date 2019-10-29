@@ -1,35 +1,13 @@
-div.card {
-    width: 250px;
-    text-align: center;
-    transition: box-shadow .3s;
-    margin: 0.5%;
-    /* border: solid 2px ; */
-  }
-.card:hover{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-div.upperContainer{
-   height: 150px;
-   color: white;
-}
-
 div.jumbotron{
-    width:75%;
+    /* width:75%; */
     align-self: center;
-    margin-left: 3%;
+    /* margin-left: 3%; */
     text-align: center;
+    margin-top: 30px;
 }
-
-div.upperContainerNewJob{
-    background-color: rgb(96, 79, 255);
-    color: white;
-    padding: 10px;
-    /* font-size: calc(3*16px); */
-    text-align: center;
-    height: 250px;
+button{
+    border-radius: 30px;
 }
-
 #addnewJob{
     /* background-color: rgb(96, 79, 255); */
     color: white;
@@ -41,7 +19,104 @@ div.upperContainerNewJob{
     height: 150px;
 }
 div.container{
-    position: relative;
+    /* position: relative; */
     min-height: 100%;
     margin-bottom:100px;
+    font-family: 'Comfortaa', cursive;
 }
+mdbPopover{
+    width: 400px;
+}
+
+
+.card {
+    display: flex;
+    height: 280px;
+    width: 300px;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    /* box-shadow: -1rem 0 1rem #000; */
+  /*   margin-left: -50px; */
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+  }
+  
+  .card:not(:first-child) {
+      margin-left: -50px;
+  }
+  
+  .card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+  }
+  
+  .card:hover ~ .card {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+  }
+
+  .details {
+    position: absolute;
+    top: 120px;
+    left: calc(30% - 70px);
+    color: black;
+    font-size: 20px;
+  }
+
+  .circle {
+    position: absolute;
+    top: 220px;
+    left: calc(40% - 60px);
+  }
+
+  .circlenew {
+    position: absolute;
+    top: 200px;
+    left: calc(50% - 60px);
+  }
+  
+  .title {
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+  
+  .bar {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    height: 5px;
+    width: 150px;
+  }
+  .emptybar {
+    background-color: #c3c3c3;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .filledbar {
+    position: absolute;
+    top: 0px;
+    z-index: 3;
+    width: 0px;
+    height: 100%;
+    background: rgb(0,154,217);
+    background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+    transition: 0.6s ease-out;
+  }
+  
+  .card:hover .filledbar {
+    width: 120px;
+    transition: 0.4s ease-out;
+  }
+  .stroke {
+    stroke: white;
+    stroke-dasharray: 360;
+    stroke-dashoffset: 360;
+    transition: 0.6s ease-out;
+  }
+  

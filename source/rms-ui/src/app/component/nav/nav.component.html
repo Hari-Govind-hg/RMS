@@ -1,9 +1,8 @@
 <style>
 
-
   .dropbtn {
-    background-color: #4CAF50;
-    color: white;
+    /* background-color: rgb(255, 255, 255); */
+    color:black;
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -44,7 +43,7 @@
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: #bbbbbb;
   }
   .avatar-hr{
     width: 40px;
@@ -53,18 +52,25 @@
   .navbar-brand{
       font-family: 'Alfa Slab One', cursive;
     }
-  /* .avatar{
-      float: right;
-      margin-left: 675px;
-  } */
-  /* #loginbutton{
-    margin-left: 660px;
-  } */
+  .navbar{
+    font-family: 'Comfortaa', cursive;
+  }
+  .navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #cccccc;
+  border-radius: 1px;
+}
   </style>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="persistentNav">
+  <nav class="navbar navbar-expand-lg" id="persistentNav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand navbar-toggle" data-toggle="collapse" data-target="#myNavbar">R M S</a>
+        </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
       <div class="col-md-10">
             <ul class="navbar-nav">
-                <a class="navbar-brand" routerLink="/">R M S</a>
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" routerLink="/jobs">{{ 'NAV.N1' | translate }}<span class="sr-only">(current)</span></a>
               </li>
@@ -74,24 +80,18 @@
               <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" routerLink="/contact">{{ 'NAV.N3' | translate }}</a>
               </li>
-              
-              <!-- <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                <a class="nav-link" routerLink="/signin">Sign In</a>
-              </li> -->
             </ul>
       </div>
       <div class="col-md-2">
             <ul class="navbar-nav">
-                <div class="dropdown">
-                    <button class="dropbtn"> 
-                      <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                      <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-  
-                    </div>
-                  </div>
+              <li class="nav-item">
+                <div class="btn-group" mdbDropdown>
+                    <button mdbDropdownToggle mdbWavesEffect type="button" class="btn dropdown-toggle waves-light" mdbWavesEffect style="height: auto;">Languages</button>
+                        <div class="dropdown-menu dropdown-primary col-md-1">
+                            <option class="dropdown-item col-md-1" #langselect (click)="translate.use(langselect.value)" *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+                        </div>
+                </div>
+              </li>
               <li *ngIf="nav.visible" class="nav-item avatar dropdown col-md-1">
               <div class="btn-group" mdbDropdown>
                   <a mdbDropdownToggle mdbWavesEffect type="button" class="dropdown-toggle waves-light" mdbWavesEffect style="height: auto; width: 40px">
@@ -105,6 +105,9 @@
               <li *ngIf="!nav.visible" class="nav-item" id="loginbutton" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                   <a class="nav-link" routerLink="/login">{{ 'NAV.N4' | translate }}</a>
                 </li>
+              <!-- </div> -->
             </ul>
+      </div>
+      </div>
       </div>
     </nav>

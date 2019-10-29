@@ -29,7 +29,6 @@ import { NavService } from './component/nav/nav.service';
 import { LandingComponent } from './component/candidate/landing/landing.component';
 import { ProfileComponent } from './component/candidate/profile/profile.component';
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
-import { JobdetailsComponent } from './component/candidate/jobdetails/jobdetails.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
@@ -61,7 +60,6 @@ export function HttpLoaderFactory(http:HttpClient){
     AddjobComponent,
     AboutComponent,
     ViewjobsComponent,
-    JobdetailsComponent,
     SidenavComponent,
     HomeImageComponent,
     CardViewComponent,

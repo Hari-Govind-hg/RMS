@@ -1,13 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { User } from './models';
+import { Candidate } from '../CandidateService/models/candidate';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from './loginservice';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidateService {
+  currentUser:User;
+  candidateSubscription:Subscription;
+  currentUserSubscription: Subscription;
+  dataList:any;
+  REST_API_URL_DETAILS: string = "http://localhost:80/candidates/detail";
   REST_API_URL: string = "http://localhost:80/candidates";
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient,private authenticationService: AuthenticationService,) { 
+  //   this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+  //     this.currentUser = user;
+  // });  
 
   }
 
@@ -64,10 +76,32 @@ export class CandidateService {
       }));
   }
 
+  getCandidate(username){
+    console.log("inside getcandidate");
+    console.log(username);
+    let name=username;
+    let promise = new Promise((resolve, reject) => {
+    let temp = this.http.post(this.REST_API_URL_DETAILS,name)
+    .toPromise()
+    .then((res) => {            //3. Get the resp from rest api
+      console.log(res);
+      resolve(res);
+    })
+    .catch((err) => {           // Get the err from rest api
+      console.log(err);
+      reject(err);
+    })
+    .finally(() => {
+      console.log("Ends");
+    });
+  });
+    return promise;
+    }
+
   applyForJobCandidate(id,jid){
     console.log("id is " + id);
-    console.log("id is " + jid);
-    return this.http.get(this.REST_API_URL + "/" + id + "/applyjob?jid" + jid)
+    console.log("jid is " + jid);
+    return this.http.get(this.REST_API_URL + "/" + id + "/applyjob?jid="+jid)
       .pipe(map(res => {
         console.log(res);
         return res;

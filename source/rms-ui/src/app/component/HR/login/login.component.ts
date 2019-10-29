@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
 
     onLogin() {
         this.submitted = true;
+        console.log("Inside onLogin UI");
 
         // stop here if form is invalid
         if (this.loginForm.invalid) {

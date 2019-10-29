@@ -1,37 +1,34 @@
 <div class="container">
-    <div class="row">
-        <button class="btn btn-dark" id="goBack" routerLink="/" style="float: right;"><<Go Back</button>
-    </div>
-<div class="row">
-    <div class="col-md-1"></div>
-<div class="card col-md-10">
-    <div class="formContainer">
-    <h2>Sign In</h2>
-    <form class="col-md-12" style="margin-top: 10px;" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-            <div class="form-group row">
-                <label for="staticId" class="col-sm-2 col-form-label">Username: </label>
-                    <input type="text" class="form-control col-sm-6" placeholder="Enter Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div class="invalid-feedback">
-                        <div>Job ID is required</div>
-                    </div>
-            </div>
+  <div class="wrapper">
+    <div id="formContent" style="padding-bottom: 50px;">
+      <!-- Tabs Titles -->
+      <h2 class="active" routerLink="/hrlogin"> Sign In </h2>
+      <h2 class="inactive underlineHover" routerLink="/register">Sign Up </h2>
 
-            <div class="form-group row">
-                <label for="staticId" class="col-sm-2 col-form-label">Password</label>
-                    <input type="password" class="col-sm-6 form-control" placeholder="Enter Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
-                    <div class="invalid-feedback">
-                        <div>Password is required</div>
-                    </div>
-            </div>
-        <div class="form-group row" style="float: right; margin-right: 210px;">
-            <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Sign In
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../../../assets/images/avatar-icon.png" style="width: 40px;" id="icon" alt="User Icon" />
+        <h6>HR Login</h6>
+      </div>
+
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" formControlName="username"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
+          formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8"> 
+            <button [disabled]="loading" class="fadeIn fourth btn btn-primary btn-md">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Sign In
             </button>
-            <a routerLink="/register" class="btn btn-link">Sign Up</a>
+            <button class="fadeIn fourth btn btn-dark btn-sm" id="goBack" routerLink="/login" style="float: right;"><img
+                src="../../../../assets/images/goBack.png" style="width: 23px;" alt=""> Go Back</button>
+          </div>
         </div>
-    </form>
+      </form>
     </div>
-</div>
-</div>
+  </div>
 </div>

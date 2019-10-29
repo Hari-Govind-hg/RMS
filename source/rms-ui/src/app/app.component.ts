@@ -15,14 +15,9 @@ export class AppComponent {
   currentUser: User;
 
   constructor(
-    public translate: TranslateService,
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    translate.addLangs(['en', 'fr', 'de', 'es']);
-    translate.setDefaultLang('en');
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|de/) ? browserLang : 'en');
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 

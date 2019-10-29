@@ -1,16 +1,7 @@
 <div class="body">
-    <app-header></app-header>
-    <div style="margin-top: 15px;">
-        <h2>{{ 'HOME.TITLE' | translate }}</h2>
-        <p>{{ 'HOME.TEXT' | translate }}</p>
-        <label for="">
-                {{ 'HOME.SELECT' | translate }}
-            <select #langselect (change)="translate.use(langselect.value)" name="" id="">
-                <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
-    
-            </select>
-        </label>
-        <router-outlet></router-outlet>
-    </div>
-    <app-footer></app-footer>
-    </div>
+  <app-header></app-header>
+  <div style="margin-top: 15px;">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>

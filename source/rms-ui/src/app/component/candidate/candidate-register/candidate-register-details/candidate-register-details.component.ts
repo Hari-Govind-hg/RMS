@@ -15,7 +15,6 @@ export class CandidateRegisterDetailsComponent implements OnInit {
   currentUser:User
   candidateDetailsForm:FormGroup;
   isSaved:boolean;
-  // cAddress.country:any;
   skills: string[] = ['Java', 'HTML/CSS', 'JavaScript', 'Spring', 'Angular', 'SQL','Networking','ML','C++','C'];
   
   
@@ -26,7 +25,6 @@ export class CandidateRegisterDetailsComponent implements OnInit {
       cName:new FormControl('',[Validators.required]),
       skillList:new FormControl('',[Validators.required]),
       cPhone:new FormControl('',Validators.required),
-      // cAddress.country:new FormControl('',Validators.required),
       cExperience:new FormControl('',Validators.required),
       cEmail:new FormControl('',Validators.required)
     });
