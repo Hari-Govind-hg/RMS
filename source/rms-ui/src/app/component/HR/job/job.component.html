@@ -4,8 +4,9 @@
       <div class="jumbotron">
         <h5 class="display-4">{{ 'HR_JOB.JOB01' | translate }} {{currentUser.principal.username}}.</h5>
         <button class="btn btn-primary btn-md" routerLink="/jobs/addjob" role="button">{{ 'HR_JOB.JOB02' | translate }}</button>
+        <button class="btn btn-primary btn-md" (click)="onAdvancedButtonClick()" role="button">Advanced Search</button>
         <!-- Search for jobs -->
-        <form class="example-form col-md-12" #f="ngForm" style="margin-top: 20px;" [formGroup]="myControl">
+        <form class="example-form col-md-12" #f="ngForm" style="margin-top: 20px;" [formGroup]="myControl" [hidden]="!search">
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-6">
@@ -15,6 +16,23 @@
             </div>
             <div class="col-md-2">
               <button type="submit" (click)="onSearchHandler(f)" class="btn btn-default">
+                <span>
+                    {{ 'HR_JOB.JOB04' | translate }}
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+        <form class="example-form col-md-12" #g="ngForm" style="margin-top: 20px;" [formGroup]="myExperienceControl" [hidden]="!search">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <input type="text" style="margin-top: 10px;" class="form-control"
+                placeholder="Search Based on Experience" formControlName="experience"
+                [ngClass]="{ 'is-invalid': myExperienceControl.get('experience').touched && myExperienceControl.get('experience').invalid}">
+            </div>
+            <div class="col-md-2">
+              <button type="submit" (click)="onExperienceSearchHandler(g)" class="btn btn-default">
                 <span>
                     {{ 'HR_JOB.JOB04' | translate }}
                 </span>

@@ -57,7 +57,15 @@ export class JobServiceService {
 
   getJobBySkill(skill){
     console.log("id is " + skill);
-    return this.http.get(this.REST_API_URL + "/filter?skill="+ skill)
+    return this.http.get(this.REST_API_URL + "/filterbyskill?skill="+ skill)
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
+  }
+  searchJobsByExperience(experience){
+    console.log("id is " + experience );
+    return this.http.get(this.REST_API_URL + "/filterbyexperience?experience="+ experience)
       .pipe(map(res => {
         console.log(res);
         return res;

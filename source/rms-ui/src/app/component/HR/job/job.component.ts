@@ -21,6 +21,7 @@ export class JobComponent implements OnInit {
   jobSubscription:Subscription;
   currentUser: User;
   jobId:String;
+  myExperienceControl:FormGroup;
   currentUserSubscription: Subscription;
   isLoggedIn$: Observable<boolean>;
   duplicateJobData:any;
@@ -30,14 +31,22 @@ export class JobComponent implements OnInit {
   isSaved:boolean;
   jobData:any;
   skill:String;
+  experience:any;
   isEmpty:boolean;
   date:any;
+  search:any;
+  count:any;
 
   constructor(private jobService: JobServiceService,private authenticationService: AuthenticationService,
     private userService: UserService,public nav: NavService,private router:Router,private route:ActivatedRoute) 
     { const _jobId = this.route.snapshot.params.id;
+      this.search=false;
+      this.count=0;
       this.myControl=new FormGroup({
         skill:new FormControl('')
+      });
+      this.myExperienceControl=new FormGroup({
+        experience:new FormControl('')
       });
       this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
@@ -61,6 +70,22 @@ export class JobComponent implements OnInit {
   });
   const _jobId = this.route.snapshot.params.id;
   console.log(_jobId);
+  }
+
+  onAdvancedButtonClick(){
+    this.count=this.count+1;
+    
+    if(this.count%2!=0){
+      this.search=true;
+    }
+    else{
+      this.search=false;
+      this.jobSubscription= this.jobService.getJobs()
+    .subscribe((res:any[])=>{
+      console.log(res);
+      this.jobList = res;
+  });
+    }
   }
 
   onEditHandler(id){
@@ -135,8 +160,26 @@ export class JobComponent implements OnInit {
         this.jobList = res;
     });
   }
-  
     }
+   
+    onExperienceSearchHandler(searchForm){
+      console.log(searchForm.value.experience);
+      this.experience = searchForm.value.experience;
+      if(this.experience==""){
+        this.jobSubscription= this.jobService.getJobs()
+    .subscribe((res:any[])=>{
+      console.log(res);
+      this.jobList = res;
+  });
+      }
+      else{
+      this.jobSubscription= this.jobService.searchJobsByExperience(this.experience)
+      .subscribe((res:any[])=>{
+        console.log(res);
+        this.jobList = res;
+    });
+  }
+}
 
   async onUpdateHandler(formData){
     console.log(formData);
