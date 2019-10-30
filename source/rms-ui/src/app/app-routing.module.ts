@@ -16,16 +16,18 @@ import { ContactComponent } from './component/contact/contact.component';
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
 import { CandidateRegisterDetailsComponent } from './component/candidate/candidate-register/candidate-register-details/candidate-register-details.component';
+import { CandidateService } from './component/candidate/CandidateService/candidate.service';
+import { JobServiceService } from './component/HR/HRservice/job-service.service';
 
 const routes: Routes = [
   {path:'', component:HomeImageComponent},
   {path: 'login',component: LoginLandingComponent },
   {path:'hrlogin',component:LoginComponent},
-  {path : 'jobs', component : JobComponent,canActivate: [AuthGuard]},
+  {path : 'jobs', component : JobComponent,canActivate:  [JobServiceService]},
   {path : 'jobs/addjob', component : AddjobComponent},
   {path : 'jobs/:id', component : JobdetailComponent},
   { path: 'register', component: RegisterComponent },
-  {path : 'landing', component : LandingComponent},
+  {path : 'landing', component : LandingComponent,canActivate: [CandidateService]},
   {path:'profile',component:ProfileComponent},
   {path:'listjobs',component:ViewjobsComponent},
   {path: 'about', component:AboutComponent},
