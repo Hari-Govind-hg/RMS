@@ -10,14 +10,19 @@ import javax.mail.internet.AddressException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.ibm.rms.exception.RmsApplicationException;
 import com.ibm.rms.model.Candidate;
 import com.ibm.rms.model.EmailMessage;
 import com.ibm.rms.model.Job;
+import com.ibm.rms.model.SmsRequest;
 import com.ibm.rms.repository.CandidateRepository;
 import com.ibm.rms.repository.JobRepository;
 import com.mongodb.DB;
@@ -59,37 +64,50 @@ public class CandidateService {
 		}
 	}
 
-	public List<Job> getAllAppliedJobs(String id) {
-		candidate = candidateRepo.findById(id).get();
-		jobList = (ArrayList<Job>) jobRepo.findAll();
-		jobList.forEach( j -> {
-			ArrayList<Candidate> candidateList = j.getjAppliedCandidateList();
-			if(candidateList.contains(candidate)) {
-				appliedJobList.add(j);
-			}
-		});
-//		Optional<Candidate> c = candidateRepo.findById(id);
-		return appliedJobList;
-	}
-
-	public List<Job> getAllJobsForApply() {
-		return jobRepo.findAll();
-	}
-	
-	public List<Job> getJobsByPreference(String id) {
-		preferedJobList=new ArrayList<Job>();
-		jobList = (ArrayList<Job>) jobRepo.findAll();
-		candidateSkills = candidateRepo.findById(id).get().getSkillList();
-		jobList.forEach(j -> {
-			candidateSkills.forEach(s -> {
-				if(j.getSkillList().contains(s)) {
-					if(!preferedJobList.contains(j)) {
-						preferedJobList.add(j);
-					}
+	public List<Job> getAllAppliedJobs(String id) throws RmsApplicationException {
+		try {
+			candidate = candidateRepo.findById(id).get();
+			jobList = (ArrayList<Job>) jobRepo.findAll();
+			jobList.forEach( j -> {
+				ArrayList<Candidate> candidateList = j.getjAppliedCandidateList();
+				if(candidateList.contains(candidate)) {
+					appliedJobList.add(j);
 				}
 			});
-		});
-		return preferedJobList;
+//			Optional<Candidate> c = candidateRepo.findById(id);
+			return appliedJobList;
+		} catch (DataAccessException e) {
+			throw new RmsApplicationException("You have not applied for any job", e);
+		}
+		
+	}
+
+	public List<Job> getAllJobsForApply() throws RmsApplicationException {
+		try {
+			return jobRepo.findAll();
+		} catch (DataAccessException e) {
+			throw new RmsApplicationException("Can not get any jobs now", e);
+		}
+	}
+	
+	public List<Job> getJobsByPreference(String id) throws RmsApplicationException {
+		try {
+			preferedJobList=new ArrayList<Job>();
+			jobList = (ArrayList<Job>) jobRepo.findAll();
+			candidateSkills = candidateRepo.findById(id).get().getSkillList();
+			jobList.forEach(j -> {
+				candidateSkills.forEach(s -> {
+					if(j.getSkillList().contains(s)) {
+						if(!preferedJobList.contains(j)) {
+							preferedJobList.add(j);
+						}
+					}
+				});
+			});
+			return preferedJobList;
+		} catch (Exception e) {
+			throw new RmsApplicationException("This service is not available now: Try after some time", e);
+		}
 	}
 
 	public boolean applyForJob(String id, String jid) throws RmsApplicationException {
@@ -109,6 +127,12 @@ public class CandidateService {
 			emailMessage.setBody("Dear " +candidate.getcName()+","+ "\r\n" + 
 					"Congratulations, you have successfully applied for " +job.getjTitle()+"from IBM.");
 			emailService.sendmail(emailMessage);
+			String msg = "You have successfully applied for"+job.getjTitle();
+			RestTemplate restClient = new RestTemplate();
+			SmsRequest smsReq = new SmsRequest(candidate.getcPhone(), msg);
+			ResponseEntity<String> res = restClient.postForEntity("http://localhost:7070/api/v1/sms", smsReq, String.class);
+			System.out.println("Respone - " + res.getBody());
+			
 			return true;
 		}
 //		System.out.println(job.getjAppliedCandidateList().contains(candidate));

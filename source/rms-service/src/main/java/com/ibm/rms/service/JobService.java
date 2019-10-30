@@ -120,7 +120,7 @@ public class JobService {
 				emailMessage.setTo_address(c.getcEmail());
 				emailMessage.setSubject("Your job application update");
 				emailMessage.setBody("Dear " +c.getcName()+","+ "\r\n" + 
-						"The Interview for the " +job.getjTitle()+"from IBM"+" ; That you have applied for is scheduled on "+interviewDateString+" .");
+						"The Interview for the " +job.getjTitle()+"from IBM ; That you have applied for is scheduled on "+interviewDateString+" .");
 				try {
 					emailService.sendmail(emailMessage);
 				} catch (RmsApplicationException e) {

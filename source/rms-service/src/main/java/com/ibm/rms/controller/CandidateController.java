@@ -88,19 +88,19 @@ public class CandidateController {
 	
 	@GetMapping(value="/{id}/appliedjobs",produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public List<Job> getAllJobs(@PathVariable String id) {
+	public List<Job> getAllJobs(@PathVariable String id) throws RmsApplicationException {
 		return candidateService.getAllAppliedJobs(id);
 	}
 	
 	@GetMapping(value="/applynewjob", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public List<Job> showAllJobsAvailable(){
+	public List<Job> showAllJobsAvailable() throws RmsApplicationException{
 		return candidateService.getAllJobsForApply();
 	}
 	
 	@GetMapping(value="/{id}/applynewjobbypreference", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public List<Job> showJobsAvailableByPreference(@PathVariable String id){
+	public List<Job> showJobsAvailableByPreference(@PathVariable String id) throws RmsApplicationException{
 		return candidateService.getJobsByPreference(id);
 	}
 	
