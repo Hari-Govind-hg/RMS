@@ -139,7 +139,11 @@ public class JobController {
 	@PutMapping(value="/{id}/schedule", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> scheduleInterview(@PathVariable String id,@RequestBody @Valid Job job) throws RmsApplicationException{
+	
+		System.out.println("Inside schedule backend");
 		job.setjId(id);
+		System.out.println(id);
+		System.out.println(job);
 		jobService.setInterviewDate(job);
 		return null;
 	}

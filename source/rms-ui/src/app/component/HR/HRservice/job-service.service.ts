@@ -61,6 +61,14 @@ export class JobServiceService {
         return res;
       }));
   }
+  scheduleInterview(job){
+    return this.http.put(this.REST_API_URL + "/"+ job.jId +"/schedule",job)
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
+
+  }
   updateJob(jobData) {
     let _url = this.REST_API_URL + "/" + jobData.jId;
     console.log(jobData.jobId)

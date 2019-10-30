@@ -84,14 +84,21 @@ export class JobComponent implements OnInit {
         this.scheduledJob=res;
 
         let temp=JSON.parse(JSON.stringify(res))
-        temp.jExamDate=this.scheduleTest.value.date;
+        temp.jInterviewDate=this.scheduleTest.value.date;
         
         console.log(temp);
 
+
+        this.jobSubscription= this.jobService.scheduleInterview(temp)
+      .subscribe((res:any)=>{
+        console.log(res);
+        this.scheduledJob=res;
       });
+
+      });
+      
           
-      console.log(this.scheduleTest.value.date);
-      console.log("inside date picker");
+     
     }
 
     ongetAppliedCandidatesList(id){

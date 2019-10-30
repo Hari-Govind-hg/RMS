@@ -122,6 +122,13 @@ public class CandidateController {
 		return ResponseEntity.created(location).body(resMsg);
 	}
 	
+	@PostMapping(value="/detail", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@CrossOrigin("*")
+	public Candidate returnCandidateDetails(@RequestBody @Valid String candidateName){
+		System.out.println("Inside details component backend");
+		return candidateService.findByCandidate(candidateName);
+	}
+	
 	@PutMapping(value = "/{id}/profile", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> profileEdit(@PathVariable String id, @RequestBody Candidate c){

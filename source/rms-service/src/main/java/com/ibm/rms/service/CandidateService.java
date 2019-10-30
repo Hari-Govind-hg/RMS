@@ -72,6 +72,10 @@ public class CandidateService {
 		return appliedJobList;
 	}
 
+	public Candidate findByCandidate(String candidateName) {
+		return candidateRepo.findBycName(candidateName);
+	}
+	
 	public List<Job> getAllJobsForApply() {
 		return jobRepo.findAll();
 	}
@@ -107,7 +111,7 @@ public class CandidateService {
 			emailMessage.setTo_address(candidate.getcEmail());
 			emailMessage.setSubject("Your job application update");
 			emailMessage.setBody("Dear " +candidate.getcName()+","+ "\r\n" + 
-					"Congratulations, you have successfully applied for " +job.getjTitle()+"from "+job.getjOrganisation().getoName()+".");
+					"Congratulations, you have successfully applied for " +job.getjTitle()+"from IBM"+".");
 			emailService.sendmail(emailMessage);
 			return true;
 		}
