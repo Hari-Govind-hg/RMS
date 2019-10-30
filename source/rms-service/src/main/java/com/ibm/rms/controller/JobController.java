@@ -115,35 +115,31 @@ public class JobController {
 		return ResponseEntity.created(location).body(resMsg);
 	}
 	
-	@GetMapping(value = "/filter", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(value = "/filterbyskill", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public ArrayList<Job> searchJobs(@RequestParam(value="skill") String skill){
-		ArrayList<Job> jobsList = jobService.filter(skill);
+	public ArrayList<Job> searchJobsBySkill(@RequestParam(value="skill") String skill){
+		ArrayList<Job> jobsList = jobService.filterBySkill(skill);
 		return jobsList;
 	}
 	
-//	@GetMapping(value = "/filter", produces = { MediaType.APPLICATION_JSON_VALUE })
-//	@CrossOrigin("*")
-//	public ArrayList<Job> searchJobs(@RequestParam(value="skill") String skill,@RequestParam(value="experience") String experience){
-//		ArrayList<Job> jobsList = jobService.filter(skill,experience);
-//		return jobsList;
-//	}
+	@GetMapping(value = "/filterbyskillandexperience", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@CrossOrigin("*")
+	public ArrayList<Job> searchJobsBySkillAndExperience(@RequestParam(value="skill") String skill,@RequestParam(value="experience") String experience){
+		ArrayList<Job> jobsList = jobService.filterBySkillAndExperience(skill,experience);
+		return jobsList;
+	}
 	
-//	@GetMapping(value = "/filter", produces = { MediaType.APPLICATION_JSON_VALUE })
-//	@CrossOrigin("*")
-//	public ArrayList<Job> searchJobsByExperience(@RequestParam(value="experience") String experience){
-//		ArrayList<Job> jobsList = jobService.filter(experience);
-//		return jobsList;
-//	}
+	@GetMapping(value = "/filterbyexperience", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@CrossOrigin("*")
+	public ArrayList<Job> searchJobsByExperience(@RequestParam(value="experience") String experience){
+		ArrayList<Job> jobsList = jobService.filterByExperience(experience);
+		return jobsList;
+	}
 	
 	@PutMapping(value="/{id}/schedule", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> scheduleInterview(@PathVariable String id,@RequestBody @Valid Job job) throws RmsApplicationException{
-	
-		System.out.println("Inside schedule backend");
 		job.setjId(id);
-		System.out.println(id);
-		System.out.println(job);
 		jobService.setInterviewDate(job);
 		return null;
 	}

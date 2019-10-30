@@ -73,7 +73,7 @@ public class JobService {
 		}
 	}
 
-	public ArrayList<Job> filter(String skill) {
+	public ArrayList<Job> filterBySkill(String skill) {
 		ArrayList<Job> filteredJobs = new ArrayList<Job>();
 		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
 		allJobs.forEach(a -> {
@@ -84,7 +84,7 @@ public class JobService {
 		return filteredJobs;
 	}
 	
-	public ArrayList<Job> filter(String skill, String experience) {
+	public ArrayList<Job> filterBySkillAndExperience(String skill, String experience) {
 		ArrayList<Job> filteredJobs = new ArrayList<Job>();
 		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
 		allJobs.forEach(a -> {
@@ -95,8 +95,15 @@ public class JobService {
 		return filteredJobs;
 	}
 	
-	public ArrayList<Job> searchJobsByExperience(String experience) {
-		return null;
+	public ArrayList<Job> filterByExperience(String experience) {
+		ArrayList<Job> filteredJobs = new ArrayList<Job>();
+		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
+		allJobs.forEach(a -> {
+			if(a.getjRequiredExperience().equals(experience)) {
+				filteredJobs.add(a);
+			}
+		});
+		return filteredJobs;
 	}
 
 	public void setInterviewDate(Job job) throws RmsApplicationException {
@@ -106,17 +113,14 @@ public class JobService {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			String interviewDateString = format.format(interviewDate);
 			ArrayList<Candidate> appliedCandidate = new ArrayList<Candidate>();
-//			System.out.println(job.getjAppliedCandidateList());
 			appliedCandidate = job.getjAppliedCandidateList();
-//			System.out.println("Applied candidate->"+appliedCandidate);
-			
 			appliedCandidate.forEach( c -> {
 				
 				EmailMessage emailMessage = new EmailMessage();
 				emailMessage.setTo_address(c.getcEmail());
 				emailMessage.setSubject("Your job application update");
-				emailMessage.setBody("Dear " +c.getcName()+","+ "\r\n" +
-						"The Interview for the " +job.getjTitle()+"from "+ "IBM"+" ; That you have applied for is scheduled on "+interviewDateString+" .");
+				emailMessage.setBody("Dear " +c.getcName()+","+ "\r\n" + 
+						"The Interview for the " +job.getjTitle()+"from "+job.getjOrganisation().getoName()+" ; That you have applied for is scheduled on "+interviewDateString+" .");
 				try {
 					emailService.sendmail(emailMessage);
 				} catch (RmsApplicationException e) {
