@@ -53,7 +53,7 @@ public class ContactReplyController {
 //			return ResponseEntity.badRequest().body(resMsg);			
 //		}
 
-		resMsg = new ResponseMessage("Success", new String[] {"Job created successfully"});
+		resMsg = new ResponseMessage("Success", new String("Job created successfully"));
 		
 
 		// Build newly created Employee resource URI - Employee ID is always 0 here.

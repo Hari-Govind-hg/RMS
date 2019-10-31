@@ -52,7 +52,7 @@ public class ContactController {
 //			return ResponseEntity.badRequest().body(resMsg);			
 //		}
 
-		resMsg = new ResponseMessage("Success", new String[] {"Job created successfully"});
+		resMsg = new ResponseMessage("Success", new String("Job created successfully"));
 
 		// Build newly created Employee resource URI - Employee ID is always 0 here.
 		// Need to get the new Employee ID.
@@ -81,7 +81,7 @@ public class ContactController {
 		ResponseMessage resMsg;
 		updatedContact.setId(id);
 		contactService.updateJob(updatedContact);
-		resMsg = new ResponseMessage("Success", new String[] {"Employee updated successfully"});
+		resMsg = new ResponseMessage("Success", new String("Employee updated successfully"));
 
 		// Build newly created Employee resource URI - Employee ID is always 0 here.
 		// Need to get the new Employee ID.
@@ -96,7 +96,7 @@ public class ContactController {
 	public ResponseEntity<ResponseMessage> deleteEmployee(@PathVariable String id) {
 		ResponseMessage resMsg;
 		contactService.deleteContact(id);
-		resMsg = new ResponseMessage("Success", new String[] {"Employee deleted successfully"});
+		resMsg = new ResponseMessage("Success", new String("Employee deleted successfully"));
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
 
