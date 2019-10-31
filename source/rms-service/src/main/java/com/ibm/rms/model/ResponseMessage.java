@@ -10,7 +10,12 @@ public class ResponseMessage {
 	String message;	
 	Throwable cause;
 	String stacktrace;
+	String[] msg;
 	
+	public ResponseMessage(String status, String[] string) {
+		 this.status = status;
+		 this.msg = string;
+	}
 	public ResponseMessage(String status, String string) {
 		 this.status = status;
 		 this.message = string;

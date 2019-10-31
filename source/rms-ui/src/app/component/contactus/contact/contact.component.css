@@ -15,7 +15,10 @@
     position:absolute;
   }
 h2{
-    font-size: 60px;
+    font-size: 40px;
     text-align: justify;
-    color:rgb(68, 194, 183);
+    color:black;
+}
+div.container{
+  font-family: 'Comfortaa', cursive;
 }
