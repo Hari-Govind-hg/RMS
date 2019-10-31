@@ -18,6 +18,7 @@ export class CandidateLoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   candidate:any;
+  isFailed:boolean = false;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -86,8 +87,9 @@ export class CandidateLoginComponent implements OnInit {
                   
               },
               error => {
-                  this.alertService.error(error);
-                  this.loading = false;
+                console.log("error")
+                this.loading=false;
+                this.isFailed=true;
               });
   }
 }

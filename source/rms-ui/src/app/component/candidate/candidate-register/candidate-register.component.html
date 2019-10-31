@@ -30,10 +30,18 @@
                   <div *ngIf="f.password.errors.required">{{ 'CANDREGISTER.CRB' | translate }}</div>
                   <div *ngIf="f.password.errors.minlength">{{ 'CANDREGISTER.CRC' | translate }}</div>
               </div>
-            <button [disabled]="loading" class="fadeIn fourth btn btn-primary">
-      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-      {{ 'CANDREGISTER.CRD' | translate }}  
-  </button>
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <button [disabled]="loading" class="fadeIn fourth btn btn-md btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    {{ 'CANDREGISTER.CRD' | translate }}
+                  </button>
+                  <button class="fadeIn fourth btn btn-dark btn-sm" id="goBack" routerLink="/login" style="float: right;"><img
+                      src="../../../../assets/images/goBack.png" style="width: 23px;" alt="">
+                      {{ 'HR_REGISTER.R14' | translate }}</button>
+                </div>
+              </div>
           </form>
   </div>
   </div>

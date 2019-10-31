@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-
+    isFailed:boolean = false;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -61,7 +61,8 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     let userObj = JSON.parse(JSON.stringify(data));
-                    console.log(userObj)
+                    console.log(userObj);
+                    this.isFailed=false;
                     if(userObj.authorities[0].authority==="ROLE_HR")
                     {
                     this.router.navigate([this.returnUrl]);
@@ -73,8 +74,9 @@ export class LoginComponent implements OnInit {
                 }
                 },
                 error => {
-                    this.alertService.error(error);
-                    this.loading = false;
+                    console.log("Inside error")
+                    this.loading=false;
+                    this.isFailed=true;
                 });
     }
 }

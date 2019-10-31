@@ -15,10 +15,20 @@
           <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <input type="text" id="login" class="fadeIn second" name="login" placeholder="{{ 'CANDIDATELOGIN.CL4' | translate }} " formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
             <input type="password" id="password" class="fadeIn third" name="login" placeholder="{{ 'CANDIDATELOGIN.CL5' | translate }} " formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-            <button [disabled]="loading" class="fadeIn fourth btn btn-primary">
-                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                  {{ 'CANDIDATELOGIN.CL6' | translate }}   
-          </button>
+            <div class="alert alert-danger" *ngIf="isFailed" role="alert">
+              Bad Credentials
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> 
+              <button [disabled]="loading" class="fadeIn fourth btn btn-primary btn-md">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                {{ 'CANDIDATELOGIN.CL6' | translate }}
+              </button>
+              <button class="fadeIn fourth btn btn-dark btn-sm" id="goBack" routerLink="/login" style="float: right;"><img
+                  src="../../../../assets/images/goBack.png" style="width: 23px;" alt=""> {{ 'HR_LOGIN.L07' | translate }}</button>
+            </div>
+          </div>
           </form>
   </div>
   </div>
