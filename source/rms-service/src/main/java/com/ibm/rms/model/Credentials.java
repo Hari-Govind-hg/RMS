@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Document("Credentials")
+@Document("credentials")
 @XmlRootElement
 public class Credentials {
 

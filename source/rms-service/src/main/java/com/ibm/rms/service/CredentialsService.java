@@ -15,37 +15,21 @@ import com.ibm.rms.model.Credentials;
 import com.ibm.rms.repository.CredentialsRepository;
 import com.ibm.rms.repository.CandidateRepository;
 
-
 import java.util.Optional;
 
 @Service
 public class CredentialsService implements UserDetailsService {
 
-    @Autowired
-    CredentialsRepository credentialsRepository;
-    
-    
+	@Autowired
+	CredentialsRepository credentialsRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	
-    	System.out.println(username);
-    	System.out.println("Inside loadByUserName");
-        Credentials candidate = credentialsRepository.findByUsername(username).get();
-        
-        System.out.println(candidate.getUsername());
-        System.out.println(candidate.getPassword());
-        System.out.println(candidate.getRole());
-       
-        return new User(candidate.getUsername(), candidate.getPassword(), AuthorityUtils.createAuthorityList("ROLE_" + candidate.getRole()));
-        
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        
-      
-        
-        
-//UserAccount userAccount =  this.userRepository.findByUserName(userName).get();
-		
-		
-    }
+		Credentials candidate = credentialsRepository.findByUsername(username).get();
+
+		return new User(candidate.getUsername(), candidate.getPassword(),
+				AuthorityUtils.createAuthorityList("ROLE_" + candidate.getRole()));
+
+	}
 }
