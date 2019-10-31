@@ -68,13 +68,13 @@ public class JobController {
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public List<Job> getAllEmployees() {
+	public List<Job> getAllEmployees() throws RmsApplicationException {
 		return jobService.getAll();
 	}
 	
 	@GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public Job getEmployee(@PathVariable String id) {
+	public Job getEmployee(@PathVariable String id) throws RmsApplicationException {
 		return jobService.getById(id);
 	}
 	
@@ -125,7 +125,6 @@ public class JobController {
 	@GetMapping(value = "/filterbyskillandexperience", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
 	public ArrayList<Job> searchJobsBySkillAndExperience(@RequestParam(value="skill") String skill,@RequestParam(value="experience") String experience){
-	
 		ArrayList<Job> jobsList = jobService.filterBySkillAndExperience(skill,experience);
 		return jobsList;
 	}

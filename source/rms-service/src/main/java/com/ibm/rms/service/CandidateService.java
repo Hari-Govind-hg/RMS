@@ -112,22 +112,25 @@ public class CandidateService {
 
 	public boolean applyForJob(String id, String jid) throws RmsApplicationException {
 		candidate = candidateRepo.findById(id).get();
-		
-//		candidateRepo.findAll(Query.query(Criteria.where("jAppliedCandidateList.cid").is(id)))
-//		System.out.println(candidate);
 		job = jobRepo.findById(jid).get();
-//		System.out.println(job);
 		if(!job.getjAppliedCandidateList().contains(candidate)) {
 			job.getjAppliedCandidateList().add(candidate);
 			jobRepo.save(job);
-//			System.out.println(job.getjAppliedCandidateList());
 			EmailMessage emailMessage = new EmailMessage();
 			emailMessage.setTo_address(candidate.getcEmail());
 			emailMessage.setSubject("Your job application update");
 			emailMessage.setBody("Dear " +candidate.getcName()+","+ "\r\n" + 
-					"Congratulations, you have successfully applied for " +job.getjTitle()+"from IBM.");
+					"You have successfully applied for " +job.getjTitle()+" position from IBM. Further contacting will take place shortly, so kindly be patient"+"\n"
+					+"Job Title: "+job.getjTitle()+"\n"
+					+"Job Description: "+job.getjDescription()+"\n"
+					+"Min Experience Required: "+job.getjRequiredExperience()+"\n\n"
+					+"Regards,"+"\n"
+					+"RMS Team"
+					+"\n\n\n\n"
+					+"THIS IS A SYTEM GENERATED MAIL.PLEASE DO NOT REPLY TO THIS MAIL.THANK YOU."
+					+"For any queries,please feel free to reach us from the Contact Us page of our website");
 			emailService.sendmail(emailMessage);
-			String msg = "You have successfully applied for"+job.getjTitle();
+			String msg = "Dear "+candidate.getcName()+"\n"+" You have successfully applied for "+job.getjTitle()+"\n\n"+"Regards,"+"\n"+"RMS Team"+"\n\n"+"This is a system generated response.Please do NOT reply to this message.Thank you.";
 			RestTemplate restClient = new RestTemplate();
 			SmsRequest smsReq = new SmsRequest(candidate.getcPhone(), msg);
 			ResponseEntity<String> res = restClient.postForEntity("http://localhost:7070/api/v1/sms", smsReq, String.class);
@@ -135,7 +138,6 @@ public class CandidateService {
 			
 			return true;
 		}
-//		System.out.println(job.getjAppliedCandidateList().contains(candidate));
 		return false;
 	}
 
