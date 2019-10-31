@@ -13,48 +13,53 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./job.component.css']
 })
 @Directive({
-  exportAs:'{{job.jobId}}'
+  exportAs: '{{job.jobId}}'
 })
 export class JobComponent implements OnInit {
-  jobList:any[];
-  myControl:FormGroup;
-  jobSubscription:Subscription;
+  jobList: any[];
+  myControl: FormGroup;
+  jobSubscription: Subscription;
   currentUser: User;
-  jobId:String;
-  myExperienceControl:FormGroup;
+  jobId: String;
+  myExperienceControl: FormGroup;
+  myExperienceSkillControl:FormGroup;
   currentUserSubscription: Subscription;
   isLoggedIn$: Observable<boolean>;
-  duplicateJobData:any;
-  scheduledJob:any;
-  scheduleTest:FormGroup;
-  isDeleted:boolean;
-  isSaved:boolean;
-  jobData:any;
-  skill:String;
-  experience:any;
-  isEmpty:boolean;
-  date:any;
-  search:any;
-  count:any;
+  duplicateJobData: any;
+  scheduledJob: any;
+  scheduleTest: FormGroup;
+  isDeleted: boolean;
+  isSaved: boolean;
+  jobData: any;
+  skill: String;
+  experience: any;
+  isEmpty: boolean;
+  date: any;
+  search: any;
+  count: any;
 
-  constructor(private jobService: JobServiceService,private authenticationService: AuthenticationService,
-    private userService: UserService,public nav: NavService,private router:Router,private route:ActivatedRoute) 
-    { const _jobId = this.route.snapshot.params.id;
-      this.search=false;
-      this.count=0;
-      this.myControl=new FormGroup({
-        skill:new FormControl('')
-      });
-      this.myExperienceControl=new FormGroup({
-        experience:new FormControl('')
-      });
-      this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+  constructor(private jobService: JobServiceService, private authenticationService: AuthenticationService,
+    private userService: UserService, public nav: NavService, private router: Router, private route: ActivatedRoute) {
+    const _jobId = this.route.snapshot.params.id;
+    this.search = false;
+    this.count = 0;
+    this.myControl = new FormGroup({
+      skill: new FormControl('')
+    });
+    this.myExperienceControl = new FormGroup({
+      experience: new FormControl('')
+    });
+    this.myExperienceSkillControl= new FormGroup({
+      skill: new FormControl(''),
+      experience: new FormControl('')
+    });
+    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
-  });
-  this.scheduleTest=new FormGroup({
-    date :new FormControl('')
-  });
-}
+    });
+    this.scheduleTest = new FormGroup({
+      date: new FormControl('')
+    });
+  }
 
   ngOnInit() {
     this.nav.show();
@@ -63,157 +68,199 @@ export class JobComponent implements OnInit {
     console.log(this.isLoggedIn$);
 
     // Calls all the jobs in the db
-    this.jobSubscription= this.jobService.getJobs()
-    .subscribe((res:any[])=>{
-      console.log(res);
-      this.jobList = res;
-  });
-  const _jobId = this.route.snapshot.params.id;
-  console.log(_jobId);
+    this.jobSubscription = this.jobService.getJobs()
+      .subscribe((res: any[]) => {
+        console.log(res);
+        this.jobList = res;
+      });
+    const _jobId = this.route.snapshot.params.id;
+    console.log(_jobId);
   }
 
-  onAdvancedButtonClick(){
-    this.count=this.count+1;
-    
-    if(this.count%2!=0){
-      this.search=true;
+  onAdvancedButtonClick() {
+    this.count = this.count + 1;
+
+    if (this.count % 2 != 0) {
+      this.search = true;
     }
-    else{
-      this.search=false;
-      this.jobSubscription= this.jobService.getJobs()
-    .subscribe((res:any[])=>{
-      console.log(res);
-      this.jobList = res;
-  });
+    else {
+      this.search = false;
+      this.jobSubscription = this.jobService.getJobs()
+        .subscribe((res: any[]) => {
+          console.log(res);
+          this.jobList = res;
+        });
     }
   }
 
-  onEditHandler(id){
-    this.jobSubscription= this.jobService.getJobById(id)
-    .subscribe((res:any)=>{
-      console.log(res);
-      this.duplicateJobData = res;
-      console.log(this.duplicateJobData.jAppliedCandidateList);
-      if(this.duplicateJobData.jAppliedCandidateList==""){
-        this.isEmpty = true;
-      }
-      else{
-        this.isEmpty = false;
-      }
-    });
-    }
-    onInteviewScheduler(jId){
-      this.jobSubscription= this.jobService.getJobById(jId)
-      .subscribe((res:any)=>{
-        console.log(res);
-        this.scheduledJob=res;
-
-        let temp=JSON.parse(JSON.stringify(res))
-        temp.jInterviewDate=this.scheduleTest.value.date;
-        
-        console.log(temp);
-
-
-        this.jobSubscription= this.jobService.scheduleInterview(temp)
-      .subscribe((res:any)=>{
-        console.log(res);
-        this.scheduledJob=res;
-      });
-
-      });
-      
-          
-     
-    }
-
-    ongetAppliedCandidatesList(id){
-      this.jobSubscription= this.jobService.getJobById(id)
-      .subscribe((res:any)=>{
+  onEditHandler(id) {
+    this.jobSubscription = this.jobService.getJobById(id)
+      .subscribe((res: any) => {
         console.log(res);
         this.duplicateJobData = res;
         console.log(this.duplicateJobData.jAppliedCandidateList);
-        if(this.duplicateJobData.jAppliedCandidateList==""){
+        if (this.duplicateJobData.jAppliedCandidateList == "") {
+          this.isEmpty = true;
+        }
+        else {
+          this.isEmpty = false;
+        }
+      });
+  }
+  onInteviewScheduler(jId) {
+    this.jobSubscription = this.jobService.getJobById(jId)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.scheduledJob = res;
+
+        let temp = JSON.parse(JSON.stringify(res))
+        temp.jInterviewDate = this.scheduleTest.value.date;
+
+        console.log(temp);
+
+
+        this.jobSubscription = this.jobService.scheduleInterview(temp)
+          .subscribe((res: any) => {
+            console.log(res);
+            this.scheduledJob = res;
+          });
+
+      });
+
+
+
+  }
+
+  ongetAppliedCandidatesList(id) {
+    this.jobSubscription = this.jobService.getJobById(id)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.duplicateJobData = res;
+        console.log(this.duplicateJobData.jAppliedCandidateList);
+        if (this.duplicateJobData.jAppliedCandidateList == "") {
           console.log("inside if");
           this.isEmpty = true;
         }
-        else{
+        else {
           console.log("inside else");
           this.isEmpty = false;
         }
       });
-    }
-
-    onSearchHandler(searchForm){
-      console.log(searchForm.value.skill.toLowerCase());
-      this.skill = searchForm.value.skill;
-      if(this.skill==""){
-        this.jobSubscription= this.jobService.getJobs()
-    .subscribe((res:any[])=>{
-      console.log(res);
-      this.jobList = res;
-  });
-      }
-      else{
-      this.jobSubscription= this.jobService.getJobBySkill(this.skill)
-      .subscribe((res:any[])=>{
-        console.log(res);
-        this.jobList = res;
-    });
   }
-    }
-   
-    onExperienceSearchHandler(searchForm){
-      console.log(searchForm.value.experience);
-      this.experience = searchForm.value.experience;
-      if(this.experience==""){
-        this.jobSubscription= this.jobService.getJobs()
-    .subscribe((res:any[])=>{
-      console.log(res);
-      this.jobList = res;
-  });
-      }
-      else{
-      this.jobSubscription= this.jobService.searchJobsByExperience(this.experience)
-      .subscribe((res:any[])=>{
-        console.log(res);
-        this.jobList = res;
-    });
-  }
-}
 
-  async onUpdateHandler(formData){
+  onSearchHandler(searchForm) {
+    console.log(searchForm.value.skill.toLowerCase());
+    this.skill = searchForm.value.skill;
+    if (this.skill == "") {
+      this.jobSubscription = this.jobService.getJobs()
+        .subscribe((res: any[]) => {
+          console.log(res);
+          this.jobList = res;
+        });
+    }
+    else {
+      this.jobSubscription = this.jobService.getJobBySkill(this.skill)
+        .subscribe((res: any[]) => {
+          console.log(res);
+          this.jobList = res;
+        });
+    }
+  }
+
+
+  onSkillExperienceSearchHandler(searchForm) {
+    console.log(searchForm.value.experience);
+    console.log(searchForm.value.skill);
+    this.experience = searchForm.value.experience;
+    this.skill = searchForm.value.skill;
+    if (this.experience == "" && this.skill == "") {
+      this.jobSubscription = this.jobService.getJobs()
+        .subscribe((res: any[]) => {
+          console.log(res);
+          this.jobList = res;
+        });
+    }
+    else {
+      if (this.experience == "") {
+        this.jobSubscription = this.jobService.getJobBySkill(this.skill)
+          .subscribe((res: any[]) => {
+            console.log(res);
+            this.jobList = res;
+          });
+      }
+
+      else {
+        if (this.experience == "") {
+          this.jobSubscription = this.jobService.searchJobsByExperience(this.experience)
+            .subscribe((res: any[]) => {
+              console.log(res);
+              this.jobList = res;
+            });
+        }
+
+        else {
+          this.jobSubscription = this.jobService.searchJobsBySkillExperience(this.skill, this.experience)
+            .subscribe((res: any[]) => {
+              console.log(res);
+              this.jobList = res;
+            });
+        }
+      }
+    }
+  }
+
+  onExperienceSearchHandler(searchForm) {
+    console.log(searchForm.value.experience);
+    this.experience = searchForm.value.experience;
+    if (this.experience == "") {
+      this.jobSubscription = this.jobService.getJobs()
+        .subscribe((res: any[]) => {
+          console.log(res);
+          this.jobList = res;
+        });
+    }
+    else {
+      this.jobSubscription = this.jobService.searchJobsByExperience(this.experience)
+        .subscribe((res: any[]) => {
+          console.log(res);
+          this.jobList = res;
+        });
+    }
+  }
+
+  async onUpdateHandler(formData) {
     console.log(formData);
     console.log(formData.value);
-    var obj= formData.value;
-    obj.jId=this.jobId;
+    var obj = formData.value;
+    obj.jId = this.jobId;
 
     //use promise based submission
     let res = await this.jobService.updateJob(this.duplicateJobData);
 
     const _jobId = this.route.snapshot.params.id;
-    console.log("The id is:"+_jobId);
+    console.log("The id is:" + _jobId);
 
-    if(res){
+    if (res) {
       this.isSaved = true;
       console.log(res);
-      this.jobSubscription= this.jobService.getJobs()
-    .subscribe((res:any[])=>{
-      console.log(res);
-      this.jobList = res;
-  });
+      this.jobSubscription = this.jobService.getJobs()
+        .subscribe((res: any[]) => {
+          console.log(res);
+          this.jobList = res;
+        });
     }
   }
 
-  async onDeleteHandler(id){
+  async onDeleteHandler(id) {
     console.log(id);
     let res = await this.jobService.deleteJob(id);
-    if(res){
+    if (res) {
       this.isDeleted = true;
-      this.jobSubscription= this.jobService.getJobs()
-    .subscribe((res:any[])=>{
-      console.log(res);
-      this.jobList = res;
-  });
+      this.jobSubscription = this.jobService.getJobs()
+        .subscribe((res: any[]) => {
+          console.log(res);
+          this.jobList = res;
+        });
     }
   }
 
@@ -223,5 +270,5 @@ export class JobComponent implements OnInit {
     this.currentUserSubscription.unsubscribe();
     this.isLoggedIn$ = this.authenticationService.loggedIn;
     console.log(this.isLoggedIn$);
-}
+  }
 }

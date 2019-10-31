@@ -6,33 +6,19 @@
         <button class="btn btn-primary btn-md" routerLink="/jobs/addjob" role="button">{{ 'HR_JOB.JOB02' | translate }}</button>
         <button class="btn btn-primary btn-md" (click)="onAdvancedButtonClick()" role="button">Advanced Search</button>
         <!-- Search for jobs -->
-        <form class="example-form col-md-12" #f="ngForm" style="margin-top: 20px;" [formGroup]="myControl" [hidden]="!search">
+        <form class="example-form col-md-12" #h="ngForm" style="margin-top: 20px;" [formGroup]="myExperienceSkillControl" [hidden]="!search">
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-6">
               <input type="text" style="margin-top: 10px;" class="form-control" name="skill"
-                placeholder="{{ 'HR_JOB.JOB03' | translate }}" formControlName="skill"
-                [ngClass]="{ 'is-invalid': myControl.get('skill').touched && myControl.get('skill').invalid}">
+                placeholder="Enter Skill" formControlName="skill"
+                [ngClass]="{ 'is-invalid': myExperienceSkillControl.get('skill').touched && myExperienceSkillControl.get('skill').invalid}">
+                <input type="text" style="margin-top: 10px;" class="form-control" name="experience"
+                placeholder="Enter Experience" formControlName="experience"
+                [ngClass]="{ 'is-invalid': myExperienceSkillControl.get('experience').touched && myExperienceSkillControl.get('experience').invalid}">
             </div>
             <div class="col-md-2">
-              <button type="submit" (click)="onSearchHandler(f)" class="btn btn-default">
-                <span>
-                    {{ 'HR_JOB.JOB04' | translate }}
-                </span>
-              </button>
-            </div>
-          </div>
-        </form>
-        <form class="example-form col-md-12" #g="ngForm" style="margin-top: 20px;" [formGroup]="myExperienceControl" [hidden]="!search">
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
-              <input type="text" style="margin-top: 10px;" class="form-control"
-                placeholder="Search Based on Experience" formControlName="experience"
-                [ngClass]="{ 'is-invalid': myExperienceControl.get('experience').touched && myExperienceControl.get('experience').invalid}">
-            </div>
-            <div class="col-md-2">
-              <button type="submit" (click)="onExperienceSearchHandler(g)" class="btn btn-default">
+              <button id="submit_button" type="submit" (click)="onSkillExperienceSearchHandler(h)" class="btn btn-default">
                 <span>
                     {{ 'HR_JOB.JOB04' | translate }}
                 </span>

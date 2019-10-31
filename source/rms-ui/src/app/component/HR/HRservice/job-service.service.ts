@@ -71,6 +71,15 @@ export class JobServiceService {
         return res;
       }));
   }
+  searchJobsBySkillExperience(skill,experience){
+    console.log("id is " + skill );
+    console.log("id is " + experience );
+    return this.http.get(this.REST_API_URL + "/filterbyskillandexperience?skill=" +skill + "&experience="+ experience)
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
+  }
   scheduleInterview(job){
     return this.http.put(this.REST_API_URL + "/"+ job.jId +"/schedule",job)
       .pipe(map(res => {
