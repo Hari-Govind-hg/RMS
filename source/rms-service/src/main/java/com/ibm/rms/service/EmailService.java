@@ -55,7 +55,7 @@ public class EmailService {
 			msg.setFrom(new InternetAddress(username, false));
 			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailmessage.getTo_address()));
 			msg.setSubject(emailmessage.getSubject());
-			msg.setContent(emailmessage.getBody(), "text/html");
+			msg.setText(emailmessage.getBody());
 			msg.setSentDate(new Date());
 			
 		} catch (MessagingException e) {

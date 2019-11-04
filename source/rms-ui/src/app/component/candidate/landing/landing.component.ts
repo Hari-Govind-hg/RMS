@@ -24,6 +24,7 @@ export class LandingComponent implements OnInit,OnDestroy {
   candidateSubscription:Subscription;
   dataList:any;
   candidate:any;
+  appliedStatus:boolean;
   cJob:any;
   constructor(private authenticationService: AuthenticationService,
     public nav: NavService,private router:Router,private route:ActivatedRoute,private candidateService:CandidateService,private http:HttpClient) 
@@ -38,8 +39,7 @@ export class LandingComponent implements OnInit,OnDestroy {
 
   ngOnInit() {
     this.nav.show();
-    // this.dataList=localStorage.getItem(currentUser);
-    // console.log(this.dataList);
+    this.onViewAllJob();
   }
 
 
@@ -67,14 +67,16 @@ async onApplyHandler(jId){
     this.candidate = res;
     console.log(this.candidate);
 
-    // this.getCandidate();
     this.candidateSubscription= this.candidateService.applyForJobCandidate(this.candidate.cId,jId)
     .subscribe((res:any[])=>{
       console.log(res);
-      // if(res){
-        
-      //   this.appliedJobList=res;
-      // }
+      console.log(res.status);
+      if(res.status=="Success"){
+        this.appliedStatus=true;
+      }
+      else if(res.status){
+        this.appliedStatus=false;
+      }
   });
   }
   async showJobByPreference(name){
