@@ -45,7 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
-        System.out.println("Inside configure authentication");
+    
     }
  
     @Override
@@ -59,6 +59,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     	                .antMatchers("/hr").hasRole("HR")
     	                .antMatchers("/candidates/**").permitAll()
     	                .antMatchers("/").permitAll()
+    	                .antMatchers("/contacts/**").permitAll()
+    	                .antMatchers("/contactReply/**").permitAll()
     	                
     	                .anyRequest().authenticated()
     	                .and().formLogin()

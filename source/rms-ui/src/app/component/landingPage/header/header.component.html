@@ -95,21 +95,21 @@
         </mat-sidenav>
         <mat-toolbar id="appToolbar" [ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}">
           <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
-                  <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+                  <mat-icon aria-label="Menu" class="material-icons">{{ 'HEADER.1' | translate }}</mat-icon>
           </button>
           <div><span style="text-size-adjust: 20px;">RMS</span></div>
           <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
             <ul fxLayout fxLayoutGap="20px" class="navigation-items">
                 <li>
                     <a>
-                      <mat-icon class="icon" style="color: black;">input</mat-icon>
-                      <a class="label nav-link" routerLink="/login" style="color: black;">Login</a>
+                      <mat-icon class="icon" style="color: black;">{{ 'HEADER.2' | translate }}</mat-icon>
+                      <a class="label nav-link" routerLink="/login" style="color: black;">{{ 'HEADER.3' | translate }}</a>
                      </a>
                 </li>
                 <li>
                   <a >
-                      <mat-icon class="icon" style="color: black;">help</mat-icon>
-                      <span class="label" style="color: black;">HELP</span>
+                      <mat-icon class="icon" style="color: black;">{{ 'HEADER.4' | translate }}</mat-icon>
+                      <span class="label" style="color: black;">{{ 'HEADER.5' | translate }}</span>
                   </a>
                 </li>
                 

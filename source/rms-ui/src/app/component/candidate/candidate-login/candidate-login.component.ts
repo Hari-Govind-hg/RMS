@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { AlertService } from '../CandidateService/loginservice/alert.service';
 import { first } from 'rxjs/operators';
+import { CandidateService } from '../CandidateService/candidate.service';
 
 @Component({
   selector: 'app-candidate-login',
@@ -16,6 +17,8 @@ export class CandidateLoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  candidate:any;
+  isFailed:boolean = false;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -23,7 +26,8 @@ export class CandidateLoginComponent implements OnInit {
       private router: Router,
       private authenticationService: AuthenticationService,
       private alertService: AlertService,
-      public nav: NavService
+      public nav: NavService,
+      private candidateService:CandidateService
   ) {
       // redirect to home if already logged in
       if (this.authenticationService.currentUserValue) { 
@@ -58,7 +62,7 @@ export class CandidateLoginComponent implements OnInit {
       this.authenticationService.Candidatelogin(this.f.username.value, this.f.password.value)
           .pipe(first())
           .subscribe(
-              data => {
+              async data => {
                 let userObj = JSON.parse(JSON.stringify(data));
                 console.log(userObj)
                 if(userObj.authorities[0].authority=="ROLE_CANDIDATE")
@@ -66,7 +70,15 @@ export class CandidateLoginComponent implements OnInit {
                     console.log(data)
                   console.log("Inside candidate login data")
                   // this.router.navigate([this.returnUrl]);
+                  // console.log(userObj.principal.username);
+                  let res= await this.candidateService.getCandidate(userObj.principal.username);
+                  this.candidate = res;
+                  console.log(this.candidate)
+                  if(this.candidate==null)
                   this.router.navigate(['/registerdetails']);
+                  else
+                  this.router.navigate(['/landing']);
+                  
 
                 }
                 else
@@ -75,8 +87,9 @@ export class CandidateLoginComponent implements OnInit {
                   
               },
               error => {
-                  this.alertService.error(error);
-                  this.loading = false;
+                console.log("error")
+                this.loading=false;
+                this.isFailed=true;
               });
   }
 }

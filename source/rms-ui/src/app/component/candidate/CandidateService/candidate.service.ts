@@ -5,6 +5,7 @@ import { User } from './models';
 import { Candidate } from '../CandidateService/models/candidate';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from './loginservice';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class CandidateService {
   dataList:any;
   REST_API_URL_DETAILS: string = "http://localhost:80/candidates/detail";
   REST_API_URL: string = "http://localhost:80/candidates";
-  constructor(private http: HttpClient,private authenticationService: AuthenticationService,) { 
+  constructor(private http: HttpClient,private authenticationService: AuthenticationService,private router:Router) { 
   //   this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
   //     this.currentUser = user;
   // });  
@@ -107,4 +108,25 @@ export class CandidateService {
         return res;
       }));
   }
+
+
+  
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    // const currentUser = this.authenticationService.currentUserValue;
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(currentUser.authorities[0].authority);
+  
+    console.log(currentUser.role)
+    if (currentUser.authorities[0].authority=="ROLE_CANDIDATE") {
+        // authorised so return true
+        return true;
+    }
+    else
+    {
+      alert("You are already logged in as HR")
+       this.router.navigate(['/login']);
+       return false;
+      }
+  }
+  
 }

@@ -86,7 +86,7 @@
             <ul class="navbar-nav">
               <li class="nav-item">
                 <div class="btn-group" mdbDropdown>
-                    <button mdbDropdownToggle mdbWavesEffect type="button" class="btn dropdown-toggle waves-light" mdbWavesEffect style="height: auto;">Languages</button>
+                    <button mdbDropdownToggle mdbWavesEffect type="button" class="btn dropdown-toggle waves-light" mdbWavesEffect style="height: auto;">{{ 'NAV.N5' | translate }}</button>
                         <div class="dropdown-menu dropdown-primary col-md-1">
                             <option class="dropdown-item col-md-1" #langselect (click)="translate.use(langselect.value)" *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
                         </div>

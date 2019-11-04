@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
 export class JobServiceService {
   REST_API_URL: string = "http://localhost:80/jobs";
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router:Router) {
 
   }
 
@@ -55,11 +57,36 @@ export class JobServiceService {
 
   getJobBySkill(skill){
     console.log("id is " + skill);
-    return this.http.get(this.REST_API_URL + "/filter?skill="+ skill)
+    return this.http.get(this.REST_API_URL + "/filterbyskill?skill="+ skill)
       .pipe(map(res => {
         console.log(res);
         return res;
       }));
+  }
+  searchJobsByExperience(experience){
+    console.log("id is " + experience );
+    return this.http.get(this.REST_API_URL + "/filterbyexperience?experience="+ experience)
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
+  }
+  searchJobsBySkillExperience(skill,experience){
+    console.log("id is " + skill );
+    console.log("id is " + experience );
+    return this.http.get(this.REST_API_URL + "/filterbyskillandexperience?skill=" +skill + "&experience="+ experience)
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
+  }
+  scheduleInterview(job){
+    return this.http.put(this.REST_API_URL + "/"+ job.jId +"/schedule",job)
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
+
   }
   updateJob(jobData) {
     let _url = this.REST_API_URL + "/" + jobData.jId;
@@ -101,4 +128,24 @@ export class JobServiceService {
   });
   return promise;
   }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    // const currentUser = this.authenticationService.currentUserValue;
+    console.log("Inside job component")
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(currentUser.authorities[0].authority);
+  
+    console.log(currentUser.role)
+    if (currentUser.authorities[0].authority=="ROLE_HR") {
+        // authorised so return true
+        return true;
+    }
+    else
+    {
+      alert("You are already logged in as Candidate")
+       this.router.navigate(['/login']);
+       return false;
+      }
+  }
+
 }

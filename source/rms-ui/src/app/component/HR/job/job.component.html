@@ -1,158 +1,240 @@
 <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron">
-                    <h5 class="display-4">Welcome {{currentUser.principal.username}}.</h5>
-                    <button class="btn btn-primary btn-md" routerLink="/jobs/addjob" role="button">Create New Job Posting</button>
-                    <!-- Search for jobs -->
-                    <form class="example-form col-md-12" #f="ngForm" style="margin-top: 20px;" [formGroup]="myControl">
-                      <div class="row">
-                        <div class="col-md-2"></div>
-                      <div class="col-md-6">
-                      <input type="text" style="margin-top: 10px;" class="form-control" name="skill" placeholder="Search Based on Skill" formControlName="skill" [ngClass]="{ 'is-invalid': myControl.get('skill').touched && myControl.get('skill').invalid}">
-                    </div>
-                    <div class="col-md-2"> 
-                      <button type="submit" (click)="onSearchHandler(f)"  class="btn btn-default">
-                      <span>
-                        SEARCH
-                      </span>
-                    </button>
-                  </div>
-                </div>
-                    </form>
-                </div>
-            </div>    
-        </div>
-        <b>List of Jobs</b>
-        <hr>
-
-        <div class="row">
-          <!-- Card for New Job -->
-            <div class="card newjobcard col-sm-3 animated fadeIn" style="background-color: rgb(148, 148, 148);" id="addnewJob" routerLink="/jobs/addjob">
-                                <h4 class="title">New Job Posting</h4>
-                                <div class="bar">
-                                    <div class="emptybar"></div>
-                                  </div>
-                                  <div class="details">
-                                      <p>Click Here To Create a New Job Application</p>
-                                      <hr>
-                                  </div>
-                                <div class="circlenew">
-                                  <div class="row">
-                                      <div class="col-md-3"> 
-                                      </div>
-                                      <div class="col-md-6">
-                                          <img src="../../../../assets/images/addJob.png" style="width: 40px;" alt="">
-                                      </div>
-                                      <div class="col-md-2">
-                                      </div>
-                                  </div>
-                                </div>
+    <div class="row">
+        <button routerLink="/querylist">Queries</button>
+      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h5 class="display-4">{{ 'HR_JOB.JOB01' | translate }} {{currentUser.principal.username}}.</h5>
+        <button class="btn btn-primary btn-md" routerLink="/jobs/addjob" role="button">{{ 'HR_JOB.JOB02' | translate }}</button>
+        <button class="btn btn-primary btn-md" (click)="onAdvancedButtonClick()" role="button">Advanced Search</button>
+        <!-- Search for jobs -->
+        <form class="example-form col-md-12" #h="ngForm" style="margin-top: 20px;" [formGroup]="myExperienceSkillControl" [hidden]="!search">
+          
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <input type="text" style="margin-top: 10px;" class="form-control" name="skill"
+                placeholder="Enter Skill" formControlName="skill"
+                [ngClass]="{ 'is-invalid': myExperienceSkillControl.get('skill').touched && myExperienceSkillControl.get('skill').invalid}">
+                <input type="text" style="margin-top: 10px;" class="form-control" name="experience"
+                placeholder="Enter Experience" formControlName="experience"
+                [ngClass]="{ 'is-invalid': myExperienceSkillControl.get('experience').touched && myExperienceSkillControl.get('experience').invalid}">
             </div>
+            <div class="col-md-2">
+              <button id="submit_button" type="submit" (click)="onSkillExperienceSearchHandler(h)" class="btn btn-default">
+                <span>
+                    {{ 'HR_JOB.JOB04' | translate }}
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <b>{{ 'HR_JOB.JOB05' | translate }}</b>
+  <hr>
 
-            <!-- Card for listing all jobs -->
-            <div class="card animated fadeIn" *ngFor = "let job of jobList">
-              <div data-toggle="modal" data-target="#viewJobModal" (click)="onEditHandler(job.jId)">
-                <h4 class="title">{{job.jTitle}}</h4>
-                <div class="bar">
-                    <div class="emptybar"></div>
-                  </div>
-                  <div class="details">
-                      <p><b>Description: </b>{{job.jDescription}}</p>
-                      <hr>
-                  </div>
-                </div>
-                <div class="circle">
-                  <div class="row">
-                      <div class="col-md-3" data-toggle="modal" data-target="#editJobModal" (click)="onEditHandler(job.jId)">
-                          <img src="../../../../assets/images/editJob.png" style="width: 40px;" alt="">
-                      </div>
-                      <div class="col-md-6"></div>
-                      <div class="col-md-2" (click)="onDeleteHandler(job.jId)">
-                        <img src="../../../../assets/images/deleteJob.png" style="width: 40px;" alt="">
-                      </div>
-                  </div>
-                </div>
-              </div>
-
+  <div class="row">
+    <!-- Card for New Job -->
+    <div class="card newjobcard col-sm-3 animated fadeIn" style="background-color: rgb(148, 148, 148);" id="addnewJob"
+      routerLink="/jobs/addjob">
+      <h4 class="title">{{ 'HR_JOB.JOB06' | translate }}</h4>
+      <div class="bar">
+        <div class="emptybar"></div>
+      </div>
+      <div class="details">
+        <p>{{ 'HR_JOB.JOB07' | translate }}</p>
+        <hr>
+      </div>
+      <div class="circlenew">
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <img src="../../../../assets/images/addJob.png" style="width: 40px;" alt="">
+          </div>
+          <div class="col-md-2">
+          </div>
         </div>
+      </div>
+    </div>
 
-        <!-- View Modal -->
-        <div class="modal fade" id="viewJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Job Details</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                        <div class="modal-body" *ngIf="duplicateJobData">
-                                <h5><b>Id:</b> {{duplicateJobData.jTitle}}</h5>
-                                <hr>
-                                <p><b>Description:</b> {{duplicateJobData.jDescription}}</p>
-                                <hr>
-                                <p><b>Skills Needed:</b>{{duplicateJobData.skillList}}</p>
-                                <hr>
-                                <p><b>Experience Needed:</b>{{duplicateJobData.jRequiredExperience}} years</p>
-                                <hr>
-                                <p><b>Salary:</b> {{duplicateJobData.jSalary}}</p>
-                              <div *ngIf="!isEmpty">
-                                  <hr><hr>
-                                  <b>List of applied candidates:</b><hr>
+    <!-- Card for listing all jobs -->
+    <div class="card animated fadeIn" *ngFor="let job of jobList">
+      <div data-toggle="modal" data-target="#viewJobModal" (click)="onEditHandler(job.jId)">
+        <h4 class="title">{{job.jTitle}}</h4>
+        <div class="bar">
+          <div class="emptybar"></div>
+        </div>
+        <div class="details">
+          <p><b>{{ 'HR_JOB.JOB08' | translate }} </b>{{job.jDescription}}</p>
+          <hr>
+        </div>
+      </div>
+      <div class="circle">
+        <div class="row">
+          <div class="col-md-4" data-toggle="modal" data-target="#editJobModal" (click)="onEditHandler(job.jId)">
+            <img src="../../../../assets/images/editJob.png" style="width: 40px;" alt="">
+          </div>
+          <!-- <div class="col-md-6"></div> -->
+          <div class="col-md-4" data-toggle="modal" data-target="#viewCListModal" (click)="ongetAppliedCandidatesList(job.jId)">
+            <img src="../../../../assets/images/scheduleJob.png" style="width: 40px;" alt="">
+          </div>
+          <div class="col-md-4" (click)="onDeleteHandler(job.jId)">
+            <img src="../../../../assets/images/deleteJob.png" style="width: 40px;" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- show candidates modal -->
+  <div class="modal fade" id="viewCListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ 'HR_JOB.JOB09' | translate }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" *ngIf="duplicateJobData">
+        
+          <div *ngIf="!isEmpty">
+                                  <b>{{ 'HR_JOB.JOB10' | translate }}</b><hr>
                               </div>
                              <div *ngFor = "let candidate of duplicateJobData.jAppliedCandidateList"> 
-                               <p><b>Name: </b>{{candidate.cName}}&nbsp;<b>Email: </b>{{candidate.cEmail}} </p>
+                               <p><b>{{ 'HR_JOB.JOB11' | translate }} </b>{{candidate.cName}}&nbsp;<b>{{ 'HR_JOB.JOB12' | translate }} </b>{{candidate.cEmail}} </p>
                                <hr> 
-                            </div>
-                        </div>
-                        </div>
-                </div>
+          </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'HR_JOB.JOB13' | translate }}</button>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#setInterviewModal" >{{ 'HR_JOB.JOB14' | translate }}</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Schedule interview -->
+  <div class="modal fade" id="setInterviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ 'HR_JOB.JOB15' | translate }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="row">
+          
+          <form class="col-md-6 offset-md-3" style="margin-top: 10px;" [formGroup]="scheduleTest" (ngSubmit)="onInteviewScheduler(duplicateJobData.jId)">
+            <div class="row">
+                    <label for="staticEmail" class="col-sm-8 col-form-label">{{ 'HR_JOB.JOB16' | translate }}</label>&nbsp;&nbsp;
+                    <div class="col-sm-10">
+                        <input type="date" formControlName="date" class="form-control"/>
+                        <button type="submit" class="btn btn-secondary">{{ 'HR_JOB.JOB17' | translate }}</button>
+                    </div>
+            </div>
+        </form>
+  </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'HR_JOB.JOB18' | translate }}</button>
+          <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#setInterviewModal" (click)="ongetAppliedCandidatesList(job.jId)">Schedule Interview</button> -->
+          
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- Edit Modal -->
-        <div class="modal fade" id="editJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Update Job</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body"*ngIf="duplicateJobData">
-                      <form ngNativeValidate #f="ngForm">
-                        <div class="form-group row">
-                          <label for="staticName" class="col-sm-3 col-form-label">Title</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="title" placeholder="Enter Title" [(ngModel)]="duplicateJobData.jTitle">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="staticAge" class="col-sm-3 col-form-label">Job Description</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="jDescription" placeholder="Enter Job Role" [(ngModel)]="duplicateJobData.jDescription">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="staticDepartment" class="col-sm-3 col-form-label">Required Experience</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="jRequiredExperience" placeholder="Enter Experience Required" [(ngModel)]="duplicateJobData.jRequiredExperience">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="staticCountry" class="col-sm-3 col-form-label">Salary</label>
-                          <div class="col-sm-9">
-                            <input type="number" class="form-control" name="jSalary" placeholder="Enter Salary" [(ngModel)]="duplicateJobData.jSalary">
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary" (click)="onUpdateHandler(f)" data-dismiss="modal">Save changes</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                </div>
+  <!-- View Modal -->
+  <div class="modal fade" id="viewJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ 'HR_JOB.JOB19' | translate }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" *ngIf="duplicateJobData">
+          <h5><b>{{ 'HR_JOB.JOB20' | translate }}</b> {{duplicateJobData.jTitle}}</h5>
+          <hr>
+          <p><b>{{ 'HR_JOB.JOB21' | translate }}</b> {{duplicateJobData.jDescription}}</p>
+          <hr>
+          <p><b>{{ 'HR_JOB.JOB22' | translate }}</b>{{duplicateJobData.skillList}}</p>
+          <hr>
+          <p><b>{{ 'HR_JOB.JOB23' | translate }}</b>{{duplicateJobData.jRequiredExperience}} years</p>
+          <hr>
+          <p><b>{{ 'HR_JOB.JOB24' | translate }}</b> {{duplicateJobData.jSalary}}</p>
+          <div *ngIf="!isEmpty">
+                                  <hr><hr>
+                                  <b>{{ 'HR_JOB.JOB25' | translate }}</b><hr>
+                              </div>
+                             <div *ngFor = "let candidate of duplicateJobData.jAppliedCandidateList"> 
+                               <p><b>{{ 'HR_JOB.JOB26' | translate }} </b>{{candidate.cName}}&nbsp;<b>{{ 'HR_JOB.JOB27' | translate }} </b>{{candidate.cEmail}} </p>
+                               <hr> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal fade" id="editJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ 'HR_JOB.JOB28' | translate }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" *ngIf="duplicateJobData">
+          <form ngNativeValidate #f="ngForm">
+            <div class="form-group row">
+              <label for="staticName" class="col-sm-3 col-form-label">{{ 'HR_JOB.JOB29' | translate }}</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="title" placeholder="{{ 'HR_JOB.JOB30' | translate }}"
+                  [(ngModel)]="duplicateJobData.jTitle">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="staticAge" class="col-sm-3 col-form-label">{{ 'HR_JOB.JOB31' | translate }}</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="jDescription" placeholder="{{ 'HR_JOB.JOB32' | translate }}"
+                  [(ngModel)]="duplicateJobData.jDescription">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="staticDepartment" class="col-sm-3 col-form-label">{{ 'HR_JOB.JOB33' | translate }}</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="jRequiredExperience"
+                  placeholder="Enter Experience Required" [(ngModel)]="duplicateJobData.jRequiredExperience">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="staticCountry" class="col-sm-3 col-form-label">{{ 'HR_JOB.JOB34' | translate }}</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" name="jSalary" placeholder="{{ 'HR_JOB.JOB35' | translate }}"
+                  [(ngModel)]="duplicateJobData.jSalary">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'HR_JOB.JOB36' | translate }}</button>
+              <button type="submit" class="btn btn-primary" (click)="onUpdateHandler(f)" data-dismiss="modal">{{ 'HR_JOB.JOB37' | translate }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

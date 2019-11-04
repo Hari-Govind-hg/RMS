@@ -29,13 +29,15 @@ import { NavService } from './component/nav/nav.service';
 import { LandingComponent } from './component/candidate/landing/landing.component';
 import { ProfileComponent } from './component/candidate/profile/profile.component';
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
-import { ContactComponent } from './component/contact/contact.component';
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
 import { AuthenticationService } from './component/authentication/authentication.service';
 import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CandidateRegisterDetailsComponent } from './component/candidate/candidate-register/candidate-register-details/candidate-register-details.component';
+import { QuerylistComponent } from './component/contactus/query-list/query-list.component';
+import { ReplyComponent } from './component/contactus/reply/reply.component';
+import { ContactComponent } from './component/contactus/contact/contact.component';
 
 export function HttpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http);
@@ -70,6 +72,8 @@ export function HttpLoaderFactory(http:HttpClient){
     LoginLandingComponent,
     ContactComponent,
     CandidateRegisterDetailsComponent,
+    QuerylistComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,

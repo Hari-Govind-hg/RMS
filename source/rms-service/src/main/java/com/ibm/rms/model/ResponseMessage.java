@@ -7,22 +7,22 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class ResponseMessage {	
 	String status;
-	String[] message;	
+	String message;	
 	Throwable cause;
 	String stacktrace;
 	
-	public ResponseMessage(String status, String[] message) {
+	public ResponseMessage(String status, String string) {
 		 this.status = status;
-		 this.message = message;
+		 this.message = string;
 	}
 	
-	public ResponseMessage(String status, String[] message, String stacktrace) {
+	public ResponseMessage(String status, String message, String stacktrace) {
 		 this.status = status;
 		 this.message = message;
 		 this.stacktrace = stacktrace;
 	}
 	
-	public ResponseMessage(String status, String[] message, Throwable cause) {
+	public ResponseMessage(String status, String message, Throwable cause) {
 		 this.status = status;
 		 this.message = message;
 		 this.cause = cause;
@@ -37,11 +37,11 @@ public class ResponseMessage {
 		this.status = status;
 	}
 
-	public String[] getMessage() {
+	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String[] message) {
+	public void setMessage(String message) {
 		this.message = message;
 	}
 	

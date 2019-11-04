@@ -2,30 +2,33 @@
   <div class="wrapper">
     <div id="formContent" style="padding-bottom: 50px;">
       <!-- Tabs Titles -->
-      <h2 class="active" routerLink="/hrlogin"> Sign In </h2>
-      <h2 class="inactive underlineHover" routerLink="/register">Sign Up </h2>
+      <h2 class="active" routerLink="/hrlogin">{{ 'HR_LOGIN.L01' | translate }}</h2>
+      <h2 class="inactive underlineHover" routerLink="/register">{{ 'HR_LOGIN.L02' | translate }}</h2>
 
       <!-- Icon -->
       <div class="fadeIn first">
         <img src="../../../../assets/images/avatar-icon.png" style="width: 40px;" id="icon" alt="User Icon" />
-        <h6>HR Login</h6>
+        <h6>{{ 'HR_LOGIN.L03' | translate }}</h6>
       </div>
 
       <!-- Login Form -->
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" formControlName="username"
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="{{ 'HR_LOGIN.L04' | translate }}" formControlName="username"
           [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="{{ 'HR_LOGIN.L05' | translate }}"
           formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <div class="alert alert-danger" *ngIf="isFailed" role="alert">
+              Bad Credentials
+          </div>
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8"> 
             <button [disabled]="loading" class="fadeIn fourth btn btn-primary btn-md">
               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-              Sign In
+              {{ 'HR_LOGIN.L06' | translate }}
             </button>
             <button class="fadeIn fourth btn btn-dark btn-sm" id="goBack" routerLink="/login" style="float: right;"><img
-                src="../../../../assets/images/goBack.png" style="width: 23px;" alt=""> Go Back</button>
+                src="../../../../assets/images/goBack.png" style="width: 23px;" alt=""> {{ 'HR_LOGIN.L07' | translate }}</button>
           </div>
         </div>
       </form>

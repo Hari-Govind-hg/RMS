@@ -1,25 +1,35 @@
- <div class="container">
-            <div class="wrapper">
-            <div id="formContent" style="padding-bottom: 50px;">
-                    <!-- Tabs Titles -->
-                    <h2 class="active" routerLink="/candidatelogin"> Sign In </h2>
-                    <h2 class="inactive underlineHover" routerLink="/candidateRegister">Sign Up </h2>
-                
-                    <!-- Icon -->
-                    <div class="fadeIn first">
-                      <img src="../../../../assets/images/avatar-icon.png" style="width: 40px;" id="icon" alt="User Icon" />
-                      <h6>Candidate Login</h6>
-                    </div>
-                
-                    <!-- Login Form -->
-                    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-                      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-                      <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-                      <button [disabled]="loading" class="fadeIn fourth btn btn-primary">
-                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                            Sign In
-                    </button>
-                    </form>
+<div class="container">
+  <div class="wrapper">
+  <div id="formContent" style="padding-bottom: 50px;">
+          <!-- Tabs Titles -->
+          <h2 class="active" routerLink="/candidatelogin">{{ 'CANDIDATELOGIN.CL1' | translate }}   </h2>
+          <h2 class="inactive underlineHover" routerLink="/candidateRegister">{{ 'CANDIDATELOGIN.CL2' | translate }}  </h2>
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="../../../../assets/images/avatar-icon.png" style="width: 40px;" id="icon" alt="User Icon" />
+            <h6>{{ 'CANDIDATELOGIN.CL3' | translate }} </h6>
+          </div>
+      
+          <!-- Login Form -->
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="{{ 'CANDIDATELOGIN.CL4' | translate }} " formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="{{ 'CANDIDATELOGIN.CL5' | translate }} " formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <div class="alert alert-danger" *ngIf="isFailed" role="alert">
+              Bad Credentials
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> 
+              <button [disabled]="loading" class="fadeIn fourth btn btn-primary btn-md">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                {{ 'CANDIDATELOGIN.CL6' | translate }}
+              </button>
+              <button class="fadeIn fourth btn btn-dark btn-sm" id="goBack" routerLink="/login" style="float: right;"><img
+                  src="../../../../assets/images/goBack.png" style="width: 23px;" alt=""> {{ 'HR_LOGIN.L07' | translate }}</button>
             </div>
-            </div>
-            </div>
+          </div>
+          </form>
+  </div>
+  </div>
+  </div>
