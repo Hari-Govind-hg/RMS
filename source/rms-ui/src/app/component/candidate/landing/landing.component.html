@@ -19,7 +19,8 @@
           <div class="emptybar"></div>
         </div>
         <div class="details" data-toggle="modal" data-target="#viewJobModal" (click)="onViewJobHandler(job.jId)">
-          <p><b>{{ 'LANDINGCOMP.LC6' | translate }} </b>{{job.jDescription}}</p>
+          <p><b>{{ 'LANDINGCOMP.LC6' | translate }}</b> {{job.jRequiredExperience}} Years</p>
+          <p *ngIf="job.applyFast" style="color: red;"><b>Hurry Up!</b> Only 1 day remaining!</p>
           <hr>
         </div>
       </div>

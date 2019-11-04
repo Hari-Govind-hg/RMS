@@ -99,9 +99,13 @@ export class JobComponent implements OnInit {
           timeOfClosingMonth = month-1;
           let timeOfClosingDay = timeOfClosing.substring(8,10);
           timeOfClosing = (timeOfClosingYear+"-"+timeOfClosingMonth+"-"+timeOfClosingDay);
-          job.lastDateToApply = timeOfClosing;
           this.lastDate = new Date(timeOfClosingYear,timeOfClosingMonth,timeOfClosingDay);
+          job.lastDateToApply = this.lastDate;
           job.isValidToSchedule = false;
+          
+          console.log(today.getTime());
+          console.log(this.lastDate.getTime());
+          console.log("time difference of 1 day = "+(this.lastDate.getTime()-today.getTime()))
          if(today.getTime()>this.lastDate.getTime())
          {
            console.log("inside if of Date comparator");

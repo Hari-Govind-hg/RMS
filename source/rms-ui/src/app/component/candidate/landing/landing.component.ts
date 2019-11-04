@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { CandidateService } from '../CandidateService/candidate.service';
 import { HttpClient } from '@angular/common/http';
 import { Candidate } from '../CandidateService/models/candidate';
-// import { Candidate } from '../CandidateService/models/candidate';
 
 
 @Component({
@@ -26,6 +25,9 @@ export class LandingComponent implements OnInit,OnDestroy {
   candidate:any;
   appliedStatus:boolean;
   cJob:any;
+  status:any;
+  lastDate:Date;
+  timeOfClosing:Date;
   constructor(private authenticationService: AuthenticationService,
     public nav: NavService,private router:Router,private route:ActivatedRoute,private candidateService:CandidateService,private http:HttpClient) 
     { 
@@ -47,7 +49,26 @@ export class LandingComponent implements OnInit,OnDestroy {
     this.candidateSubscription= this.candidateService.getAllJobsCandidate()
     .subscribe((res:any[])=>{
       console.log(res);
-      this.jobList = res;
+      let temp = JSON.parse(JSON.stringify(res));
+      let today = new Date();
+      temp.forEach(job=>{
+        let timeOfClosing = job.jApplicationCloseDate.substring(0, 10);
+          let timeOfClosingYear = timeOfClosing.substring(0,4);
+          let timeOfClosingMonth = timeOfClosing.substring(5,7);
+          let month:number =parseInt(timeOfClosingMonth);
+          timeOfClosingMonth = month-1;
+          let timeOfClosingDay = timeOfClosing.substring(8,10);
+          timeOfClosing = (timeOfClosingYear+"-"+timeOfClosingMonth+"-"+timeOfClosingDay);
+          this.lastDate = new Date(timeOfClosingYear,timeOfClosingMonth,timeOfClosingDay);
+          job.lastDateToApply = this.lastDate;
+          if((today.getTime()-this.lastDate.getTime())<=5184000){
+            job.applyFast = true;
+          }
+          else{
+            job.applyFast = false;
+          }
+      })
+      this.jobList = temp;
   });
   }
 
@@ -86,7 +107,26 @@ async onApplyHandler(jId){
     this.candidateSubscription= this.candidateService.getJobsBySkillCandidate(this.candidate.cId)
     .subscribe((res:any[])=>{
       console.log(res);
-      this.jobList = res;
+      let temp = JSON.parse(JSON.stringify(res));
+      let today = new Date();
+      temp.forEach(job=>{
+        let timeOfClosing = job.jApplicationCloseDate.substring(0, 10);
+          let timeOfClosingYear = timeOfClosing.substring(0,4);
+          let timeOfClosingMonth = timeOfClosing.substring(5,7);
+          let month:number =parseInt(timeOfClosingMonth);
+          timeOfClosingMonth = month-1;
+          let timeOfClosingDay = timeOfClosing.substring(8,10);
+          timeOfClosing = (timeOfClosingYear+"-"+timeOfClosingMonth+"-"+timeOfClosingDay);
+          this.lastDate = new Date(timeOfClosingYear,timeOfClosingMonth,timeOfClosingDay);
+          job.lastDateToApply = this.lastDate;
+          if((today.getTime()-this.lastDate.getTime())<=5184000){
+            job.applyFast = true;
+          }
+          else{
+            job.applyFast = false;
+          }
+      })
+      this.jobList = temp;
   });
 
   }
