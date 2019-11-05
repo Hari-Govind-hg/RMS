@@ -20,6 +20,15 @@ public class Credentials {
 	String username;
 	String password;
 	String role;
+	String answer;	
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
 	boolean active;
 
 	public String getId() {

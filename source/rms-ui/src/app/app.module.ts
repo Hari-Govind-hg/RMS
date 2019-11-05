@@ -38,6 +38,8 @@ import { CandidateRegisterDetailsComponent } from './component/candidate/candida
 import { QuerylistComponent } from './component/contactus/query-list/query-list.component';
 import { ReplyComponent } from './component/contactus/reply/reply.component';
 import { ContactComponent } from './component/contactus/contact/contact.component';
+import { CandidateforgotpasswordComponent } from './component/candidateforgotpassword/candidateforgotpassword.component';
+import { CandidateResetpasswordComponent } from './component/candidate/candidate-resetpassword/candidate-resetpassword.component';
 
 export function HttpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http);
@@ -73,7 +75,9 @@ export function HttpLoaderFactory(http:HttpClient){
     ContactComponent,
     CandidateRegisterDetailsComponent,
     QuerylistComponent,
-    ReplyComponent
+    ReplyComponent,
+    CandidateforgotpasswordComponent,
+    CandidateResetpasswordComponent
   ],
   imports: [
     BrowserModule,

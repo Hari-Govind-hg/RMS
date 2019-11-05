@@ -21,6 +21,8 @@ import { JobServiceService } from './component/HR/HRservice/job-service.service'
 import { ContactComponent } from './component/contactus/contact/contact.component';
 import { ReplyComponent } from './component/contactus/reply/reply.component';
 import { QuerylistComponent } from './component/contactus/query-list/query-list.component';
+import { CandidateforgotpasswordComponent } from './component/candidateforgotpassword/candidateforgotpassword.component';
+import { CandidateResetpasswordComponent } from './component/candidate/candidate-resetpassword/candidate-resetpassword.component';
 
 const routes: Routes = [
   {path:'', component:HomeImageComponent},
@@ -39,7 +41,9 @@ const routes: Routes = [
   {path:'querylist',component:QuerylistComponent},
   {path:'candidatelogin',component:CandidateLoginComponent},
   {path:'candidateRegister',component:CandidateRegisterComponent},
+  {path:'forgotpassword',component:CandidateforgotpasswordComponent},
   {path:'registerdetails',component:CandidateRegisterDetailsComponent},
+  {path:'resetpassword/:id',component:CandidateResetpasswordComponent},
   { path: '**', redirectTo: '' }
 ];
 

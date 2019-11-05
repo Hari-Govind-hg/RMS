@@ -30,6 +30,21 @@
                   <div *ngIf="f.password.errors.required">{{ 'CANDREGISTER.CRB' | translate }}</div>
                   <div *ngIf="f.password.errors.minlength">{{ 'CANDREGISTER.CRC' | translate }}</div>
               </div>
+              
+              <select class="fadeIn third" id="securityQuestion" formControlName="questionList" name="question" placeholder="Security Question">
+                <option value="" disabled selected>Select your Security Question</option>
+              <!-- <option *ngFor="let question of questions"  [value]="question">{{question}}</option> -->
+              <option value="1">What is the name of your first pet?</option>
+              <option value="2">What is the color of your first car?</option>
+              <option value="3">Who is your favourite sportsperson?</option>
+            </select>
+
+              <input type="text" id="answer" class="fadeIn third" formControlName="answer" name="login" placeholder="answer" [ngClass]="{ 'is-invalid': submitted && f.answer.errors }">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.answer.errors.required">{{ 'CANDREGISTER.CRB' | translate }}</div>
+                  <div *ngIf="f.answer.errors.minlength">{{ 'CANDREGISTER.CRC' | translate }}</div>
+              </div>
+
               <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">

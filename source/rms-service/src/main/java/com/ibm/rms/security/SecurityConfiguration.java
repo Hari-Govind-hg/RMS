@@ -61,6 +61,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     	                .antMatchers("/").permitAll()
     	                .antMatchers("/contacts/**").permitAll()
     	                .antMatchers("/contactReply/**").permitAll()
+    	                .antMatchers("/forgotpassword").permitAll()
+    	                .antMatchers("/resetpassword").permitAll()
     	                
     	                .anyRequest().authenticated()
     	                .and().formLogin()

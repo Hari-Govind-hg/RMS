@@ -14,6 +14,7 @@ export class CandidateRegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  questions: string[] = ['What is the name of your first pet?','What is the color of your first car?','Who is your favourite sportsperson?'];
 
   constructor(
       private formBuilder: FormBuilder,
@@ -33,7 +34,9 @@ export class CandidateRegisterComponent implements OnInit {
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
           username: ['', Validators.required],
-          password: ['', [Validators.required, Validators.minLength(6)]]
+          questionList: ['', Validators.required],
+          answer: ['', Validators.required],
+          password: ['', [Validators.required, Validators.minLength(6)]],
       });
   }
 

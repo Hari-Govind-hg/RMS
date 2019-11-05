@@ -2,6 +2,8 @@ package com.ibm.rms.service;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -32,4 +34,11 @@ public class CredentialsService implements UserDetailsService {
 				AuthorityUtils.createAuthorityList("ROLE_" + candidate.getRole()));
 
 	}
+	
+	
+	public Credentials findByUsername(@Valid String username) {
+		System.out.println(username);
+		return credentialsRepository.findByUsername(username).get();
+	}
+
 }
