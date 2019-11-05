@@ -94,7 +94,7 @@ async onApplyHandler(jId){
     this.candidateSubscription= this.candidateService.applyForJobCandidate(this.candidate.cId,jId)
     .subscribe((res:any[])=>{
       console.log(res);
-      console.log(res.status);
+      // console.log(res.status);
       if(res.status=="Success"){
         this.appliedStatus=true;
       }
