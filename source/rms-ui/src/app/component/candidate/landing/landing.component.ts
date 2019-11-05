@@ -61,7 +61,10 @@ export class LandingComponent implements OnInit,OnDestroy {
           timeOfClosing = (timeOfClosingYear+"-"+timeOfClosingMonth+"-"+timeOfClosingDay);
           this.lastDate = new Date(timeOfClosingYear,timeOfClosingMonth,timeOfClosingDay);
           job.lastDateToApply = this.lastDate;
-          if((today.getTime()-this.lastDate.getTime())<=5184000){
+          console.log(this.lastDate.getTime());
+          console.log(today.getTime());
+          console.log(this.lastDate.getTime()-today.getTime());
+          if((this.lastDate.getTime()-today.getTime())<=86400000){
             job.applyFast = true;
           }
           else{
@@ -119,7 +122,7 @@ async onApplyHandler(jId){
           timeOfClosing = (timeOfClosingYear+"-"+timeOfClosingMonth+"-"+timeOfClosingDay);
           this.lastDate = new Date(timeOfClosingYear,timeOfClosingMonth,timeOfClosingDay);
           job.lastDateToApply = this.lastDate;
-          if((today.getTime()-this.lastDate.getTime())<=5184000){
+          if((this.lastDate.getTime()-today.getTime())<=86400000){
             job.applyFast = true;
           }
           else{

@@ -4,6 +4,7 @@
       <div class="jumbotron">
         <h5 class="display-4">{{ 'LANDINGCOMP.LC1' | translate }} {{currentUser.principal.username}}.</h5>
         <button class="btn btn-primary btn-md" (click)="showJobByPreference(currentUser.principal.username)" role="button">{{ 'LANDINGCOMP.LC4' | translate }}</button>
+        <button class="btn btn-primary btn-md" (click)="showJobByPreference(currentUser.principal.username)" role="button">Update Profile</button>
       </div>
     </div>
   </div>
@@ -63,6 +64,7 @@
       </div>
     </div>
   </div>
+  
 
 <!-- Apply Alert -->
   <div class="modal fade" id="alertApply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
