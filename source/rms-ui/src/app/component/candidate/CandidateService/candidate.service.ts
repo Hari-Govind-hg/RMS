@@ -76,7 +76,28 @@ export class CandidateService {
         return res;
       }));
   }
+  updateCandidate(candidateData){
+      let _url = this.REST_API_URL + "/" + candidateData.cId +"/profile";
+      console.log(candidateData.cId)
+      let promise = new Promise((resolve, reject) => {
+        this.http.put(_url, candidateData)
+          .toPromise()
+          .then((res) => {            //3. Get the resp from rest api
+            console.log(res);
+            resolve(res);
+          })
+          .catch((err) => {           // Get the err from rest api
+            console.log(err);
+            reject(err);
+          })
+          .finally(() => {
+            console.log("Ends...");
+          });
+      });
+      return promise;
+    }
 
+  
   getCandidate(username){
     console.log("inside getcandidate");
     console.log(username);
