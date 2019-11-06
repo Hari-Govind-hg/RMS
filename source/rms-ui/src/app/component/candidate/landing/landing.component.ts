@@ -28,6 +28,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   status: any;
   lastDate: Date;
   timeOfClosing: Date;
+  loading:boolean;
   constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute, private candidateService: CandidateService, private http: HttpClient) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
@@ -71,18 +72,15 @@ export class LandingComponent implements OnInit, OnDestroy {
         this.jobList = temp;
       });
   }
+
   async onEditProfileHandler(name) {
     console.log("inside edit profile handler");
     console.log(name);
     let res = await this.candidateService.getCandidate(name);
     this.duplicateCandidateData=res;
     console.log(this.duplicateCandidateData);
-      // .subscribe((res: any) => {
-      //   console.log(res);
-      //   let candidate = JSON.parse(JSON.stringify(res));
-      //   this.duplicateCandidateData = candidate;
-      // });
   }
+
   onViewJobHandler(jId) {
     this.jobList.forEach(job => {
       if (job.jId == jId) {
@@ -95,7 +93,6 @@ export class LandingComponent implements OnInit, OnDestroy {
     console.log(formData);
     console.log(formData.value);
     var obj = formData.value;
-    //obj.cId = this.cId;
 
     //use promise based submission
     let res = await this.candidateService.updateCandidate(this.duplicateCandidateData);
@@ -105,26 +102,29 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   async onApplyHandler(jId) {
+    this.loading = true;
     console.log("inside applyhandler");
     let name = this.currentUser.principal.username;
     console.log(name);
     let res = await this.candidateService.getCandidate(name);
     this.candidate = res;
     console.log(this.candidate);
-
     this.candidateSubscription = this.candidateService.applyForJobCandidate(this.candidate.cId, jId)
       .subscribe((res: any[]) => {
         console.log(res);
-        // console.log(res.status);
         let userObj = JSON.parse(JSON.stringify(res));
         if (userObj.status == "Success") {
+          this.loading = false;
           this.appliedStatus = true;
         }
         else if (userObj.status) {
+          this.loading = false;
           this.appliedStatus = false;
         }
       });
   }
+
+
   async showJobByPreference(name) {
     let res = await this.candidateService.getCandidate(name);
     this.candidate = res;

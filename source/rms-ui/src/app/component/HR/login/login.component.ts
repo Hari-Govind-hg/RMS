@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AlertService, AuthenticationService } from '../HRservice/loginservice';
 
 @Component({
@@ -17,7 +16,6 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     isFailed:boolean = false;
-    navObject:NavComponent;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,

@@ -28,6 +28,9 @@ mdbPopover{
     width: 400px;
 }
 
+.modal{
+  text-align: center;
+}
 
 .card {
     display: flex;
