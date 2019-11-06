@@ -27,6 +27,10 @@ export class CandidateService {
   createCandidate(candidateData: any) {
     // 1. get the data from the component
     console.log(candidateData);
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    candidateData.username=currentUser.principal.username;
+    console.log(candidateData);
 
     //2.Send the above data t rest API
     //2.1identify the rest api url

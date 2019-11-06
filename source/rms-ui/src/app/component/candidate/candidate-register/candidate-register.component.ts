@@ -14,6 +14,7 @@ export class CandidateRegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  isDuplicateUser:boolean;
   questions: string[] = ['What is the name of your first pet?','What is the color of your first car?','Who is your favourite sportsperson?'];
 
   constructor(
@@ -38,6 +39,8 @@ export class CandidateRegisterComponent implements OnInit {
           answer: ['', Validators.required],
           password: ['', [Validators.required, Validators.minLength(6)]],
       });
+
+      
   }
 
   // convenience getter for easy access to form fields
@@ -46,6 +49,8 @@ export class CandidateRegisterComponent implements OnInit {
   onSubmit() {
       this.submitted = true;
       console.log("Called the Submit");
+
+      localStorage.setItem('fullName',this.registerForm.value.firstName+" "+this.registerForm.value.lastName)
 
       // stop here if form is invalid
       if (this.registerForm.invalid) {
@@ -63,6 +68,8 @@ export class CandidateRegisterComponent implements OnInit {
                   this.router.navigate(['/candidatelogin']);
               },
               error => {
+
+                  this.isDuplicateUser=true
                   this.alertService.error('Registration Failed',error);
                   this.loading = false;
               });

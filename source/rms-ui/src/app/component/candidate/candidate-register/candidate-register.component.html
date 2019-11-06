@@ -44,6 +44,9 @@
                   <div *ngIf="f.answer.errors.required">{{ 'CANDREGISTER.CRB' | translate }}</div>
                   <div *ngIf="f.answer.errors.minlength">{{ 'CANDREGISTER.CRC' | translate }}</div>
               </div>
+              <div class="alert alert-danger" *ngIf="isDuplicateUser" role="alert">
+                Username Already Taken
+            </div>
 
               <div class="row">
                 <div class="col-md-2"></div>

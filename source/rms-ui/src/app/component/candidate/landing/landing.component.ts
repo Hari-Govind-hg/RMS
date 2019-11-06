@@ -29,10 +29,10 @@ export class LandingComponent implements OnInit, OnDestroy {
   lastDate: Date;
   timeOfClosing: Date;
   loading:boolean;
+
   constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute, private candidateService: CandidateService, private http: HttpClient) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
-      console.log(this.currentUser);
     });
   }
 
@@ -40,13 +40,13 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.onViewAllJob();
+    this.onViewAppliedJob();
   }
 
 
   onViewAllJob() {
     this.candidateSubscription = this.candidateService.getAllJobsCandidate()
       .subscribe((res: any[]) => {
-        console.log(res);
         let temp = JSON.parse(JSON.stringify(res));
         let today = new Date();
         temp.forEach(job => {
@@ -59,26 +59,38 @@ export class LandingComponent implements OnInit, OnDestroy {
           timeOfClosing = (timeOfClosingYear + "-" + timeOfClosingMonth + "-" + timeOfClosingDay);
           this.lastDate = new Date(timeOfClosingYear, timeOfClosingMonth, timeOfClosingDay);
           job.lastDateToApply = this.lastDate;
-          console.log(this.lastDate.getTime());
-          console.log(today.getTime());
-          console.log(this.lastDate.getTime() - today.getTime());
           if ((this.lastDate.getTime() - today.getTime()) <= 86400000) {
             job.applyFast = true;
           }
           else {
             job.applyFast = false;
           }
+          if(job.jInterviewDate!=null){
+            job.isClosed=true;
+          }
+          else if(job.jInterviewDate==null){
+            job.isClosed=false;
+          }
         })
         this.jobList = temp;
       });
   }
+ async onViewAppliedJob(){
+    let name = this.currentUser.principal.username;
+    let res = await this.candidateService.getCandidate(name);
+    this.candidate = res;
+    console.log(this.candidate.cId);
+    this.candidateSubscription=this.candidateService.getJobsAppliedByCandidate(this.candidate.cId)
+    .subscribe((res: any[]) => {
+      let temp = JSON.parse(JSON.stringify(res));
+      this.appliedJobList=temp;
+      console.log(this.appliedJobList);
+    });
+  }
 
   async onEditProfileHandler(name) {
-    console.log("inside edit profile handler");
-    console.log(name);
     let res = await this.candidateService.getCandidate(name);
     this.duplicateCandidateData=res;
-    console.log(this.duplicateCandidateData);
   }
 
   onViewJobHandler(jId) {
@@ -90,28 +102,19 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   async onUpdateHandler(formData) {
-    console.log(formData);
-    console.log(formData.value);
     var obj = formData.value;
 
     //use promise based submission
     let res = await this.candidateService.updateCandidate(this.duplicateCandidateData);
-
-
-
   }
 
   async onApplyHandler(jId) {
     this.loading = true;
-    console.log("inside applyhandler");
     let name = this.currentUser.principal.username;
-    console.log(name);
     let res = await this.candidateService.getCandidate(name);
     this.candidate = res;
-    console.log(this.candidate);
     this.candidateSubscription = this.candidateService.applyForJobCandidate(this.candidate.cId, jId)
       .subscribe((res: any[]) => {
-        console.log(res);
         let userObj = JSON.parse(JSON.stringify(res));
         if (userObj.status == "Success") {
           this.loading = false;
@@ -122,6 +125,7 @@ export class LandingComponent implements OnInit, OnDestroy {
           this.appliedStatus = false;
         }
       });
+      this.onViewAppliedJob();
   }
 
 
@@ -131,7 +135,6 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.jobList = null;
     this.candidateSubscription = this.candidateService.getJobsBySkillCandidate(this.candidate.cId)
       .subscribe((res: any[]) => {
-        console.log(res);
         let temp = JSON.parse(JSON.stringify(res));
         let today = new Date();
         temp.forEach(job => {

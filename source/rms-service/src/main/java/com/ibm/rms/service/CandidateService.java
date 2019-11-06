@@ -48,7 +48,7 @@ public class CandidateService {
 	ArrayList<String> candidateSkills = new ArrayList<String>();
 	ArrayList<Job> jobList = new ArrayList<Job>();
 	ArrayList<Job> preferedJobList;
-	ArrayList<Job> appliedJobList = new ArrayList<Job>();
+	ArrayList<Job> appliedJobList;
 	
 	 MongoClient mongoClient = new MongoClient();
 	 DB db = mongoClient.getDB("test");
@@ -66,6 +66,7 @@ public class CandidateService {
 
 	public List<Job> getAllAppliedJobs(String id) throws RmsApplicationException {
 		try {
+			 appliedJobList= new ArrayList<Job>();
 			candidate = candidateRepo.findById(id).get();
 			jobList = (ArrayList<Job>) jobRepo.findAll();
 			jobList.forEach( j -> {
@@ -156,7 +157,7 @@ public class CandidateService {
 	}
 
 	public Candidate findByCandidate(@Valid String candidateName) {
-		return candidateRepo.findBycName(candidateName);
+		return candidateRepo.findByUsername(candidateName);
 	}
 
 }

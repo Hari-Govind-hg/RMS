@@ -15,6 +15,7 @@ export class CandidateRegisterDetailsComponent implements OnInit {
   currentUser:User
   candidateDetailsForm:FormGroup;
   isSaved:boolean;
+  fullName:string
   skills: string[] = ['Java', 'HTML/CSS', 'JavaScript', 'Spring', 'Angular', 'SQL','Networking','ML','C++','C'];
   
   
@@ -43,6 +44,12 @@ export class CandidateRegisterDetailsComponent implements OnInit {
   
 
   ngOnInit() {
+    this.fullName=localStorage.getItem('fullName')
+  }
+
+  ngOnDestroy()
+  {
+    localStorage.removeItem('fullName')
   }
 
 }

@@ -1,5 +1,7 @@
 package com.ibm.rms.model;
 
+
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Credentials {
 
 	String id;
+	@Indexed(unique=true)
 	String username;
 	String password;
 	String role;

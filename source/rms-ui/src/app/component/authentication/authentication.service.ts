@@ -80,5 +80,6 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
         this.loggedIn.next(false);
+        localStorage.removeItem('fullName')
     }
 }
