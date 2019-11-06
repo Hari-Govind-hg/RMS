@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { NavService } from '../../nav/nav.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { AlertService } from '../CandidateService/loginservice/alert.service';
@@ -26,7 +25,6 @@ export class CandidateLoginComponent implements OnInit {
       private router: Router,
       private authenticationService: AuthenticationService,
       private alertService: AlertService,
-      public nav: NavService,
       private candidateService:CandidateService
   ) {
       // redirect to home if already logged in
@@ -36,7 +34,6 @@ export class CandidateLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nav.hide();
       this.loginForm = this.formBuilder.group({
           username: ['', Validators.required],
           password: ['', Validators.required]

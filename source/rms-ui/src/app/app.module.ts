@@ -25,7 +25,6 @@ import { CardViewComponent } from './component/landingPage/card-view/card-view.c
 import { HomeImageComponent } from './component/landingPage/home-image/home-image.component';
 import { MaterialModule } from './component/landingPage/card-view/material/material.module';
 import { LoginLandingComponent } from './component/landingPage/login-landing/login-landing.component';
-import { NavService } from './component/nav/nav.service';
 import { LandingComponent } from './component/candidate/landing/landing.component';
 import { ProfileComponent } from './component/candidate/profile/profile.component';
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
@@ -112,7 +111,6 @@ export function HttpLoaderFactory(http:HttpClient){
     // provider used to create fake backend
     fakeBackendProvider,
     // provider for the selective navigation elements feature
-    NavService,
     AuthenticationService
   ],
   bootstrap: [AppComponent]

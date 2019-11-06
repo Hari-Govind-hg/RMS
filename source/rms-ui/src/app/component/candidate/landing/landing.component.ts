@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthenticationService } from '../../authentication/authentication.service';
-import { NavService } from '../../nav/nav.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../CandidateService/models/user';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -29,8 +28,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   status: any;
   lastDate: Date;
   timeOfClosing: Date;
-  constructor(private authenticationService: AuthenticationService,
-    public nav: NavService, private router: Router, private route: ActivatedRoute, private candidateService: CandidateService, private http: HttpClient) {
+  constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute, private candidateService: CandidateService, private http: HttpClient) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
       console.log(this.currentUser);
@@ -40,7 +38,6 @@ export class LandingComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.nav.show();
     this.onViewAllJob();
   }
 
@@ -118,11 +115,12 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.candidateSubscription = this.candidateService.applyForJobCandidate(this.candidate.cId, jId)
       .subscribe((res: any[]) => {
         console.log(res);
-        console.log(res.status);
-        if (res.status == "Success") {
+        // console.log(res.status);
+        let userObj = JSON.parse(JSON.stringify(res));
+        if (userObj.status == "Success") {
           this.appliedStatus = true;
         }
-        else if (res.status) {
+        else if (userObj.status) {
           this.appliedStatus = false;
         }
       });

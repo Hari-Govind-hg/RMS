@@ -12,7 +12,6 @@ import { LandingComponent } from './component/candidate/landing/landing.componen
 import { ProfileComponent } from './component/candidate/profile/profile.component';
 import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
 import { AboutComponent } from './component/about/about.component';
-
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
 import { CandidateRegisterDetailsComponent } from './component/candidate/candidate-register/candidate-register-details/candidate-register-details.component';

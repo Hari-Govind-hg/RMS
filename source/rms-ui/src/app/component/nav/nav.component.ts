@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 // import { AuthenticationService } from '../HR/HRservice/loginservice';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { User } from '../HR/HRservice/models';
-import { NavService } from './nav.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -13,10 +12,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavComponent implements OnInit {
   currentUser: User;
+  isLoggedIn:boolean;
+  isCandidate:boolean;
+  isHR:boolean;
   constructor(
     public translate: TranslateService,
     private router: Router,
-    public nav: NavService,
     private authenticationService: AuthenticationService
   ) {
     translate.addLangs(['en', 'fr', 'de', 'es']);
@@ -30,6 +31,7 @@ export class NavComponent implements OnInit {
   }
 
   logout() {
+    // this.logger();
     this.authenticationService.logout();
     this.router.navigate(['/']);
   }

@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../HRservice/loginservice';
-import { NavService } from '../../nav/nav.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +17,13 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     isFailed:boolean = false;
+    navObject:NavComponent;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService,
-        public nav: NavService
+        private alertService: AlertService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) { 
@@ -33,7 +32,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.nav.hide();
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]

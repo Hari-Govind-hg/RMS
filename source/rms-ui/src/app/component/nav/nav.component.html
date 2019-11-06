@@ -97,17 +97,18 @@
                         </div>
                 </div>
               </li>
-              <li *ngIf="nav.visible" class="nav-item avatar dropdown col-md-1">
+              <li *ngIf="currentUser!=null" class="nav-item avatar dropdown col-md-1">
               <div class="btn-group" mdbDropdown>
                   <a mdbDropdownToggle mdbWavesEffect type="button" class="dropdown-toggle waves-light" mdbWavesEffect style="height: auto; width: 40px">
                     <img src="../../../assets/images/avatar-icon.png" alt="" class="img-fluid rounded-circle z-depth-0" >
                   </a>
                       <div class="dropdown-menu dropdown-primary col-md-1">
-                        <a class="dropdown-item col-md-1" (click)="logout()">{{ 'NAV.N6' | translate }}</a>
+                        <p class="dropdown-item col-md-1">{{currentUser.principal.username}}</p>
+                        <p class="dropdown-item col-md-1" style="color: red;" (click)="logout()">{{ 'NAV.N6' | translate }}</p>
                       </div>
               </div>
               </li>
-              <li *ngIf="!nav.visible" class="nav-item" id="loginbutton" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+              <li *ngIf="currentUser==null" class="nav-item" id="loginbutton" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                   <a class="nav-link" routerLink="/login">{{ 'NAV.N4' | translate }}</a>
                 </li>
               <!-- </div> -->

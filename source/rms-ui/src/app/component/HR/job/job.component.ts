@@ -3,7 +3,6 @@ import { Subscription, Observable } from 'rxjs';
 import { JobServiceService } from '../HRservice/job-service.service';
 import { AuthenticationService, UserService } from '../HRservice/loginservice';
 import { User } from '../HRservice/models';
-import { NavService } from '../../nav/nav.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -40,7 +39,7 @@ export class JobComponent implements OnInit {
   lastDate:Date;
 
   constructor(private jobService: JobServiceService, private authenticationService: AuthenticationService,
-    private userService: UserService, public nav: NavService, private router: Router, private route: ActivatedRoute) {
+    private userService: UserService, private router: Router, private route: ActivatedRoute) {
     const _jobId = this.route.snapshot.params.id;
     this.search = false;
     this.count = 0;
@@ -63,7 +62,6 @@ export class JobComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nav.show();
     console.log("inside ngOnInit");
     this.isLoggedIn$ = this.authenticationService.loggedIn;
     console.log(this.isLoggedIn$);
