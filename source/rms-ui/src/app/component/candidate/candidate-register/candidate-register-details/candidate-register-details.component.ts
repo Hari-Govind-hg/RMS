@@ -34,6 +34,7 @@ export class CandidateRegisterDetailsComponent implements OnInit {
   
   async onAddCandidateDetails(){
     console.log(this.candidateDetailsForm.value);
+    this.candidateDetailsForm.value.cPhone ='+91'+this.candidateDetailsForm.value.cPhone;
     let res:any = await this.candidateService.createCandidate(this.candidateDetailsForm.value);
     console.log(res);
     if(res){
