@@ -21,6 +21,7 @@ export class CandidateService {
   //   this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
   //     this.currentUser = user;
   // });  
+  
 
   }
 

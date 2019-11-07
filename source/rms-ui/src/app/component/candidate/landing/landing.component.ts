@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   lastDate: Date;
   timeOfClosing: Date;
   loading:boolean;
-
+  isLoading:boolean;
   constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute, private candidateService: CandidateService, private http: HttpClient) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
@@ -43,8 +43,8 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.onViewAppliedJob();
   }
 
-
   onViewAllJob() {
+    this.isLoading=true;
     this.candidateSubscription = this.candidateService.getAllJobsCandidate()
       .subscribe((res: any[]) => {
         let temp = JSON.parse(JSON.stringify(res));
@@ -73,7 +73,9 @@ export class LandingComponent implements OnInit, OnDestroy {
           }
         })
         this.jobList = temp;
+        this.isLoading=false
       });
+      this.onViewAppliedJob();
   }
  async onViewAppliedJob(){
     let name = this.currentUser.principal.username;
