@@ -51,7 +51,11 @@
 		"CL3": "Login candidat",
 		"CL4": "Nom d'utilisateur",
 		"CL5": "Mot de passe",
-		"CL6": "se connecter"
+		"CL6": "se connecter",
+		"CL7": "Mot de passe oublié?",
+		"CL8": "Confirmez le mot de passe",
+		"CL9": "Le mot de passe ne correspond pas",
+		"CLA": "Reset"
 	},
 	"CANDJOBDETAIL": {
 		"CJD1": "Retourner",
@@ -142,7 +146,11 @@
 		"CRA": "Mot de passe",
 		"CRB": "Mot de passe requis",
 		"CRC": "Le mot de passe doit être au moins de 6 caractères",
-		"CRD": "S'inscrire"
+		"CRD": "S'inscrire",
+		"CRE": "Sélectionnez votre question de sécurité",
+		"CRF": "Répondre",
+		"CRG": "Nom d'utilisateur déjà pris",
+		"CRH": "Le nom d'utilisateur ou la question de sécurité est erroné"
 	},
 	"CONTACT": {
 		"C1": "Comment pouvons nous aider?",
@@ -291,7 +299,17 @@
 		"JOB34": "Un salaire",
 		"JOB35": "Entrer le salaire",
 		"JOB36": "Fermer",
-		"JOB37": "Sauvegarder les modifications"
+		"JOB37": "Sauvegarder les modifications",
+		"JOB38": "Des requêtes",
+		"JOB39": "Connecté en tant que HR",
+		"JOB40": "Recherche Avancée",
+		"JOB41": "Entrez les compétences",
+		"JOB42": "Entrez l'expérience",
+		"JOB43": "Statut:",
+		"JOB44": "Prévu",
+		"JOB45": "Non prévu",
+		"JOB46": "Désolé, cet emploi est toujours ouvert pour inscription",
+		"JOB47": "Dernière date d'application:"
 	},
 	"HR_LOGIN": {
 		"L01": "se connecter",
@@ -382,7 +400,12 @@
 		"LC9": "La description:",
 		"LCA": "Compétences requises:",
 		"LCB": "Expérience requise:",
-		"LCC": "Un salaire:"
+		"LCC": "Un salaire:",
+		"LCD": "Mettre à jour le profil",
+		"LCE": "Actualiser la liste des travaux",
+		"LCF": "Liste des emplois appliqués par le candidat:",
+		"LCG": "",
+		"LCH": ""
 	},
 	"LOGINCOMP": {
 		"LOC1": "Retourner",

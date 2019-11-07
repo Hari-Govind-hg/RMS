@@ -1,7 +1,7 @@
 {
 	"ABOUT": {
 		"A1": "About RMS Team",
-		"A2": "Teamwork is a compound word, combining team and work. Teams are a form of group normally dedicated to production or problem solving. That leaves us with the work. This is where our previous example on problem solving can serve us well. Each member of the team has skills, talents, experience, and education.",
+		"A2": "Teamwork is a compound word, combining team and work. Teams are a form of group normally dedicated to production or problem solving. That leaves us with the work. This is where our problem solving attitude can serve us well. Each member of the team has skills, talents, experience, and education.",
 		"A3": "OUR MISSION",
 		"A4": "When it comes to talent hunting, RMS understands that every organization has a unique hiring process. This is why we built multiple ways of filtering candidates, so you effectively reduce your time-to-fill, and find the right match for all your job openings.",
 		"A5": "About RMS",
@@ -50,8 +50,12 @@
 		"CL2": "Sign Up",
 		"CL3": "Candidate Login",
 		"CL4": "Username",
-		"CL5": "password",
-		"CL6": "Sign In"
+		"CL5": "Password",
+		"CL6": "Sign In",
+		"CL7": "Forget Password?",
+		"CL8": "Confirm Password",
+		"CL9": "Password doesn't match",
+		"CLA": "Reset Password"
 	},
 	"CANDJOBDETAIL": {
 		"CJD1": "Go back",
@@ -142,7 +146,11 @@
 		"CRA": "password",
 		"CRB": "Password is required",
 		"CRC": "Password must be at least 6 characters",
-		"CRD": "Sign Up"
+		"CRD": "Sign Up",
+		"CRE": "Select your Security Question",
+		"CRF": "Answer",
+		"CRG": "Username Already Taken",
+		"CRH": "Username or Security Question is wrong"
 	},
 	"CONTACT": {
 		"C1": "How can we help?",
@@ -291,7 +299,17 @@
 		"JOB34": "Salary",
 		"JOB35": "Enter Salary",
 		"JOB36": "Close",
-		"JOB37": "Save Changes"
+		"JOB37": "Save Changes",
+		"JOB38": "Queries",
+		"JOB39": "Signed in as HR",
+		"JOB40": "Advanced Search",
+		"JOB41": "Enter Skills",
+		"JOB42": "Enter Experience",
+		"JOB43": "Status:",
+		"JOB44": "Scheduled",
+		"JOB45": "Not Scheduled",
+		"JOB46": "Sorry,This Job is still open for registration",
+		"JOB47": "Last Date of Application:"
 	},
 	"HR_LOGIN": {
 		"L01": "Sign In",
@@ -382,7 +400,12 @@
 		"LC9": "Description:",
 		"LCA": "Skills Needed:",
 		"LCB": "Experience Needed:",
-		"LCC": "Salary:"
+		"LCC": "Salary:",
+		"LCD": "Update Profile",
+		"LCE": "Refresh Job List",
+		"LCF": "List of jobs applied by the Candidate:",
+		"LCG": "",
+		"LCH": ""
 	},
 	"LOGINCOMP": {
 		"LOC1": "Go Back",

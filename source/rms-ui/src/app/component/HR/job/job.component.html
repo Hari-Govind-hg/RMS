@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-        <button routerLink="/querylist">Queries</button>
+        <button routerLink="/querylist">{{ 'HR_JOB.JOB38' | translate }}</button>
     </div>
     <div class="col-md-8"></div>
     <div class="col-md-2">
-      Signed in as HR
+      {{ 'HR_JOB.JOB39' | translate }}
     </div>
   </div>
   <div class="row">
@@ -14,7 +14,7 @@
         <h5 class="display-4">{{ 'HR_JOB.JOB01' | translate }} {{currentUser.principal.username}}.</h5>
         <button class="btn btn-primary btn-md" routerLink="/jobs/addjob"
           role="button">{{ 'HR_JOB.JOB02' | translate }}</button>
-        <button class="btn btn-primary btn-md" (click)="onAdvancedButtonClick()" role="button">Advanced Search</button>
+        <button class="btn btn-primary btn-md" (click)="onAdvancedButtonClick()" role="button">{{ 'HR_JOB.JOB40' | translate }}</button>
         <!-- Search for jobs -->
         <form class="example-form col-md-12" #h="ngForm" style="margin-top: 20px;"
           [formGroup]="myExperienceSkillControl" [hidden]="!search">
@@ -22,11 +22,11 @@
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-6">
-              <input type="text" style="margin-top: 10px;" class="form-control" name="skill" placeholder="Enter Skill"
+              <input type="text" style="margin-top: 10px;" class="form-control" name="skill" placeholder="{{ 'HR_JOB.JOB41' | translate }}"
                 formControlName="skill"
                 [ngClass]="{ 'is-invalid': myExperienceSkillControl.get('skill').touched && myExperienceSkillControl.get('skill').invalid}">
               <input type="text" style="margin-top: 10px;" class="form-control" name="experience"
-                placeholder="Enter Experience" formControlName="experience"
+                placeholder="{{ 'HR_JOB.JOB42' | translate }}" formControlName="experience"
                 [ngClass]="{ 'is-invalid': myExperienceSkillControl.get('experience').touched && myExperienceSkillControl.get('experience').invalid}">
             </div>
             <div class="col-md-2">
@@ -80,8 +80,8 @@
         </div>
         <div class="details">
           <p><b>{{ 'HR_JOB.JOB08' | translate }} </b>{{job.jDescription}}</p>
-          <p *ngIf="job.isScheduled" style="color: green;"><b>Status: </b>Scheduled</p>
-          <p *ngIf="!job.isScheduled" style="color: red;"><b>Status: </b>Not Scheduled</p>
+          <p *ngIf="job.isScheduled" style="color: green;"><b>{{ 'HR_JOB.JOB43' | translate }} </b>{{ 'HR_JOB.JOB44' | translate }}</p>
+          <p *ngIf="!job.isScheduled" style="color: red;"><b>{{ 'HR_JOB.JOB43' | translate }} </b>{{ 'HR_JOB.JOB45' | translate }}</p>
           <hr>
         </div>
       </div>
@@ -112,7 +112,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Sorry,This Job is still open for registration</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{ 'HR_JOB.JOB46' | translate }}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -205,21 +205,21 @@
           </button>
         </div>
         <div class="modal-body" *ngIf="duplicateJobData">
-          <h5><b>{{ 'HR_JOB.JOB20' | translate }}</b> {{duplicateJobData.jTitle}}</h5>
+          <h5><b>{{ 'HR_JOB.JOB20' | translate }} </b> {{duplicateJobData.jTitle}}</h5>
           <hr>
-          <p><b>{{ 'HR_JOB.JOB21' | translate }}</b> {{duplicateJobData.jDescription}}</p>
+          <p><b>{{ 'HR_JOB.JOB21' | translate }} </b> {{duplicateJobData.jDescription}}</p>
           <hr>
-          <p><b>{{ 'HR_JOB.JOB22' | translate }}</b>{{duplicateJobData.skillList}}</p>
+          <p><b>{{ 'HR_JOB.JOB22' | translate }} </b>{{duplicateJobData.skillList}}</p>
           <hr>
-          <p><b>{{ 'HR_JOB.JOB23' | translate }}</b>{{duplicateJobData.jRequiredExperience}} years</p>
+          <p><b>{{ 'HR_JOB.JOB23' | translate }} </b>{{duplicateJobData.jRequiredExperience}} years</p>
           <hr>
-          <p><b>{{ 'HR_JOB.JOB24' | translate }}</b> {{duplicateJobData.jSalary}} ₹/annum</p>
+          <p><b>{{ 'HR_JOB.JOB24' | translate }} </b> {{duplicateJobData.jSalary}} ₹/annum</p>
           <hr>
-          <p><b>Last Date for applying :</b> {{duplicateJobData.lastDateToApply}}</p>
+          <p><b>{{ 'HR_JOB.JOB47' | translate }} </b> {{duplicateJobData.lastDateToApply}}</p>
           <div *ngIf="!isEmpty">
             <hr>
             <hr>
-            <b>{{ 'HR_JOB.JOB25' | translate }}</b>
+            <b>{{ 'HR_JOB.JOB25' | translate }} </b>
             <hr>
           </div>
           <div *ngFor="let candidate of duplicateJobData.jAppliedCandidateList">

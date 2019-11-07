@@ -51,7 +51,12 @@
 		"CL3": "Kandidaten-Login",
 		"CL4": "Nutzername",
 		"CL5": "Passwort",
-		"CL6": "Einloggen"
+		"CL6": "Einloggen",
+		"CL7": "Passwort vergessen?",
+		"CL8": "Passwort bestätigen",
+		"CL9": "Passwort stimmt nicht überein",
+		"CLA": "Reset"
+
 	},
 	"CANDJOBDETAIL": {
 		"CJD1": "Geh zurück",
@@ -142,7 +147,11 @@
 		"CRA": "Passwort",
 		"CRB": "Passwort wird benötigt",
 		"CRC": "Passwort muss mindestens 6 Zeichen lang sein",
-		"CRD": "Anmelden"
+		"CRD": "Anmelden",
+		"CRE": "Wählen Sie Ihre Sicherheitsfrage",
+		"CRF": "Antworten",
+		"CRG": "Benutzername bereits vergeben",
+		"CRH": "Benutzername oder Sicherheitsfrage ist falsch"
 	},
 	"CONTACT": {
 		"C1": "Wie können wir helfen?",
@@ -291,7 +300,17 @@
 		"JOB34": "Gehalt",
 		"JOB35": "Gehalt eingeben",
 		"JOB36": "Schließen",
-		"JOB37": "Änderungen speichern"
+		"JOB37": "Änderungen speichern",
+		"JOB38": "Abfragen",
+		"JOB39": "Angemeldet als HR",
+		"JOB40": "Erweiterte Suche",
+		"JOB41": "Fähigkeiten eingeben",
+		"JOB42": "Erfahrung eingeben",
+		"JOB43": "Status:",
+		"JOB44": "Geplant",
+		"JOB45": "Nicht geplant",
+		"JOB46": "Sorry, dieser Job ist noch zur Registrierung offen",
+		"JOB47": "Letztes Datum der Bewerbung:"
 	},
 	"HR_LOGIN": {
 		"L01": "Einloggen",
@@ -382,7 +401,12 @@
 		"LC9": "Beschreibung:",
 		"LCA": "Benötigte Fähigkeiten:",
 		"LCB": "Erforderliche Erfahrung:",
-		"LCC": "Gehalt:"
+		"LCC": "Gehalt:",
+		"LCD": "Profil aktualisieren",
+		"LCE": "Jobliste aktualisieren",
+		"LCF": "Liste der vom Bewerber ausgeschriebenen Stellen:",
+		"LCG": "",
+		"LCH": ""
 	},
 	"LOGINCOMP": {
 		"LOC1": "Geh zurück",

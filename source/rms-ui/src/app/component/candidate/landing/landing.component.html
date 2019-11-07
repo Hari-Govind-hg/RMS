@@ -4,10 +4,10 @@
         <div class="jumbotron">
           <h5 class="display-4">{{ 'LANDINGCOMP.LC1' | translate }} {{currentUser.principal.username}}.</h5>
           <button class="btn btn-primary btn-md" (click)="showJobByPreference(currentUser.principal.username)" role="button">{{ 'LANDINGCOMP.LC4' | translate }}</button>
-          <button class="btn btn-primary btn-md"  (click)="onEditProfileHandler(currentUser.principal.username)" role="button" data-toggle="modal" data-target="#updateCandidateModal">Update Profile</button>
+          <button class="btn btn-primary btn-md"  (click)="onEditProfileHandler(currentUser.principal.username)" role="button" data-toggle="modal" data-target="#updateCandidateModal">{{ 'LANDINGCOMP.LCD' | translate }}</button>
           <button class="btn btn-primary btn-md" (click)="onViewAllJob()">
               <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
-              Refresh Job List
+              {{ 'LANDINGCOMP.LCE' | translate }}
           </button>
         </div>
       </div>
@@ -44,7 +44,7 @@
     </div>
     <hr>
     <br><br>
-    <b>List of jobs applied by the Candidate:</b>
+    <b>{{ 'LANDINGCOMP.LCF' | translate }}</b>
     <hr>
     <div class="row">
 <!-- Card for listing all applied jobs -->

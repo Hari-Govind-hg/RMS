@@ -51,7 +51,11 @@
 		"CL3": "Inicio de sesión de candidato",
 		"CL4": "Nombre de usuario",
 		"CL5": "Contraseña",
-		"CL6": "Registrarse"
+		"CL6": "Registrarse",
+		"CL7": "¿Contraseña olvidada?",
+		"CL8": "Confirmar contraseña",
+		"CL9": "La contraseña no coincide",
+		"CLA": "Reset"
 	},
 	"CANDJOBDETAIL": {
 		"CJD1": "Regresa",
@@ -142,7 +146,11 @@
 		"CRA": "Contraseña",
 		"CRB": "se requiere contraseña",
 		"CRC": "La contraseña debe tener al menos 6 caracteres",
-		"CRD": "Regístrate"
+		"CRD": "Regístrate",
+		"CRE": "Seleccione su pregunta de seguridad",
+		"CRF": "Responder",
+		"CRG": "Nombre de usuario ya tomado",
+		"CRH": "Nombre de usuario o pregunta de seguridad incorrecta"
 	},
 	"CONTACT": {
 		"C1": "¿Cómo podemos ayudar?",
@@ -291,7 +299,17 @@
 		"JOB34": "Salario",
 		"JOB35": "Ingresar salario",
 		"JOB36": "Cerrar",
-		"JOB37": "Guardar cambios"
+		"JOB37": "Guardar cambios",
+		"JOB38": "Consultas",
+		"JOB39": "Ingresado como HR",
+		"JOB40": "Búsqueda Avanzada",
+		"JOB41": "Introducir habilidad",
+		"JOB42": "Ingrese experiencia",
+		"JOB43": "Estado:",
+		"JOB44": "Programado",
+		"JOB45": "No programada",
+		"JOB46": "Lo sentimos, este trabajo aún está abierto para registrarse",
+		"JOB47": "Última fecha de solicitud:"
 	},
 	"HR_LOGIN": {
 		"L01": "Registrarse",
@@ -382,7 +400,12 @@
 		"LC9": "Descripción:",
 		"LCA": "Habilidades necesarias:",
 		"LCB": "Experiencia necesaria:",
-		"LCC": "Salario:"
+		"LCC": "Salario:",
+		"LCD": "Actualización del perfil",
+		"LCE": "Actualizar lista de trabajos",
+		"LCF": "Lista de trabajos aplicados por el candidato:",
+		"LCG": "",
+		"LCH": ""
 	},
 	"LOGINCOMP": {
 		"LOC1": "Regresa",
