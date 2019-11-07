@@ -29,7 +29,7 @@ import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 @Service
-public class CandidateService {
+public class CandidateService implements ICandidateService {
 	
 	@Autowired
 	CandidateRepository candidateRepo;
@@ -52,6 +52,7 @@ public class CandidateService {
 	MongoClient mongoClient = new MongoClient();
 	DB db = mongoClient.getDB("rms");
 	
+	@Override
 	public boolean candidateCreate(@Valid Candidate candidate) throws RmsApplicationException {
 		try {
 			candidate.setcId(SequenceGeneratorService.generateSequence(db,Candidate.SEQUENCE_NAME));
@@ -63,6 +64,7 @@ public class CandidateService {
 		}
 	}
 
+	@Override
 	public List<Job> getAllAppliedJobs(String id) throws RmsApplicationException {
 		try {
 			 appliedJobList= new ArrayList<Job>();
@@ -80,6 +82,7 @@ public class CandidateService {
 		}
 	}
 
+	@Override
 	public List<Job> getAllJobsForApply() throws RmsApplicationException {
 		try {
 			return jobRepo.findAll();
@@ -88,6 +91,7 @@ public class CandidateService {
 		}
 	}
 	
+	@Override
 	public List<Job> getJobsByPreference(String id) throws RmsApplicationException {
 		try {
 			preferedJobList=new ArrayList<Job>();
@@ -108,6 +112,7 @@ public class CandidateService {
 		}
 	}
 
+	@Override
 	public boolean applyForJob(String id, String jid) throws RmsApplicationException {
 		candidate = candidateRepo.findById(id).get();
 		job = jobRepo.findById(jid).get();
@@ -139,10 +144,12 @@ public class CandidateService {
 		return false;
 	}
 
+	@Override
 	public Candidate getCandidateById(String id) {
 		return candidateRepo.findById(id).get();
 	}
 
+	@Override
 	public boolean updateProfile(Candidate c) throws RmsApplicationException {
 		try {
 			candidateRepo.save(c);
@@ -152,6 +159,7 @@ public class CandidateService {
 		}
 	}
 
+	@Override
 	public Candidate findByCandidate(@Valid String candidateName) {
 		return candidateRepo.findByUsername(candidateName);
 	}

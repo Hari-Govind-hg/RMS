@@ -25,7 +25,7 @@ import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 @Service
-public class JobService {
+public class JobService implements IJobService {
 	
 	@Autowired
 	EmailService emailService;
@@ -37,6 +37,7 @@ public class JobService {
 	 MongoClient mongoClient = new MongoClient();
 	 DB db = mongoClient.getDB("rms");
 	
+	 @Override
 	public boolean jobCreate(Job job) throws RmsApplicationException {
 		try {
 			job.setjId(sequenceGeneratorService.generateSequence(db,Job.SEQUENCE_NAME));
@@ -48,6 +49,7 @@ public class JobService {
 		}
 	}
 
+	 @Override
 	public List<Job> getAll() throws RmsApplicationException {
 		try {
 			return jobRepo.findAll();
@@ -64,6 +66,7 @@ public class JobService {
 		}
 	}
 
+	@Override
 	public boolean updateJob(Job updatedJob) throws RmsApplicationException {
 		try {
 			jobRepo.save(updatedJob);
@@ -74,6 +77,7 @@ public class JobService {
 		}
 	}
 
+	@Override
 	public boolean deleteJob(String id) throws RmsApplicationException {
 		try {
 			jobRepo.deleteById(id);
@@ -84,6 +88,7 @@ public class JobService {
 		}
 	}
 
+	@Override
 	public ArrayList<Job> filterBySkill(String skill) {
 		ArrayList<Job> filteredJobs = new ArrayList<Job>();
 		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
@@ -95,6 +100,7 @@ public class JobService {
 		return filteredJobs;
 	}
 	
+	@Override
 	public ArrayList<Job> filterBySkillAndExperience(String skill, String experience) {
 		ArrayList<Job> filteredJobs = new ArrayList<Job>();
 		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
@@ -106,6 +112,7 @@ public class JobService {
 		return filteredJobs;
 	}
 	
+	@Override
 	public ArrayList<Job> filterByExperience(String experience) {
 		ArrayList<Job> filteredJobs = new ArrayList<Job>();
 		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
@@ -117,6 +124,7 @@ public class JobService {
 		return filteredJobs;
 	}
 
+	@Override
 	public void setInterviewDate(Job job) throws RmsApplicationException {
 		try {
 			jobRepo.save(job);
