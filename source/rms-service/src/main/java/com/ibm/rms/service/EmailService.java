@@ -62,7 +62,6 @@ public class EmailService {
 			e.printStackTrace();
 			throw new RmsApplicationException("E-mail configuration failed",e);
 		}
-		
 			
 //		MimeBodyPart messageBodyPart = new MimeBodyPart();
 //		messageBodyPart.setContent(emailmessage.getBody(), "text/html");

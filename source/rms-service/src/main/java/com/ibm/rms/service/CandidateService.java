@@ -44,14 +44,13 @@ public class CandidateService {
 	Job job;
 	SequenceGeneratorService sequenceGeneratorService;
 	
-	
 	ArrayList<String> candidateSkills = new ArrayList<String>();
 	ArrayList<Job> jobList = new ArrayList<Job>();
 	ArrayList<Job> preferedJobList;
 	ArrayList<Job> appliedJobList;
 	
-	 MongoClient mongoClient = new MongoClient();
-	 DB db = mongoClient.getDB("rms");
+	MongoClient mongoClient = new MongoClient();
+	DB db = mongoClient.getDB("rms");
 	
 	public boolean candidateCreate(@Valid Candidate candidate) throws RmsApplicationException {
 		try {
@@ -75,12 +74,10 @@ public class CandidateService {
 					appliedJobList.add(j);
 				}
 			});
-//			Optional<Candidate> c = candidateRepo.findById(id);
 			return appliedJobList;
 		} catch (DataAccessException e) {
 			throw new RmsApplicationException("You have not applied for any job", e);
 		}
-		
 	}
 
 	public List<Job> getAllJobsForApply() throws RmsApplicationException {
@@ -128,7 +125,7 @@ public class CandidateService {
 					+"Regards,"+"\n"
 					+"RMS Team"
 					+"\n\n\n\n"
-					+"THIS IS A SYTEM GENERATED MAIL.PLEASE DO NOT REPLY TO THIS MAIL.THANK YOU."
+					+"THIS IS A SYSTEM GENERATED MAIL.PLEASE DO NOT REPLY TO THIS MAIL.THANK YOU."
 					+"For any queries,please feel free to reach us from the Contact Us page of our website");
 			emailService.sendmail(emailMessage);
 			String msg = "Dear "+candidate.getcName()+"\n"+" You have successfully applied for "+job.getjTitle()+"\n\n"+"Regards,"+"\n"+"RMS Team"+"\n\n"+"This is a system generated response.Please do NOT reply to this message.Thank you.";
@@ -146,14 +143,13 @@ public class CandidateService {
 		return candidateRepo.findById(id).get();
 	}
 
-	public boolean updateProfile(Candidate c) {
+	public boolean updateProfile(Candidate c) throws RmsApplicationException {
 		try {
 			candidateRepo.save(c);
 			return true;
 		} catch (Exception e) {
-			
+			throw new RmsApplicationException("Updation of profile failed; try after some time",e);
 		}
-		return false;
 	}
 
 	public Candidate findByCandidate(@Valid String candidateName) {

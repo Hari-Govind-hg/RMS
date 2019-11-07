@@ -1,5 +1,6 @@
 package com.ibm.rms.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +10,7 @@ public class Contact {
 	@Transient
     public static final String SEQUENCE_NAME = "contacts_sequence";
 	
+	@Id
 	private String id;
 	private String name;
 	private String email;
@@ -29,7 +31,6 @@ public class Contact {
 		
 	}
 
-	
 	public String getId() {
 		return id;
 	}

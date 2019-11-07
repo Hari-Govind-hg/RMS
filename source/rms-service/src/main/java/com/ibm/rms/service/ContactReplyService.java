@@ -7,6 +7,7 @@ import org.apache.tomcat.util.descriptor.web.FilterDef;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ibm.rms.exception.RmsApplicationException;
 import com.ibm.rms.model.ContactReply;
 import com.ibm.rms.model.EmailMessage;
 import com.ibm.rms.repository.ContactReplyRepository;
@@ -27,7 +28,7 @@ public class ContactReplyService {
 	 MongoClient mongoClient = new MongoClient();
 	 DB db = mongoClient.getDB("rms");
 	
-	public boolean contactReplyCreate(ContactReply contactReply) {
+	public boolean contactReplyCreate(ContactReply contactReply) throws RmsApplicationException {
 		try {
 			contactReply.setId(sequenceGeneratorService.generateSequence(db,ContactReply.SEQUENCE_NAME));
 			contactReplyRepo.save(contactReply);
@@ -39,20 +40,15 @@ public class ContactReplyService {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new RmsApplicationException("Sending reply failed; try after some time",e);
 		}
-		return false;
 	}
 
-	public List<ContactReply> getAll() {
-			
+	public List<ContactReply> getAll() {	
 		return contactReplyRepo.findAll();
 	}
 
 	public ContactReply getById(String id) {
 		return contactReplyRepo.findById(id).get();
-	}
-
-	
-
-	
+	}	
 }

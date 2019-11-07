@@ -7,13 +7,12 @@ import javax.validation.constraints.NotBlank;
 public class SmsRequest {
 
     @NotBlank
-    private final String phoneNumber; // destination
+    private final String phoneNumber;
 
     @NotBlank
     private final String message;
 
-    public SmsRequest(@JsonProperty("phoneNumber") String phoneNumber,
-                      @JsonProperty("message") String message) {
+    public SmsRequest(@JsonProperty("phoneNumber") String phoneNumber,@JsonProperty("message") String message) {
         this.phoneNumber = phoneNumber;
         this.message = message;
     }
@@ -28,9 +27,6 @@ public class SmsRequest {
 
     @Override
     public String toString() {
-        return "SmsRequest{" +
-                "phoneNumber= ..." + '\'' +
-                ", message='" + message + '\'' +
-                '}';
+        return "SmsRequest{" + "phoneNumber= ..." + '\'' + ", message='" + message + '\'' +'}';
     }
 }

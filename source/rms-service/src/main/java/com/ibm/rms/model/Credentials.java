@@ -23,7 +23,17 @@ public class Credentials {
 	String username;
 	String password;
 	String role;
-	String answer;	
+	String answer;
+	
+	public Credentials(String id, String username, String password, String role, boolean active) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.active = active;
+	}
+	
 	public String getAnswer() {
 		return answer;
 	}
@@ -71,15 +81,6 @@ public class Credentials {
 	}
 
 	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	public Credentials(String id, String username, String password, String role, boolean active) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.role = role;
 		this.active = active;
 	}
 

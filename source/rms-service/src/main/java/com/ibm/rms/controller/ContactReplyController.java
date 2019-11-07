@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ibm.rms.exception.RmsApplicationException;
 import com.ibm.rms.model.ContactReply;
 import com.ibm.rms.model.ResponseMessage;
 import com.ibm.rms.service.ContactReplyService;
@@ -34,37 +35,18 @@ public class ContactReplyController {
 	
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> createContactReply(@RequestBody @Valid ContactReply contactReply){
+	public ResponseEntity<ResponseMessage> createContactReply(@RequestBody @Valid ContactReply contactReply) throws RmsApplicationException{
 
 		ResponseMessage resMsg;
-//		System.out.println(contactReply);
-		//System.out.println(job);
-		// Exception Handling moved to @ExceptionHandler
-//		try {
-		contactReplyService.contactReplyCreate(contactReply);
-//		} catch (ApplicationException e) {
-//			resMsg = new ResponseMessage("Failure", e.getMessage());
-//			return ResponseEntity.badRequest().body(resMsg);
-//		}
 
-		// Exception Handling moved to @ExceptionHandler
-//		if(bindingResult.hasErrors()) {
-//			resMsg = new ResponseMessage("Failure", "Validation Error");
-//			return ResponseEntity.badRequest().body(resMsg);			
-//		}
+		contactReplyService.contactReplyCreate(contactReply);
 
 		resMsg = new ResponseMessage("Success", new String("Job created successfully"));
 		
-
-		// Build newly created Employee resource URI - Employee ID is always 0 here.
-		// Need to get the new Employee ID.
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(contactReply.getId()).toUri();
 
-		
 		return ResponseEntity.created(location).body(resMsg);
-		
-
 	}
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })

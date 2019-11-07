@@ -16,8 +16,6 @@ import com.ibm.rms.model.Credentials;
 
 import com.ibm.rms.model.Job;
 
-
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
@@ -32,9 +30,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     	return candidateCredentials;
     }
     
-   
-   
-    
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -45,12 +40,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
-    
     }
  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	  
+    	
     	        http.authorizeRequests()
     	        		.antMatchers("/register").permitAll()
                 		.antMatchers("/authenticate").permitAll()
@@ -69,9 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     	        		.and().httpBasic();
     	        		
     	        http
-    			// Disable CSRF check
     			.csrf().disable();
-//    			.sessionManagement().disable();
     }
 
 }

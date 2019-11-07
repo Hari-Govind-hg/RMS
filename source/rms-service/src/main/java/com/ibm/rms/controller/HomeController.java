@@ -70,34 +70,32 @@ public class HomeController {
 		Credentials credentials = credentialsService.findByUsername(cred.getUsername());
 		
 		String encodedPassword = bCryptPasswordEncoder.encode(cred.getPassword());
-		System.out.println(cred.getPassword());
+		
 		credentials.setPassword(encodedPassword);
 		
 		credentialsRepository.save(credentials);
 		
 		if(credentials!=null)
-		return true;
+			return true;
 		else
-		return false;	
+			return false;	
 	}
 
 	@PostMapping(path ="/forgotpassword", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public boolean forgotPassword(@RequestBody @Valid Credentials cred) {
-		System.out.println("Inside forgotpassword");
-		boolean res=false;
-		Credentials credentials = credentialsService.findByUsername(cred.getUsername());
-		System.out.println(credentials.getAnswer());
-		System.out.println(cred.getAnswer());
 		
-		if(credentials==null)
+		boolean res=false;
+		
+		Credentials credentials = credentialsService.findByUsername(cred.getUsername());
+		
+		if(credentials==null) {
 			res=false;
-		else if(credentials.getAnswer().equals(cred.getAnswer()))
-		{ 
+		}
+		else if(credentials.getAnswer().equals(cred.getAnswer())) { 
 			res=true;
 			System.out.println("Inside else if");
 		}
-		else
-		{
+		else {
 			res=false	;
 		}		
 		return res;
@@ -107,17 +105,12 @@ public class HomeController {
 	
 	@PostMapping(path = "/register", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public void createEmployee(@RequestBody @Valid Credentials cred) {
-		String encodedPassword = bCryptPasswordEncoder.encode(cred.getPassword());
-		cred.setPassword(encodedPassword);
-	
 		
-//		Credentials credentials  ne
-//		credentials.setUsername(cred.getUsername());
-//		credentials.setPassword(encodedPassword);
-//		credentials.setRole(cred.getRole());
-
+		String encodedPassword = bCryptPasswordEncoder.encode(cred.getPassword());
+		
+		cred.setPassword(encodedPassword);
+		
 		credentialsRepository.save(cred);
-
 	}
 
 }

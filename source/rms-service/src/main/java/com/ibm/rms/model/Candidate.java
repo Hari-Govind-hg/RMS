@@ -16,17 +16,6 @@ public class Candidate {
 	private String cId;
 	private String cName;
 	private String username;
-	public String getUsername() {
-		return username;
-	}
-
-
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	private String cEmail;
 	private String cPhone;
 	private Address cAddress;
@@ -38,21 +27,6 @@ public class Candidate {
 	public Candidate() {
 		super();
 	}
-	
-	
-	
-
-//	public Candidate(String cId, String cName, String cEmail, String cPhone, Address cAddress,
-//			ArrayList<String> skillList, String cExperience) {
-//		super();
-//		this.cId = cId;
-//		this.cName = cName;
-//		this.cEmail = cEmail;
-//		this.cPhone = cPhone;
-//		this.cAddress = cAddress;
-//		this.skillList = skillList;
-//		this.cExperience = cExperience;
-//	}
 
 	public String getcId() {
 		return cId;
@@ -70,6 +44,14 @@ public class Candidate {
 		this.cName = cName;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	public String getcEmail() {
 		return cEmail;
 	}
