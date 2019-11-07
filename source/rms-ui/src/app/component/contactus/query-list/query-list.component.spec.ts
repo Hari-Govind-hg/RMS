@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QueryListComponent } from './query-list.component';
+import { QuerylistComponent } from './query-list.component';
 
 describe('QueryListComponent', () => {
-  let component: QueryListComponent;
-  let fixture: ComponentFixture<QueryListComponent>;
+  let component: QuerylistComponent;
+  let fixture: ComponentFixture<QuerylistComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QueryListComponent ]
+      declarations: [ QuerylistComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QueryListComponent);
+    fixture = TestBed.createComponent(QuerylistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

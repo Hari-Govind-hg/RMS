@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { contactReplyService } from '../contact-reply.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reply',
@@ -15,22 +16,40 @@ export class ReplyComponent implements OnInit {
   replyForm: FormGroup;
   isSaved:boolean;
   submitted=false;
-  constructor(private contactReplyService: contactReplyService) {
+  emailId: any;
+  tempForm:any;
+
+  constructor(private contactReplyService: contactReplyService,private route:ActivatedRoute) 
+  {
+    this.emailId = route.snapshot.params.id;
     this.replyForm = new FormGroup({
       //Step2: Create Form Controls 
-      email: new FormControl('', Validators.required),
+      email:new FormControl(''),
       subject: new FormControl('', Validators.required),
       message: new FormControl('', Validators.required),
       
     });
   }
-
   ngOnInit() {
+    console.log(this.emailId);
   }
+  // get f() { return this.replyForm.controls;}
+  // passEmail(email)
+  // {
+  //   console.log(email);
+  //   this.emailId = email;
+  //   console.log(this.emailId);
+  //   this.replyForm.value.email=this.emailId;
+  //   this.tempForm = this.replyForm;
+  //   this.tempForm = this.tempForm.value;
+  //   console.log(this.tempForm);
+  //   console.log(this.replyForm.value);
+  // }
+  
+ 
   async onSubmit() {
     this.submitted=true;
-    // console.log(this.replyForm);
-    // console.log(this.replyForm.value);
+    console.log(this.replyForm.value);
     console.log("click on submit");
     if (this.replyForm.invalid) {
                     console.log("invalid");

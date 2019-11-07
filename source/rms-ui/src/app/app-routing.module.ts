@@ -36,7 +36,7 @@ const routes: Routes = [
   {path:'listjobs',component:ViewjobsComponent},
   {path: 'about', component:AboutComponent},
   {path: 'contact', component:ContactComponent},
-  {path:'reply',component:ReplyComponent},
+  {path:'reply/:id',component:ReplyComponent},
   {path:'querylist',component:QuerylistComponent},
   {path:'candidatelogin',component:CandidateLoginComponent},
   {path:'candidateRegister',component:CandidateRegisterComponent},

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Subscription } from 'rxjs';
 import { contactServiceService } from '../contact-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ReplyComponent } from '../reply/reply.component';
 
 @Component({
   selector: 'app-query-list',
@@ -16,7 +17,9 @@ export class QuerylistComponent implements OnInit,OnDestroy {
   contactSubscription:Subscription;
   isSaved:boolean=false;
   isDeleted:boolean=false;
-  constructor(private contactServiceService:contactServiceService,private route:ActivatedRoute,private router:Router) { }
+
+ 
+  constructor(private  replycomp: ReplyComponent,private contactServiceService:contactServiceService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     // const _contactId = this.route.snapshot.params.id;
@@ -36,6 +39,12 @@ export class QuerylistComponent implements OnInit,OnDestroy {
       this.isDeleted = true;
       this.ngOnInit();
     }
+  }
+
+  async onReplyHandler(email){
+    console.log(email);
+    console.log(this.replycomp);
+    this.router.navigate(['/reply/'+email]);
   }
 
   ngOnDestroy(){

@@ -110,6 +110,7 @@ export function HttpLoaderFactory(http:HttpClient){
 
     // provider used to create fake backend
     fakeBackendProvider,
+    ReplyComponent,
     // provider for the selective navigation elements feature
     AuthenticationService
   ],

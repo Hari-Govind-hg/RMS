@@ -6,13 +6,13 @@
             <div>
                <h3 class="text-center">Reply to Query</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body" >
                 <form [formGroup]="replyForm">
                     <div class="md-form">
                         To:
                         <input type="text" formControlName="email" placeholder="Your Email" id="email"
-                            class="form-control"
-                            [ngClass]="{ 'is-invalid':replyForm.get('email').touched && replyForm.get('email').invalid && submitted && f.email.errors }">
+                            class="form-control" [(ngModel)]="emailId"
+                            [ngClass]="{ 'is-invalid':replyForm.get('email').touched && replyForm.get('email').invalid }">
                         <div class="invalid-feedback">
                             <div>Email is required</div>
                         </div>
@@ -21,7 +21,7 @@
                         Subject:
                         <input type="text" id="subject" class="form-control" placeholder="Your Subject"
                             formControlName="subject"
-                            [ngClass]="{ 'is-invalid':replyForm.get('subject').touched && replyForm.get('subject').invalid && submitted && f.subject.errors }">
+                            [ngClass]="{ 'is-invalid':replyForm.get('subject').touched && replyForm.get('subject').invalid  }">
                         <div class="invalid-feedback">
                             <div>Subject is required</div>
                         </div>
@@ -30,7 +30,7 @@
                         Message:
                         <textarea id="message" formControlName="message" placeholder="Your Message"
                             class="form-control md-textarea" rows="3"
-                            [ngClass]="{ 'is-invalid': replyForm.get('message').touched && replyForm.get('message').invalid && submitted && f.message.errors }"></textarea>
+                            [ngClass]="{ 'is-invalid': replyForm.get('message').touched && replyForm.get('message').invalid }"></textarea>
                         <div class="invalid-feedback">
                             <div>Message is required</div>
                         </div>
