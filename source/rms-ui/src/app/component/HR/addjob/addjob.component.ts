@@ -24,14 +24,14 @@ export class AddjobComponent implements OnInit {
       jSalary:new FormControl('',Validators.required),
       jRequiredExperience:new FormControl('',Validators.required),
       jApplicationCloseDate:new FormControl('',Validators.required)
-      // jOrganisation:new FormControl('',Validators.required),
+      
     });
    }
 
    async onAddJobHandler(){
-     console.log(this.jobPostingForm.value);
+   
      let res:any = await this.rmsService.createJob(this.jobPostingForm.value);
-     console.log(res);
+     
      if(res){
        this.isSaved=true;
        this.router.navigate(['/jobs']);

@@ -62,15 +62,15 @@ export class JobComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("inside ngOnInit");
+    
     this.isLoggedIn$ = this.authenticationService.loggedIn;
-    console.log(this.isLoggedIn$);
+    
 
     // Calls all the jobs in the db
     this.allJobs();
 
     const _jobId = this.route.snapshot.params.id;
-    console.log(_jobId);
+    
   }
 
 
@@ -78,17 +78,17 @@ export class JobComponent implements OnInit {
   allJobs(){
     this.jobSubscription = this.jobService.getJobs()
       .subscribe((res: any[]) => {
-        console.log(res);
+        
         let temp = JSON.parse(JSON.stringify(res));
         let today = new Date();
         temp.forEach(job => {
           if(job.jInterviewDate==null){
           job.isScheduled = false;
-            console.log(job);
+           
           }
           else{
             job.isScheduled = true;
-            console.log(job);
+            
           }
           let timeOfClosing = job.jApplicationCloseDate.substring(0, 10);
           let timeOfClosingYear = timeOfClosing.substring(0,4);
@@ -101,16 +101,13 @@ export class JobComponent implements OnInit {
           job.lastDateToApply = this.lastDate;
           job.isValidToSchedule = false;
           
-          console.log(today.getTime());
-          console.log(this.lastDate.getTime());
-          console.log("time difference of 1 day = "+(this.lastDate.getTime()-today.getTime()))
          if(today.getTime()>this.lastDate.getTime())
          {
-           console.log("inside if of Date comparator");
+           
            job.isValidToSchedule = true;
          }
          else{
-          console.log("inside else of Date comparator");
+          
            job.isValidToSchedule = false;
          } 
 
@@ -134,20 +131,20 @@ export class JobComponent implements OnInit {
   onEditHandler(id) {
     this.jobSubscription = this.jobService.getJobById(id)
       .subscribe((res: any) => {
-        console.log(res);
+        
         let job = JSON.parse(JSON.stringify(res));
         if(job.jInterviewDate==null){
           job.isScheduled = false;
-            console.log(job);
+           
           }
           else{
             job.isScheduled = true;
-            console.log(job);
+            
           }
           let timeOfClosing = job.jApplicationCloseDate.substring(0, 10);
           job.lastDateToApply = timeOfClosing;
         this.duplicateJobData = job;
-        console.log(this.duplicateJobData.jAppliedCandidateList);
+        
         if (this.duplicateJobData.jAppliedCandidateList == "") {
           this.isEmpty = true;
         }
@@ -160,18 +157,18 @@ export class JobComponent implements OnInit {
   onInteviewScheduler(jId) {
     this.jobSubscription = this.jobService.getJobById(jId)
       .subscribe((res: any) => {
-        console.log(res);
+        
         this.scheduledJob = res;
 
         let temp = JSON.parse(JSON.stringify(res))
         temp.jInterviewDate = this.scheduleTest.value.date;
 
-        console.log(temp);
+        
 
 
         this.jobSubscription = this.jobService.scheduleInterview(temp)
           .subscribe((res: any) => {
-            console.log(res);
+           
             this.scheduledJob = res;
           });
 
@@ -184,33 +181,33 @@ export class JobComponent implements OnInit {
   ongetAppliedCandidatesList(id) {
     this.jobSubscription = this.jobService.getJobById(id)
       .subscribe((res: any) => {
-        console.log(res);
+        
         let job = JSON.parse(JSON.stringify(res));
         if(job.jInterviewDate==null){
           job.isScheduled = false;
-            console.log(job);
+            
           }
           else{
             job.isScheduled = true;
-            console.log(job);
+            
           }
           let timeOfClosing = job.jApplicationCloseDate.substring(0, 10);
           job.lastDateToApply = timeOfClosing;
         this.duplicateJobData = job;
-        console.log(this.duplicateJobData.jAppliedCandidateList);
+        
         if (this.duplicateJobData.jAppliedCandidateList == "") {
-          console.log("inside if");
+          
           this.isEmpty = true;
         }
         else {
-          console.log("inside else");
+          
           this.isEmpty = false;
         }
       });
   }
 
   onSearchHandler(searchForm) {
-    console.log(searchForm.value.skill.toLowerCase());
+    
     this.skill = searchForm.value.skill;
     if (this.skill == "") {
       this.allJobs();
@@ -218,7 +215,7 @@ export class JobComponent implements OnInit {
     else {
       this.jobSubscription = this.jobService.getJobBySkill(this.skill)
         .subscribe((res: any[]) => {
-          console.log(res);
+          
           this.jobList = res;
         });
     }
@@ -226,8 +223,7 @@ export class JobComponent implements OnInit {
 
 
   onSkillExperienceSearchHandler(searchForm) {
-    console.log(searchForm.value.experience);
-    console.log(searchForm.value.skill);
+    
     this.experience = searchForm.value.experience;
     this.skill = searchForm.value.skill;
     if (this.experience == "" && this.skill == "") {
@@ -237,7 +233,7 @@ export class JobComponent implements OnInit {
       if (this.experience == "") {
         this.jobSubscription = this.jobService.getJobBySkill(this.skill)
           .subscribe((res: any[]) => {
-            console.log(res);
+            
             this.jobList = res;
           });
       }
@@ -246,7 +242,7 @@ export class JobComponent implements OnInit {
         if (this.skill == "") {
           this.jobSubscription = this.jobService.searchJobsByExperience(this.experience)
             .subscribe((res: any[]) => {
-              console.log(res);
+             
               this.jobList = res;
             });
         }
@@ -254,7 +250,7 @@ export class JobComponent implements OnInit {
         else {
           this.jobSubscription = this.jobService.searchJobsBySkillExperience(this.skill, this.experience)
             .subscribe((res: any[]) => {
-              console.log(res);
+              
               this.jobList = res;
             });
         }
@@ -263,7 +259,7 @@ export class JobComponent implements OnInit {
   }
 
   onExperienceSearchHandler(searchForm) {
-    console.log(searchForm.value.experience);
+    
     this.experience = searchForm.value.experience;
     if (this.experience == "") {
       this.allJobs();
@@ -271,15 +267,14 @@ export class JobComponent implements OnInit {
     else {
       this.jobSubscription = this.jobService.searchJobsByExperience(this.experience)
         .subscribe((res: any[]) => {
-          console.log(res);
+          
           this.jobList = res;
         });
     }
   }
 
   async onUpdateHandler(formData) {
-    console.log(formData);
-    console.log(formData.value);
+    
     var obj = formData.value;
     obj.jId = this.jobId;
 
@@ -287,17 +282,17 @@ export class JobComponent implements OnInit {
     let res = await this.jobService.updateJob(this.duplicateJobData);
 
     const _jobId = this.route.snapshot.params.id;
-    console.log("The id is:" + _jobId);
+    
 
     if (res) {
       this.isSaved = true;
-      console.log(res);
+      
       this.allJobs();
     }
   }
 
   async onDeleteHandler(id) {
-    console.log(id);
+    
     let res = await this.jobService.deleteJob(id);
     if (res) {
       this.isDeleted = true;
@@ -310,6 +305,6 @@ export class JobComponent implements OnInit {
     // unsubscribe to ensure no memory leaks
     this.currentUserSubscription.unsubscribe();
     this.isLoggedIn$ = this.authenticationService.loggedIn;
-    console.log(this.isLoggedIn$);
+    
   }
 }

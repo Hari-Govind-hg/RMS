@@ -48,22 +48,22 @@ export class CandidateRegisterComponent implements OnInit {
 
   onSubmit() {
       this.submitted = true;
-      console.log("Called the Submit");
+      
 
       localStorage.setItem('fullName',this.registerForm.value.firstName+" "+this.registerForm.value.lastName)
 
       // stop here if form is invalid
       if (this.registerForm.invalid) {
-          console.log("invalid");
+          
           return;
       }
-      console.log(this.registerForm.value);
+    
       this.loading = true;
       this.userService.register(this.registerForm.value)
           .pipe(first())
           .subscribe(
               data => {
-                  console.log("entered the subscribe");
+                  
                   this.alertService.success('Registration successful', true);
                   this.router.navigate(['/candidatelogin']);
               },

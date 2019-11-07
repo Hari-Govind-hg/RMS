@@ -79,12 +79,12 @@ export class LandingComponent implements OnInit, OnDestroy {
     let name = this.currentUser.principal.username;
     let res = await this.candidateService.getCandidate(name);
     this.candidate = res;
-    console.log(this.candidate.cId);
+    
     this.candidateSubscription=this.candidateService.getJobsAppliedByCandidate(this.candidate.cId)
     .subscribe((res: any[]) => {
       let temp = JSON.parse(JSON.stringify(res));
       this.appliedJobList=temp;
-      console.log(this.appliedJobList);
+      
     });
   }
 

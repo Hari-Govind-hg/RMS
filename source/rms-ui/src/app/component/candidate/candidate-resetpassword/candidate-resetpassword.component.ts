@@ -32,7 +32,7 @@ export class CandidateResetpasswordComponent implements OnInit {
     }
 
     ngOnInit() {
-      console.log(this.uname);
+      
       this.loginForm = this.formBuilder.group({
         password: ['', Validators.required],
         confirmpassword: ['', Validators.required],
@@ -44,7 +44,7 @@ export class CandidateResetpasswordComponent implements OnInit {
     onResetPassword()
     {
     
-    // this.user.username=this.uname
+    
     
     if(this.loginForm.value.password===this.loginForm.value.confirmpassword)
 
@@ -55,20 +55,17 @@ export class CandidateResetpasswordComponent implements OnInit {
     .pipe(first())
     .subscribe(
         data => {
-            console.log("Inside data")
-            console.log(data)
+            
             if(data==true)
             this.router.navigate(['/candidatelogin']);
             else
             this.isMismatch=true;
         },
         error => {
-          console.log("Inside error")
-          console.log(error)
+          
         });
 
-// console.log(k);
-console.log("hi");
+
 
 }
 else

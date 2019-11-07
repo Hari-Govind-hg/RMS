@@ -30,16 +30,16 @@ export class ContactComponent implements OnInit {
   get f() { return this.contactForm.controls; }
   async onSubmit() {
     this.submitted = true;
-    console.log("Called the Submit");
+    
     if (this.contactForm.invalid) {
-      console.log("invalid");
+      
       return;
     }
     else {
 
       //1. send the data to service
       let res: any = await this.contactServiceService.createContact(this.contactForm.value);
-      console.log(res);
+      
       //2. get the resp from service
 
       if (res) {

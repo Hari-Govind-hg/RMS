@@ -31,34 +31,22 @@ export class ReplyComponent implements OnInit {
     });
   }
   ngOnInit() {
-    console.log(this.emailId);
+    
   }
-  // get f() { return this.replyForm.controls;}
-  // passEmail(email)
-  // {
-  //   console.log(email);
-  //   this.emailId = email;
-  //   console.log(this.emailId);
-  //   this.replyForm.value.email=this.emailId;
-  //   this.tempForm = this.replyForm;
-  //   this.tempForm = this.tempForm.value;
-  //   console.log(this.tempForm);
-  //   console.log(this.replyForm.value);
-  // }
+  
   
  
   async onSubmit() {
     this.submitted=true;
-    console.log(this.replyForm.value);
-    console.log("click on submit");
+   
     if (this.replyForm.invalid) {
-                    console.log("invalid");
+                    
                     return;
           }
 else{
     //1. send the data to service
     let res: any = await this.contactReplyService.contactReplyCreate(this.replyForm.value);
-    console.log(res+"hii");
+  
     //2. get the resp from service
 
     if(res){

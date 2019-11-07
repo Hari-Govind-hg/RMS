@@ -35,7 +35,7 @@ export class CandidateforgotpasswordComponent implements OnInit {
 
   onForgotPassword()
   {
-    console.log(this.loginForm.value)
+    
     let data=this.loginForm.value;
     
     this.userService.forgotPassword(this.loginForm.value)
@@ -45,8 +45,7 @@ export class CandidateforgotpasswordComponent implements OnInit {
               data => {
                 if(data==true)
                 {
-                  console.log("Inside data")
-                  console.log(data);
+                 
                   this.router.navigate(['/resetpassword/'+this.loginForm.value.username]);
               }
               else
@@ -54,13 +53,11 @@ export class CandidateforgotpasswordComponent implements OnInit {
             }
               ,
               error => {
-                console.log("Inside error");
-                console.log(error);
+               
                 this.isFailed=true;
               });
     
-    // console.log(k);
-    console.log("hi");
+    
 
   }
   
