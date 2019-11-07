@@ -33,8 +33,6 @@ public class HomeController {
 	@Autowired
 	CredentialsRepository candidateCredentialsRepository;
 
-	
-	
 	@Autowired
 	CredentialsService credentialsService;
 	
@@ -80,8 +78,7 @@ public class HomeController {
 		if(credentials!=null)
 		return true;
 		else
-		return false;
-		
+		return false;	
 	}
 
 	@PostMapping(path ="/forgotpassword", consumes = { MediaType.APPLICATION_JSON_VALUE })
@@ -103,10 +100,7 @@ public class HomeController {
 		{
 			res=false	;
 		}		
-		
-	
 		return res;
-	
 	}
 	
 	

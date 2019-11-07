@@ -35,7 +35,7 @@ public class JobService {
 	SequenceGeneratorService sequenceGeneratorService;
 	
 	 MongoClient mongoClient = new MongoClient();
-	 DB db = mongoClient.getDB("test");
+	 DB db = mongoClient.getDB("rms");
 	
 	public boolean jobCreate(Job job) throws RmsApplicationException {
 		try {

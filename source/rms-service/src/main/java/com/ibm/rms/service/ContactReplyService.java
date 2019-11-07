@@ -25,7 +25,7 @@ public class ContactReplyService {
 	EmailService emailService;
 	
 	 MongoClient mongoClient = new MongoClient();
-	 DB db = mongoClient.getDB("test");
+	 DB db = mongoClient.getDB("rms");
 	
 	public boolean contactReplyCreate(ContactReply contactReply) {
 		try {

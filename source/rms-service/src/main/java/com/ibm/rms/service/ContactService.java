@@ -21,7 +21,7 @@ public class ContactService {
 	SequenceGeneratorService sequenceGeneratorService;
 	
 	 MongoClient mongoClient = new MongoClient();
-	 DB db = mongoClient.getDB("test");
+	 DB db = mongoClient.getDB("rms");
 	
 	public boolean contactCreate(Contact contact) {
 		try {
