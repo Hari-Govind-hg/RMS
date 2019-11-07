@@ -37,6 +37,8 @@ export class JobComponent implements OnInit {
   search: any;
   count: any;
   lastDate:Date;
+  today:Date;
+  isScheduled:boolean;
 
   constructor(private jobService: JobServiceService, private authenticationService: AuthenticationService,
     private userService: UserService, private router: Router, private route: ActivatedRoute) {
@@ -80,7 +82,7 @@ export class JobComponent implements OnInit {
       .subscribe((res: any[]) => {
         
         let temp = JSON.parse(JSON.stringify(res));
-        let today = new Date();
+        this.today = new Date();
         temp.forEach(job => {
           if(job.jInterviewDate==null){
           job.isScheduled = false;
@@ -101,7 +103,7 @@ export class JobComponent implements OnInit {
           job.lastDateToApply = this.lastDate;
           job.isValidToSchedule = false;
           
-         if(today.getTime()>this.lastDate.getTime())
+         if(this.today.getTime()>this.lastDate.getTime())
          {
            
            job.isValidToSchedule = true;
@@ -157,25 +159,24 @@ export class JobComponent implements OnInit {
   onInteviewScheduler(jId) {
     this.jobSubscription = this.jobService.getJobById(jId)
       .subscribe((res: any) => {
-        
         this.scheduledJob = res;
-
         let temp = JSON.parse(JSON.stringify(res))
         temp.jInterviewDate = this.scheduleTest.value.date;
-
-        
-
-
-        this.jobSubscription = this.jobService.scheduleInterview(temp)
+        let interviewDate = new Date(this.scheduleTest.value.date);
+        console.log(interviewDate.getTime());
+        console.log(interviewDate.getTime()-this.today.getTime());
+        if((interviewDate.getTime()-this.today.getTime())>0){
+          this.jobSubscription = this.jobService.scheduleInterview(temp)
           .subscribe((res: any) => {
-           
             this.scheduledJob = res;
           });
-
+          this.isScheduled = true;
+          this.allJobs();
+        }
+        else{
+          this.isScheduled=false;
+        }
       });
-
-
-
   }
 
   ongetAppliedCandidatesList(id) {
