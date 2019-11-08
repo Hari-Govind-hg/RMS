@@ -12,7 +12,6 @@ import { JobComponent } from './component/HR/job/job.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { JobdetailComponent } from './component/HR/jobdetail/jobdetail.component';
 import { LoginComponent } from './component/HR/login/login.component';
-import { RegisterComponent } from './component/HR/register';
 import { AlertComponent } from './component/HR/HRservice/alert';
 import { fakeBackendProvider, JwtInterceptor, ErrorInterceptor } from './component/HR/HRservice/helper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,8 +25,6 @@ import { HomeImageComponent } from './component/landingPage/home-image/home-imag
 import { MaterialModule } from './component/landingPage/card-view/material/material.module';
 import { LoginLandingComponent } from './component/landingPage/login-landing/login-landing.component';
 import { LandingComponent } from './component/candidate/landing/landing.component';
-import { ProfileComponent } from './component/candidate/profile/profile.component';
-import { ViewjobsComponent } from './component/candidate/viewjobs/viewjobs.component';
 import { CandidateLoginComponent } from './component/candidate/candidate-login/candidate-login.component';
 import { CandidateRegisterComponent } from './component/candidate/candidate-register/candidate-register.component';
 import { AuthenticationService } from './component/authentication/authentication.service';
@@ -39,6 +36,7 @@ import { ReplyComponent } from './component/contactus/reply/reply.component';
 import { ContactComponent } from './component/contactus/contact/contact.component';
 import { CandidateforgotpasswordComponent } from './component/candidateforgotpassword/candidateforgotpassword.component';
 import { CandidateResetpasswordComponent } from './component/candidate/candidate-resetpassword/candidate-resetpassword.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 export function HttpLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http);
@@ -53,30 +51,27 @@ export function HttpLoaderFactory(http:HttpClient){
     AddjobComponent,
     JobComponent,
     JobdetailComponent,
-    RegisterComponent,
     CandidateLoginComponent,
     CandidateRegisterComponent,
     LoginComponent,
     AlertComponent,
     LandingComponent,
-    ProfileComponent,
     AddjobComponent,
     AboutComponent,
-    ViewjobsComponent,
     SidenavComponent,
     HomeImageComponent,
     CardViewComponent,
     MatDatepickerInput,
     MatDatepickerToggle,
     MatDatepicker,
-    // MatSelectTrigger,
     LoginLandingComponent,
     ContactComponent,
     CandidateRegisterDetailsComponent,
     QuerylistComponent,
     ReplyComponent,
     CandidateforgotpasswordComponent,
-    CandidateResetpasswordComponent
+    CandidateResetpasswordComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
