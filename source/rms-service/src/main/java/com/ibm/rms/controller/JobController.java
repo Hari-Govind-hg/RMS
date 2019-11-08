@@ -55,7 +55,7 @@ public class JobController {
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public List<Job> getAllEmployees() throws RmsApplicationException {
+	public List<Job> getAllJobs() throws RmsApplicationException {
 		return jobService.getAll();
 	}
 	
@@ -67,7 +67,7 @@ public class JobController {
 	
 	@PutMapping(value = "/{id}", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> updateEmployee(@PathVariable String id, @RequestBody Job updatedJob) throws RmsApplicationException {
+	public ResponseEntity<ResponseMessage> updateJob(@PathVariable String id, @RequestBody Job updatedJob) throws RmsApplicationException {
 		
 		ResponseMessage resMsg;
 		
@@ -85,7 +85,7 @@ public class JobController {
 	
 	@DeleteMapping("/{id}")
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> deleteEmployee(@PathVariable String id) throws RmsApplicationException {
+	public ResponseEntity<ResponseMessage> deleteJob(@PathVariable String id) throws RmsApplicationException {
 		
 		ResponseMessage resMsg;
 		

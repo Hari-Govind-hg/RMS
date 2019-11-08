@@ -51,7 +51,7 @@ public class ContactController {
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public List<Contact> getAllEmployees() {
+	public List<Contact> getAllContacts() {
 		return contactService.getAll();
 	}
 	
@@ -63,7 +63,7 @@ public class ContactController {
 	
 	@PutMapping(value = "/{id}", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> updateEmployee(@PathVariable String id, @RequestBody Contact updatedContact) {
+	public ResponseEntity<ResponseMessage> updateContact(@PathVariable String id, @RequestBody Contact updatedContact) {
 		
 		ResponseMessage resMsg;
 		
@@ -81,7 +81,7 @@ public class ContactController {
 	
 	@DeleteMapping("/{id}")
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> deleteEmployee(@PathVariable String id) {
+	public ResponseEntity<ResponseMessage> deleteContact(@PathVariable String id) {
 		ResponseMessage resMsg;
 		
 		contactService.deleteContact(id);
