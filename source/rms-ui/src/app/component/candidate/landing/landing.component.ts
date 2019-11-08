@@ -122,7 +122,7 @@ export class LandingComponent implements OnInit, OnDestroy {
           this.loading = false;
           this.appliedStatus = true;
         }
-        else if (userObj.status) {
+        else if (userObj.status=="Failed") {
           this.loading = false;
           this.appliedStatus = false;
         }

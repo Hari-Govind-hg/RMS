@@ -59,7 +59,6 @@ export class CandidateService {
   getAllJobsCandidate() {
     return this.http.get(this.REST_API_URL+"/applynewjob")
       .pipe(map(res => {  //3.get res from rest api
-        
         return res;     //Send it back to component
       }));
   }
@@ -68,7 +67,6 @@ export class CandidateService {
     
     return this.http.get(this.REST_API_URL + "/" + id + "/appliedjobs")
       .pipe(map(res => {
-        
         return res;
       }));
   }
@@ -127,8 +125,7 @@ export class CandidateService {
   applyForJobCandidate(id,jid){
     
     return this.http.get(this.REST_API_URL + "/" + id + "/applyjob?jid="+jid)
-      .pipe(map(res => {
-        
+      .pipe(map(res => { 
         return res;
       }));
   }

@@ -86,10 +86,13 @@ public class CandidateController {
 		
 		Candidate candidate = candidateService.getCandidateById(id);
 		ResponseMessage resMsg;
-		
-		candidateService.applyForJob(id,jid);
-		
-		resMsg = new ResponseMessage("Success", new String ("Applied for job successfully"));
+		boolean x = candidateService.applyForJob(id,jid);
+		if(x) {
+			resMsg = new ResponseMessage("Success", new String ("Applied for job successfully"));
+		}
+		else {
+			resMsg = new ResponseMessage("Failed", new String ("You have already applied for the job"));
+		}
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}/appliedjobs")
 				.buildAndExpand(candidate.getcId()).toUri();
