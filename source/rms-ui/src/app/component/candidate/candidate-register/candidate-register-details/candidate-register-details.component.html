@@ -11,7 +11,7 @@
         <div class="form-group row">
           <div class="col-md-1"></div>
           <div class="col-md-10">
-            <input type="text" id="cName" class="fadeIn first form-control"
+            <input type="text" id="cName" class="fadeIn first form-control" [(ngModel)]=fullName
               [ngClass]="{ 'is-invalid': candidateDetailsForm.get('cName').touched && candidateDetailsForm.get('cName').invalid}"
               placeholder="{{ 'CANDREGDETAIL.CRD2' | translate }}" formControlName="cName" required>
             <div class="invalid-feedback">

@@ -42,33 +42,20 @@ public class JobController {
 	public ResponseEntity<ResponseMessage> createJob(@RequestBody @Valid Job job) throws RmsApplicationException{
 
 		ResponseMessage resMsg;
-		//System.out.println(job);
-		// Exception Handling moved to @ExceptionHandler
-//		try {
+		
 		jobService.jobCreate(job);
-//		} catch (ApplicationException e) {
-//			resMsg = new ResponseMessage("Failure", e.getMessage());
-//			return ResponseEntity.badRequest().body(resMsg);
-//		}
 
-		// Exception Handling moved to @ExceptionHandler
-//		if(bindingResult.hasErrors()) {
-//			resMsg = new ResponseMessage("Failure", "Validation Error");
-//			return ResponseEntity.badRequest().body(resMsg);			
-//		}
 		resMsg = new ResponseMessage("Success", new String ("Job created successfully."));
-		// Build newly created Employee resource URI - Employee ID is always 0 here.
-		// Need to get the new Employee ID.
+
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(job.getjId()).toUri();
 
 		return ResponseEntity.created(location).body(resMsg);
-
 	}
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public List<Job> getAllEmployees() throws RmsApplicationException {
+	public List<Job> getAllJobs() throws RmsApplicationException {
 		return jobService.getAll();
 	}
 	
@@ -80,18 +67,16 @@ public class JobController {
 	
 	@PutMapping(value = "/{id}", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> updateEmployee(@PathVariable String id, @RequestBody Job updatedJob) throws RmsApplicationException {
+	public ResponseEntity<ResponseMessage> updateJob(@PathVariable String id, @RequestBody Job updatedJob) throws RmsApplicationException {
+		
 		ResponseMessage resMsg;
+		
 		updatedJob.setjId(id);
-		boolean x = jobService.updateJob(updatedJob);
-		if(x) {
-			resMsg = new ResponseMessage("Success", new String ("Job updated successfully"));
-		}
-		else {
-			resMsg = new ResponseMessage("Failed", new String ("Job update failed"));
-		}
-		// Build newly created Employee resource URI - Employee ID is always 0 here.
-		// Need to get the new Employee ID.
+		
+		jobService.updateJob(updatedJob);
+		
+		resMsg = new ResponseMessage("Success", new String ("Job updated successfully"));
+		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(updatedJob.getjId()).toUri();
 
@@ -100,15 +85,14 @@ public class JobController {
 	
 	@DeleteMapping("/{id}")
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> deleteEmployee(@PathVariable String id) throws RmsApplicationException {
+	public ResponseEntity<ResponseMessage> deleteJob(@PathVariable String id) throws RmsApplicationException {
+		
 		ResponseMessage resMsg;
-		boolean x = jobService.deleteJob(id);
-		if(x) {
-			resMsg = new ResponseMessage("Success", new String ("Job deleted successfully"));
-		}
-		else {
-			resMsg = new ResponseMessage("Failed", new String ("Job deletion failed"));
-		}
+		
+		jobService.deleteJob(id);
+		
+		resMsg = new ResponseMessage("Success", new String ("Job deleted successfully"));
+		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
 

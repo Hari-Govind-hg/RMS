@@ -7,6 +7,7 @@ import org.apache.tomcat.util.descriptor.web.FilterDef;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ibm.rms.exception.RmsApplicationException;
 import com.ibm.rms.model.Contact;
 import com.ibm.rms.repository.ContactRepository;
 import com.mongodb.DB;
@@ -21,17 +22,17 @@ public class ContactService {
 	SequenceGeneratorService sequenceGeneratorService;
 	
 	 MongoClient mongoClient = new MongoClient();
-	 DB db = mongoClient.getDB("test");
+	 DB db = mongoClient.getDB("rms");
 	
-	public boolean contactCreate(Contact contact) {
+	public boolean contactCreate(Contact contact) throws RmsApplicationException {
 		try {
 			contact.setId(sequenceGeneratorService.generateSequence(db,Contact.SEQUENCE_NAME));
 			contactRepo.save(contact);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new RmsApplicationException("Failed to submit your query; Please try after some time", e);
 		}
-		return false;
 	}
 
 	public List<Contact> getAll() {

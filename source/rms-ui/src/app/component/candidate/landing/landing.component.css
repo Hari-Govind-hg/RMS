@@ -28,6 +28,9 @@ mdbPopover{
     width: 400px;
 }
 
+.modal{
+  text-align: center;
+}
 
 .card {
     display: flex;
@@ -43,7 +46,7 @@ mdbPopover{
   }
   
   .card:not(:first-child) {
-      margin-left: -50px;
+      /* margin-left: -50px; */
   }
   
   .card:hover {
@@ -53,7 +56,7 @@ mdbPopover{
   
   .card:hover ~ .card {
     position: relative;
-    left: 50px;
+    /* left: 50px; */
     transition: 0.4s ease-out;
   }
 
@@ -62,7 +65,7 @@ mdbPopover{
     top: 120px;
     left: calc(30% - 70px);
     color: black;
-    font-size: 20px;
+    font-size: 15px;
   }
 
   .circle {
@@ -79,7 +82,8 @@ mdbPopover{
   
   .title {
     color: rgb(0, 0, 0);
-    font-weight: 300;
+    font-weight: 100;
+    font-size: 20px;
     position: absolute;
     left: 20px;
     top: 15px;

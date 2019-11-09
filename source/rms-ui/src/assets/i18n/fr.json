@@ -3,7 +3,7 @@
 		"A1": "A propos de l'équipe RMS",
 		"A2": "Le travail d'équipe est un mot composé, combinant équipe et travail. Les équipes sont une forme de groupe normalement dédiée à la production ou à la résolution de problèmes. Cela nous laisse avec le travail. C’est là que notre exemple précédent de résolution de problèmes peut nous être très utile. Chaque membre de l'équipe a des compétences, des talents, une expérience et une éducation.",
 		"A3": "Notre mission",
-		"A4": "Pour devenir votre lieu de prédilection pour acquérir des compétences en gestion, en leadership et en excellence personnelle.",
+		"A4": "En ce qui concerne la recherche de talents, RMS comprend que chaque organisation dispose d'un processus de recrutement unique. C'est pourquoi nous avons mis au point plusieurs méthodes de filtrage des candidats afin de réduire efficacement le temps dont vous disposiez et de trouver le candidat idéal pour toutes vos offres d'emploi.",
 		"A5": "À propos de RMS",
 		"A6": "RMS est un portail d'emploi d'IBM où nous embauchons les candidats en fonction de leurs compétences et de leurs spécialités. Les candidats passent par différents filtres et les plus méritants correspondant aux critères sont ceux qui obtiennent le poste. Ici, nous fournissons une plate-forme aux candidats, débutants ou expérimentés, pour montrer leurs compétences et leurs connaissances techniques et faire partie de la Société et d'un fier IBMer...",
 		"A7": "Comment nous travaillons!",
@@ -51,7 +51,11 @@
 		"CL3": "Login candidat",
 		"CL4": "Nom d'utilisateur",
 		"CL5": "Mot de passe",
-		"CL6": "se connecter"
+		"CL6": "se connecter",
+		"CL7": "Mot de passe oublié?",
+		"CL8": "Confirmez le mot de passe",
+		"CL9": "Le mot de passe ne correspond pas",
+		"CLA": "Reset"
 	},
 	"CANDJOBDETAIL": {
 		"CJD1": "Retourner",
@@ -142,7 +146,11 @@
 		"CRA": "Mot de passe",
 		"CRB": "Mot de passe requis",
 		"CRC": "Le mot de passe doit être au moins de 6 caractères",
-		"CRD": "S'inscrire"
+		"CRD": "S'inscrire",
+		"CRE": "Sélectionnez votre question de sécurité",
+		"CRF": "Répondre",
+		"CRG": "Nom d'utilisateur déjà pris",
+		"CRH": "Le nom d'utilisateur ou la question de sécurité est erroné"
 	},
 	"CONTACT": {
 		"C1": "Comment pouvons nous aider?",
@@ -291,7 +299,17 @@
 		"JOB34": "Un salaire",
 		"JOB35": "Entrer le salaire",
 		"JOB36": "Fermer",
-		"JOB37": "Sauvegarder les modifications"
+		"JOB37": "Sauvegarder les modifications",
+		"JOB38": "Des requêtes",
+		"JOB39": "Connecté en tant que HR",
+		"JOB40": "Recherche Avancée",
+		"JOB41": "Entrez les compétences",
+		"JOB42": "Entrez l'expérience",
+		"JOB43": "Statut:",
+		"JOB44": "Prévu",
+		"JOB45": "Non prévu",
+		"JOB46": "Désolé, cet emploi est toujours ouvert pour inscription",
+		"JOB47": "Dernière date d'application:"
 	},
 	"HR_LOGIN": {
 		"L01": "se connecter",
@@ -376,13 +394,18 @@
 		"LC3": "Emplois appliqués",
 		"LC4": "Editer le profil",
 		"LC5": "Cliquez ici pour lister les emplois correspondant à vos compétences",
-		"LC6": "La description:",
+		"LC6": "Expérience nécessaire:",
 		"LC7": "Détails du poste",
 		"LC8": "Identifiant:",
 		"LC9": "La description:",
 		"LCA": "Compétences requises:",
 		"LCB": "Expérience requise:",
-		"LCC": "Un salaire:"
+		"LCC": "Un salaire:",
+		"LCD": "Mettre à jour le profil",
+		"LCE": "Actualiser la liste des travaux",
+		"LCF": "Liste des emplois appliqués par le candidat:",
+		"LCG": "",
+		"LCH": ""
 	},
 	"LOGINCOMP": {
 		"LOC1": "Retourner",
@@ -399,7 +422,7 @@
 	"LOGINLANDING": {
 		"LL1": "Bienvenue dans le RMS",
 		"LL2": "Candidat",
-		"LL3": "Connexion / S'inscrire",
+		"LL3": "Connexion",
 		"LL4": "heure",
 		"LL5": "Connexion / S'inscrire"
 	},

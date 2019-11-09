@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ibm.rms.exception.RmsApplicationException;
 import com.ibm.rms.model.Contact;
 import com.ibm.rms.model.ResponseMessage;
 import com.ibm.rms.service.ContactService;
@@ -34,38 +35,23 @@ public class ContactController {
 	
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> createContact(@RequestBody @Valid Contact contact){
+	public ResponseEntity<ResponseMessage> createContact(@RequestBody @Valid Contact contact) throws RmsApplicationException{
 
 		ResponseMessage resMsg;
-		//System.out.println(job);
-		// Exception Handling moved to @ExceptionHandler
-//		try {
+		
 		contactService.contactCreate(contact);
-//		} catch (ApplicationException e) {
-//			resMsg = new ResponseMessage("Failure", e.getMessage());
-//			return ResponseEntity.badRequest().body(resMsg);
-//		}
-
-		// Exception Handling moved to @ExceptionHandler
-//		if(bindingResult.hasErrors()) {
-//			resMsg = new ResponseMessage("Failure", "Validation Error");
-//			return ResponseEntity.badRequest().body(resMsg);			
-//		}
 
 		resMsg = new ResponseMessage("Success", new String("Job created successfully"));
 
-		// Build newly created Employee resource URI - Employee ID is always 0 here.
-		// Need to get the new Employee ID.
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(contact.getId()).toUri();
 
 		return ResponseEntity.created(location).body(resMsg);
-
 	}
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public List<Contact> getAllEmployees() {
+	public List<Contact> getAllContacts() {
 		return contactService.getAll();
 	}
 	
@@ -77,14 +63,16 @@ public class ContactController {
 	
 	@PutMapping(value = "/{id}", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> updateEmployee(@PathVariable String id, @RequestBody Contact updatedContact) {
+	public ResponseEntity<ResponseMessage> updateContact(@PathVariable String id, @RequestBody Contact updatedContact) {
+		
 		ResponseMessage resMsg;
+		
 		updatedContact.setId(id);
+		
 		contactService.updateJob(updatedContact);
+		
 		resMsg = new ResponseMessage("Success", new String("Employee updated successfully"));
 
-		// Build newly created Employee resource URI - Employee ID is always 0 here.
-		// Need to get the new Employee ID.
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(updatedContact.getId()).toUri();
 
@@ -93,10 +81,13 @@ public class ContactController {
 	
 	@DeleteMapping("/{id}")
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> deleteEmployee(@PathVariable String id) {
+	public ResponseEntity<ResponseMessage> deleteContact(@PathVariable String id) {
 		ResponseMessage resMsg;
+		
 		contactService.deleteContact(id);
+		
 		resMsg = new ResponseMessage("Success", new String("Employee deleted successfully"));
+		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
 

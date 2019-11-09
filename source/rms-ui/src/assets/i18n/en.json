@@ -1,9 +1,9 @@
 {
 	"ABOUT": {
 		"A1": "About RMS Team",
-		"A2": "Teamwork is a compound word, combining team and work. Teams are a form of group normally dedicated to production or problem solving. That leaves us with the work. This is where our previous example on problem solving can serve us well. Each member of the team has skills, talents, experience, and education.",
+		"A2": "Teamwork is a compound word, combining team and work. Teams are a form of group normally dedicated to production or problem solving. That leaves us with the work. This is where our problem solving attitude can serve us well. Each member of the team has skills, talents, experience, and education.",
 		"A3": "OUR MISSION",
-		"A4": "To become your favorite place to learn management, leadership and personal excellence skills.",
+		"A4": "When it comes to talent hunting, RMS understands that every organization has a unique hiring process. This is why we built multiple ways of filtering candidates, so you effectively reduce your time-to-fill, and find the right match for all your job openings.",
 		"A5": "About RMS",
 		"A6": "RMS is a job portal of IBM where we hire the applicants according to their skills and specialities. Applicants go through various filters and the most deserving ones who match the criteria are the ones who get the job. Here we provide platform to candidates, freshers or experienced, to show their technical skills and knowledge and be part of theCompany and a proud IBMer...",
 		"A7": "How we work!",
@@ -50,8 +50,12 @@
 		"CL2": "Sign Up",
 		"CL3": "Candidate Login",
 		"CL4": "Username",
-		"CL5": "password",
-		"CL6": "Sign In"
+		"CL5": "Password",
+		"CL6": "Sign In",
+		"CL7": "Forget Password?",
+		"CL8": "Confirm Password",
+		"CL9": "Password doesn't match",
+		"CLA": "Reset Password"
 	},
 	"CANDJOBDETAIL": {
 		"CJD1": "Go back",
@@ -142,7 +146,11 @@
 		"CRA": "password",
 		"CRB": "Password is required",
 		"CRC": "Password must be at least 6 characters",
-		"CRD": "Sign Up"
+		"CRD": "Sign Up",
+		"CRE": "Select your Security Question",
+		"CRF": "Answer",
+		"CRG": "Username Already Taken",
+		"CRH": "Username or Security Question is wrong"
 	},
 	"CONTACT": {
 		"C1": "How can we help?",
@@ -291,7 +299,17 @@
 		"JOB34": "Salary",
 		"JOB35": "Enter Salary",
 		"JOB36": "Close",
-		"JOB37": "Save Changes"
+		"JOB37": "Save Changes",
+		"JOB38": "Queries",
+		"JOB39": "Signed in as HR",
+		"JOB40": "Advanced Search",
+		"JOB41": "Enter Skills",
+		"JOB42": "Enter Experience",
+		"JOB43": "Status:",
+		"JOB44": "Scheduled",
+		"JOB45": "Not Scheduled",
+		"JOB46": "Sorry,This Job is still open for registration",
+		"JOB47": "Last Date of Application:"
 	},
 	"HR_LOGIN": {
 		"L01": "Sign In",
@@ -376,13 +394,18 @@
 		"LC3": "List of Jobs",
 		"LC4": "Apply Filtering",
 		"LC5": "Click here To list the jobs that match your skills",
-		"LC6": "Description:",
+		"LC6": "Experience Needed:",
 		"LC7": "Job Details",
 		"LC8": "Id:",
 		"LC9": "Description:",
 		"LCA": "Skills Needed:",
 		"LCB": "Experience Needed:",
-		"LCC": "Salary:"
+		"LCC": "Salary:",
+		"LCD": "Update Profile",
+		"LCE": "Refresh Job List",
+		"LCF": "List of jobs applied by the Candidate:",
+		"LCG": "",
+		"LCH": ""
 	},
 	"LOGINCOMP": {
 		"LOC1": "Go Back",
@@ -399,7 +422,7 @@
 	"LOGINLANDING": {
 		"LL1": "Welcome To the RMS ",
 		"LL2": "CANDIDATE",
-		"LL3": "Login/Register",
+		"LL3": "Login",
 		"LL4": "HR ",
 		"LL5": "Login/Register"
 	},

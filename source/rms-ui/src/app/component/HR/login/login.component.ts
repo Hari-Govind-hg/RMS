@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AlertService, AuthenticationService } from '../HRservice/loginservice';
-import { NavService } from '../../nav/nav.service';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +21,7 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService,
-        public nav: NavService
+        private alertService: AlertService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) { 
@@ -33,7 +30,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.nav.hide();
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
@@ -48,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     onLogin() {
         this.submitted = true;
-        console.log("Inside onLogin UI");
+       
 
         // stop here if form is invalid
         if (this.loginForm.invalid) {
@@ -61,7 +57,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     let userObj = JSON.parse(JSON.stringify(data));
-                    console.log(userObj);
+                   
                     this.isFailed=false;
                     if(userObj.authorities[0].authority==="ROLE_HR")
                     {
@@ -74,7 +70,7 @@ export class LoginComponent implements OnInit {
                 }
                 },
                 error => {
-                    console.log("Inside error")
+                    
                     this.loading=false;
                     this.isFailed=true;
                 });

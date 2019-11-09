@@ -1,24 +1,39 @@
-.map-container-section {
-    overflow:hidden;
-    margin-top:10px;
-    padding-bottom:56.25%;
-    position:relative;
-    height:0;
-    width:700px;
-  }
-  .map-container-section iframe {
-    left:0px;
-    top:0;
-
-    height:800px;
-    width:800px;
-    position:absolute;
-  }
-h2{
-    font-size: 40px;
-    text-align: justify;
-    color:black;
-}
 div.container{
   font-family: 'Comfortaa', cursive;
+}
+div.btn{
+  align-self: right;
+  float: right;
+}
+div.card{
+  transition: box-shadow .3s;
+}
+.card:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+input{
+  transition: box-shadow .3s;
+}
+input:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+.map-container-section {
+  overflow:hidden;
+  margin-top:10px;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+  width:600px;
+}
+.map-container-section iframe {
+  left:0px;
+  top:0;
+  height:800px;
+  width:600px;
+  position:absolute;
 }

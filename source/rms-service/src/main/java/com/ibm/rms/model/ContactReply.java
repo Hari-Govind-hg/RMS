@@ -11,7 +11,6 @@ public class ContactReply {
 	private String id;
 	private String email;
 	private String subject;
-	
 	private String message;
 	
 	public ContactReply() {

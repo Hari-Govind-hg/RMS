@@ -8,6 +8,6 @@ import com.ibm.rms.model.Candidate;
 
 public interface CandidateRepository extends MongoRepository<Candidate, Object> {
 
-	Candidate findBycName(String cName);
+	Candidate findByUsername(String cName);
 
 }

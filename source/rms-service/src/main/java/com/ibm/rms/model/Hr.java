@@ -14,12 +14,12 @@ public class Hr extends Organisation{
 	private ArrayList<Job> hPostedJobs;
 	private Organisation hOraganisation;
 	
-	//Constructor without parameter
+	
 	public Hr() {
 		super();
 	}
 	
-	//Constructor with parameters
+	
 	public Hr(String hId, String hName, String hEmail, String hPhone, ArrayList<Job> hPostedJobs,
 			Organisation hOraganisation) {
 		super();
@@ -31,7 +31,7 @@ public class Hr extends Organisation{
 		this.hOraganisation = hOraganisation;
 	}
 	
-	//Getters... and Setters...
+	
 	public String gethId() {
 		return hId;
 	}

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { NavService } from '../../nav/nav.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { AlertService } from '../CandidateService/loginservice/alert.service';
@@ -26,7 +25,6 @@ export class CandidateLoginComponent implements OnInit {
       private router: Router,
       private authenticationService: AuthenticationService,
       private alertService: AlertService,
-      public nav: NavService,
       private candidateService:CandidateService
   ) {
       // redirect to home if already logged in
@@ -36,7 +34,6 @@ export class CandidateLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nav.hide();
       this.loginForm = this.formBuilder.group({
           username: ['', Validators.required],
           password: ['', Validators.required]
@@ -44,7 +41,7 @@ export class CandidateLoginComponent implements OnInit {
 
       // get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/landing';
-      console.log(this.route.snapshot.queryParams['returnUrl']);
+     
   }
 
   // convenience getter for easy access to form fields
@@ -64,16 +61,13 @@ export class CandidateLoginComponent implements OnInit {
           .subscribe(
               async data => {
                 let userObj = JSON.parse(JSON.stringify(data));
-                console.log(userObj)
+                
                 if(userObj.authorities[0].authority=="ROLE_CANDIDATE")
                 {
-                    console.log(data)
-                  console.log("Inside candidate login data")
-                  // this.router.navigate([this.returnUrl]);
-                  // console.log(userObj.principal.username);
+                   
                   let res= await this.candidateService.getCandidate(userObj.principal.username);
                   this.candidate = res;
-                  console.log(this.candidate)
+                  
                   if(this.candidate==null)
                   this.router.navigate(['/registerdetails']);
                   else
@@ -87,7 +81,7 @@ export class CandidateLoginComponent implements OnInit {
                   
               },
               error => {
-                console.log("error")
+                
                 this.loading=false;
                 this.isFailed=true;
               });

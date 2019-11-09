@@ -15,6 +15,7 @@ export class CandidateRegisterDetailsComponent implements OnInit {
   currentUser:User
   candidateDetailsForm:FormGroup;
   isSaved:boolean;
+  fullName:string
   skills: string[] = ['Java', 'HTML/CSS', 'JavaScript', 'Spring', 'Angular', 'SQL','Networking','ML','C++','C'];
   
   
@@ -33,6 +34,7 @@ export class CandidateRegisterDetailsComponent implements OnInit {
   
   async onAddCandidateDetails(){
     console.log(this.candidateDetailsForm.value);
+    this.candidateDetailsForm.value.cPhone ='+91'+this.candidateDetailsForm.value.cPhone;
     let res:any = await this.candidateService.createCandidate(this.candidateDetailsForm.value);
     console.log(res);
     if(res){
@@ -43,6 +45,12 @@ export class CandidateRegisterDetailsComponent implements OnInit {
   
 
   ngOnInit() {
+    this.fullName=localStorage.getItem('fullName')
+  }
+
+  ngOnDestroy()
+  {
+    localStorage.removeItem('fullName')
   }
 
 }

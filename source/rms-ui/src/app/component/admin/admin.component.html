@@ -1,0 +1,56 @@
+      <div class="container">
+        <div class="wrapper">
+          <div id="formContent" style="padding-bottom: 50px;">
+            <!-- Tabs Titles -->
+            <h2 class="active" routerLink="/register">{{ 'HR_REGISTER.R02' | translate }}</h2>
+      
+            <!-- Icon -->
+            <div class="fadeIn first">
+              <img src="../../../../assets/images/avatar-icon.png" style="width: 40px;" id="icon" alt="User Icon" />
+              <h6>{{ 'HR_REGISTER.R03' | translate }}</h6>
+            </div>
+      
+            <!-- Login Form -->
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <input type="text" id="firstName" class="fadeIn second" formControlName="firstName" name="firstName"
+                placeholder="{{ 'HR_REGISTER.R04' | translate }}" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">{{ 'HR_REGISTER.R05' | translate }}</div>
+                  </div>
+              <input type="text" id="lastName" class="fadeIn second" formControlName="lastName" name="lastName"
+                placeholder="{{ 'HR_REGISTER.R06' | translate }}" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">{{ 'HR_REGISTER.R07' | translate }}</div>
+              </div>
+              <input type="text" id="login" class="fadeIn third" formControlName="username" name="login" placeholder="{{ 'HR_REGISTER.R08' | translate }}"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">{{ 'HR_REGISTER.R09' | translate }}</div>
+              </div>
+              <input type="password" id="password" class="fadeIn third" formControlName="password" name="login"
+                placeholder="{{ 'HR_REGISTER.R10' | translate }}" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">{{ 'HR_REGISTER.R11' | translate }}</div>
+                <div *ngIf="f.password.errors.minlength">{{ 'HR_REGISTER.R12' | translate }}</div>
+              </div>
+              <input type="text" id="admincode" class="fadeIn third" formControlName="admincode" name="admincode" placeholder="Enter the Admin Code"
+                [ngClass]="{ 'is-invalid': submitted && f.admincode.errors }">
+              <div *ngIf="submitted && f.admincode.errors" class="invalid-feedback">
+                <div *ngIf="f.admincode.errors.required">ADMIN CODE NOT ENTERED</div>
+              </div>
+              <div class="alert alert-success" *ngIf="success">Account creation successful</div>
+              <div class="alert alert-danger" *ngIf="isUnAuthorized">Invalid Admin Code Entered</div>
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <button [disabled]="loading" class="fadeIn fourth btn btn-md btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    {{ 'HR_REGISTER.R13' | translate }}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      

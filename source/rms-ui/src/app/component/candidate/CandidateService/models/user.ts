@@ -4,6 +4,10 @@ export class User {
     password: string;
     firstName: string;
     lastName: string;
+    questionList:string;
+    answer:string;
     token: string;
-    role :string
+    role :string;
+    confirmpassword:string;
+    appendedanswer:string;
 }

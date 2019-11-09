@@ -29,7 +29,7 @@ import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 @Service
-public class CandidateService {
+public class CandidateService implements ICandidateService {
 	
 	@Autowired
 	CandidateRepository candidateRepo;
@@ -44,15 +44,15 @@ public class CandidateService {
 	Job job;
 	SequenceGeneratorService sequenceGeneratorService;
 	
-	
 	ArrayList<String> candidateSkills = new ArrayList<String>();
 	ArrayList<Job> jobList = new ArrayList<Job>();
 	ArrayList<Job> preferedJobList;
-	ArrayList<Job> appliedJobList = new ArrayList<Job>();
+	ArrayList<Job> appliedJobList;
 	
-	 MongoClient mongoClient = new MongoClient();
-	 DB db = mongoClient.getDB("test");
+	MongoClient mongoClient = new MongoClient();
+	DB db = mongoClient.getDB("rms");
 	
+	@Override
 	public boolean candidateCreate(@Valid Candidate candidate) throws RmsApplicationException {
 		try {
 			candidate.setcId(SequenceGeneratorService.generateSequence(db,Candidate.SEQUENCE_NAME));
@@ -64,8 +64,10 @@ public class CandidateService {
 		}
 	}
 
+	@Override
 	public List<Job> getAllAppliedJobs(String id) throws RmsApplicationException {
 		try {
+			 appliedJobList= new ArrayList<Job>();
 			candidate = candidateRepo.findById(id).get();
 			jobList = (ArrayList<Job>) jobRepo.findAll();
 			jobList.forEach( j -> {
@@ -74,14 +76,13 @@ public class CandidateService {
 					appliedJobList.add(j);
 				}
 			});
-//			Optional<Candidate> c = candidateRepo.findById(id);
 			return appliedJobList;
 		} catch (DataAccessException e) {
 			throw new RmsApplicationException("You have not applied for any job", e);
 		}
-		
 	}
 
+	@Override
 	public List<Job> getAllJobsForApply() throws RmsApplicationException {
 		try {
 			return jobRepo.findAll();
@@ -90,6 +91,7 @@ public class CandidateService {
 		}
 	}
 	
+	@Override
 	public List<Job> getJobsByPreference(String id) throws RmsApplicationException {
 		try {
 			preferedJobList=new ArrayList<Job>();
@@ -110,6 +112,7 @@ public class CandidateService {
 		}
 	}
 
+	@Override
 	public boolean applyForJob(String id, String jid) throws RmsApplicationException {
 		candidate = candidateRepo.findById(id).get();
 		job = jobRepo.findById(jid).get();
@@ -127,7 +130,7 @@ public class CandidateService {
 					+"Regards,"+"\n"
 					+"RMS Team"
 					+"\n\n\n\n"
-					+"THIS IS A SYTEM GENERATED MAIL.PLEASE DO NOT REPLY TO THIS MAIL.THANK YOU."
+					+"THIS IS A SYSTEM GENERATED MAIL.PLEASE DO NOT REPLY TO THIS MAIL.THANK YOU."
 					+"For any queries,please feel free to reach us from the Contact Us page of our website");
 			emailService.sendmail(emailMessage);
 			String msg = "Dear "+candidate.getcName()+"\n"+" You have successfully applied for "+job.getjTitle()+"\n\n"+"Regards,"+"\n"+"RMS Team"+"\n\n"+"This is a system generated response.Please do NOT reply to this message.Thank you.";
@@ -141,22 +144,24 @@ public class CandidateService {
 		return false;
 	}
 
+	@Override
 	public Candidate getCandidateById(String id) {
 		return candidateRepo.findById(id).get();
 	}
 
-	public boolean updateProfile(Candidate c) {
+	@Override
+	public boolean updateProfile(Candidate c) throws RmsApplicationException {
 		try {
 			candidateRepo.save(c);
 			return true;
 		} catch (Exception e) {
-			
+			throw new RmsApplicationException("Updation of profile failed; try after some time",e);
 		}
-		return false;
 	}
 
+	@Override
 	public Candidate findByCandidate(@Valid String candidateName) {
-		return candidateRepo.findBycName(candidateName);
+		return candidateRepo.findByUsername(candidateName);
 	}
 
 }

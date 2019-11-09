@@ -45,45 +45,21 @@ public class CandidateController {
 	@Autowired
 	CandidateService candidateService;
 	@Autowired
-	EmailService emailService;
-//	@Autowired
-//	JobService jobService;
-	
-	
+	EmailService emailService;	
 	
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> createCandidate(@RequestBody @Valid Candidate candidate) throws RmsApplicationException{
 
 		ResponseMessage resMsg;
-		//System.out.println(job);
-		// Exception Handling moved to @ExceptionHandler
-//		try {
-		boolean x = candidateService.candidateCreate(candidate);
-//		} catch (ApplicationException e) {
-//			resMsg = new ResponseMessage("Failure", e.getMessage());
-//			return ResponseEntity.badRequest().body(resMsg);
-//		}
-
-		// Exception Handling moved to @ExceptionHandler
-//		if(bindingResult.hasErrors()) {
-//			resMsg = new ResponseMessage("Failure", "Validation Error");
-//			return ResponseEntity.badRequest().body(resMsg);			
-//		}
-		if(x) {
-			resMsg = new ResponseMessage("Success", new String ("Candidate created successfully"));
-			
-		}
-		else {
-			resMsg = new ResponseMessage("Failed", new String ("Failed to create candidate"));
-		}
-		// Build newly created Employee resource URI - Employee ID is always 0 here.
-		// Need to get the new Employee ID.
+		candidateService.candidateCreate(candidate);
+		
+		resMsg = new ResponseMessage("Success", new String ("Candidate created successfully"));
+		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(candidate.getcId()).toUri();
 
 		return ResponseEntity.created(location).body(resMsg);
-
 	}
 	
 	@GetMapping(value="/{id}/appliedjobs",produces = { MediaType.APPLICATION_JSON_VALUE })
@@ -107,6 +83,7 @@ public class CandidateController {
 	@GetMapping(value="/{id}/applyjob", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> applyJob(@PathVariable String id,@RequestParam(value="jid") String jid) throws RmsApplicationException{
+		
 		Candidate candidate = candidateService.getCandidateById(id);
 		ResponseMessage resMsg;
 		boolean x = candidateService.applyForJob(id,jid);
@@ -116,6 +93,7 @@ public class CandidateController {
 		else {
 			resMsg = new ResponseMessage("Failed", new String ("You have already applied for the job"));
 		}
+		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}/appliedjobs")
 				.buildAndExpand(candidate.getcId()).toUri();
 
@@ -124,16 +102,12 @@ public class CandidateController {
 	
 	@PutMapping(value = "/{id}/profile", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> profileEdit(@PathVariable String id, @RequestBody Candidate c){
+	public ResponseEntity<ResponseMessage> profileEdit(@PathVariable String id, @RequestBody Candidate c) throws RmsApplicationException{
 		ResponseMessage resMsg;
 		c.setcId(id);
-		boolean x = candidateService.updateProfile(c);
-		if(x) {
-			resMsg = new ResponseMessage("Success", new String ("profile updated successfully"));
-		}
-		else {
-			resMsg = new ResponseMessage("Failed", new String ("profile update failed"));
-		}
+		candidateService.updateProfile(c);
+		
+		resMsg = new ResponseMessage("Success", new String ("profile updated successfully"));
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}/appliedjobs")
 				.buildAndExpand(c.getcId()).toUri();
@@ -154,18 +128,4 @@ public class CandidateController {
 		return candidateService.findByCandidate(candidateName);
 	}
 	
-//	@RequestMapping(value="/send", method=RequestMethod.POST)
-//	public String sendEmail(@RequestBody EmailMessage emailmessage) throws AddressException, MessagingException, IOException {
-//		emailService.sendmail(emailmessage);
-//		return "Email sent successfully";
-//	}
-	
-//	@ExceptionHandler(Exception.class)
-//	public ResponseEntity<ResponseMessage> handleRmsApplicationExcpetion(Exception e) {
-//		System.out.println("ERROR: " + e.getMessage());
-//		log.error("ERROR OCCURED: {}", e.getMessage(), e);
-//		ResponseMessage resMsg = new ResponseMessage("Failure", new String[] { e.getMessage() },
-//				ExceptionUtils.getStackTrace(e));
-//		return ResponseEntity.badRequest().body(resMsg);
-//	}
 }

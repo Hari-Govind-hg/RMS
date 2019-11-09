@@ -12,7 +12,7 @@ export class JobdetailsComponent implements OnInit {
   ngOnInit() {
   }
   onApplyNowHandler(){
-    console.log("applied successfully");
+    
     alert("applied Successfully");
   }
 }

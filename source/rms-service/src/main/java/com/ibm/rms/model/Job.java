@@ -26,20 +26,6 @@ public class Job extends Organisation{
 	private Date jInterviewDate;
 	private ArrayList<Candidate> jAppliedCandidateList = new ArrayList();
 	private Organisation jOrganisation;
-	
-	
-//	public Job(String jId, String jTitle, String jDescription, ArrayList<String> skillList, String jSalary,
-//			String jRequiredExperience, Date jApplicationCloseDate,Organisation jOrganisation) {
-//		super();
-//		this.jId = jId;
-//		this.jTitle = jTitle;
-//		this.jDescription = jDescription;
-//		this.skillList = skillList;
-//		this.jSalary = jSalary;
-//		this.jRequiredExperience = jRequiredExperience;
-//		this.jApplicationCloseDate = jApplicationCloseDate;
-//		this.jOrganisation = jOrganisation;
-//	}
 
 
 	public String getjId() {

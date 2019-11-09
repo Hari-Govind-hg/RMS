@@ -14,6 +14,8 @@ export class CandidateRegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  isDuplicateUser:boolean;
+  questions: string[] = ['What is the name of your first pet?','What is the color of your first car?','Who is your favourite sportsperson?'];
 
   constructor(
       private formBuilder: FormBuilder,
@@ -33,8 +35,12 @@ export class CandidateRegisterComponent implements OnInit {
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
           username: ['', Validators.required],
-          password: ['', [Validators.required, Validators.minLength(6)]]
+          questionList: ['', Validators.required],
+          answer: ['', Validators.required],
+          password: ['', [Validators.required, Validators.minLength(6)]],
       });
+
+      
   }
 
   // convenience getter for easy access to form fields
@@ -42,24 +48,28 @@ export class CandidateRegisterComponent implements OnInit {
 
   onSubmit() {
       this.submitted = true;
-      console.log("Called the Submit");
+      
+
+      localStorage.setItem('fullName',this.registerForm.value.firstName+" "+this.registerForm.value.lastName)
 
       // stop here if form is invalid
       if (this.registerForm.invalid) {
-          console.log("invalid");
+          
           return;
       }
-      console.log(this.registerForm.value);
+    
       this.loading = true;
       this.userService.register(this.registerForm.value)
           .pipe(first())
           .subscribe(
               data => {
-                  console.log("entered the subscribe");
+                  
                   this.alertService.success('Registration successful', true);
                   this.router.navigate(['/candidatelogin']);
               },
               error => {
+
+                  this.isDuplicateUser=true
                   this.alertService.error('Registration Failed',error);
                   this.loading = false;
               });

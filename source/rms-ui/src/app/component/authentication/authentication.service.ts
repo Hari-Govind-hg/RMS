@@ -28,14 +28,14 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the response
                 if (user) {
                     let userObj = JSON.parse(JSON.stringify(user));
-                    console.log(userObj)
+                    
                     if(userObj.authorities[0].authority==="ROLE_CANDIDATE")
                     {
                                         // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     let temp = JSON.parse(localStorage.getItem('currentUser'));
                     
-                    console.log("Making localstorage...")
+                    
                     this.currentUserSubject.next(user);
                     this.loggedIn.next(true);
                 }
@@ -53,13 +53,13 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the response
                 if (user) {
                     let userObj = JSON.parse(JSON.stringify(user));
-                    console.log(userObj)
+                   
                     if(userObj.authorities[0].authority==="ROLE_HR")
                     {
-                    console.log(user)
+                    
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
-                    console.log("Making localstorage...")
+                    
                     this.currentUserSubject.next(user);
                     this.loggedIn.next(true);
                 }
@@ -80,5 +80,6 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
         this.loggedIn.next(false);
+        localStorage.removeItem('fullName')
     }
 }

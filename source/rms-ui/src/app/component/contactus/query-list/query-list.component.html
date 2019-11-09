@@ -1,8 +1,10 @@
-<div class="card col-md-12">
-        <h2>Queries</h2>
-        <div class="card-body" *ngFor="let contactData of contactList">
-                    <h5><b>Id:</b> {{contactData.id}}</h5>
+<h2>Queries</h2>
+<div class="row">
+<div *ngFor="let contactData of contactList">
+<div class="card">
+        <div class="card-body" style="width:100%">
           <h3 class="card-title">{{contactData.name}}</h3>
+          <h5><b>Id:</b> {{contactData.id}}</h5>
           <h5><b>Email:</b> {{contactData.email}}</h5>
           <hr>
           <p><b>Subject:</b> {{contactData.subject}}</p>
@@ -12,6 +14,9 @@
           <div class="alert alert-success" *ngIf="isSaved">
                   Updated successfully!
           </div>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editJobModal" routerLink="/reply">Reply</button>
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editJobModal" routerLink="/reply">Reply</button> -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editJobModal" (click)="onReplyHandler(contactData.email)">Reply</button>
           <button type="button" class="btn btn-danger" (click)="onDeleteHandler(contactData.id)">Delete</button>
     </div>
+</div>
+</div>

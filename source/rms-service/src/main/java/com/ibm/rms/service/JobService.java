@@ -25,7 +25,7 @@ import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 @Service
-public class JobService {
+public class JobService implements IJobService {
 	
 	@Autowired
 	EmailService emailService;
@@ -35,8 +35,9 @@ public class JobService {
 	SequenceGeneratorService sequenceGeneratorService;
 	
 	 MongoClient mongoClient = new MongoClient();
-	 DB db = mongoClient.getDB("test");
+	 DB db = mongoClient.getDB("rms");
 	
+	 @Override
 	public boolean jobCreate(Job job) throws RmsApplicationException {
 		try {
 			job.setjId(sequenceGeneratorService.generateSequence(db,Job.SEQUENCE_NAME));
@@ -48,6 +49,7 @@ public class JobService {
 		}
 	}
 
+	 @Override
 	public List<Job> getAll() throws RmsApplicationException {
 		try {
 			return jobRepo.findAll();
@@ -64,6 +66,7 @@ public class JobService {
 		}
 	}
 
+	@Override
 	public boolean updateJob(Job updatedJob) throws RmsApplicationException {
 		try {
 			jobRepo.save(updatedJob);
@@ -74,6 +77,7 @@ public class JobService {
 		}
 	}
 
+	@Override
 	public boolean deleteJob(String id) throws RmsApplicationException {
 		try {
 			jobRepo.deleteById(id);
@@ -84,6 +88,7 @@ public class JobService {
 		}
 	}
 
+	@Override
 	public ArrayList<Job> filterBySkill(String skill) {
 		ArrayList<Job> filteredJobs = new ArrayList<Job>();
 		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
@@ -95,6 +100,7 @@ public class JobService {
 		return filteredJobs;
 	}
 	
+	@Override
 	public ArrayList<Job> filterBySkillAndExperience(String skill, String experience) {
 		ArrayList<Job> filteredJobs = new ArrayList<Job>();
 		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
@@ -106,6 +112,7 @@ public class JobService {
 		return filteredJobs;
 	}
 	
+	@Override
 	public ArrayList<Job> filterByExperience(String experience) {
 		ArrayList<Job> filteredJobs = new ArrayList<Job>();
 		ArrayList<Job> allJobs = (ArrayList<Job>) jobRepo.findAll();
@@ -117,6 +124,7 @@ public class JobService {
 		return filteredJobs;
 	}
 
+	@Override
 	public void setInterviewDate(Job job) throws RmsApplicationException {
 		try {
 			jobRepo.save(job);
@@ -130,19 +138,8 @@ public class JobService {
 				EmailMessage emailMessage = new EmailMessage();
 				emailMessage.setTo_address(c.getcEmail());
 				emailMessage.setSubject("Your job application update");
-				emailMessage.setBody(
-							"Dear " +c.getcName()+","+ "\r\n" + 
-							"The job " +job.getjTitle()+" position hiring is now active."+"\n"
-							+"Your interview date has been set for "+interviewDateString
-							+". Make sure you are present for the interview on the date assigned to you. Do not be late."+"\n"
-							+"Job Title: "+job.getjTitle()+"\n"
-							+"Job Description: "+job.getjDescription()+"\n"
-							+"Min Experience Required: "+job.getjRequiredExperience()+"\n\n"
-							+"Regards,"+"\n"
-							+"RMS Team"
-							+"\n\n\n\n"
-							+"THIS IS A SYTEM GENERATED MAIL.PLEASE DO NOT REPLY TO THIS MAIL.THANK YOU."
-							+"For any queries,please feel free to reach us from the Contact Us page of our website");
+				String resbody = "Dear "+c.getcName()+","+ "\n" + "The job " +job.getjTitle()+" position hiring is now active."+"\n"+"Your interview date has been set for "+interviewDateString+". Make sure you are present for the interview on the date assigned to you. Do not be late."+"\n"+"Job Title: "+job.getjTitle()+"\n"+"Job Description: "+job.getjDescription()+"\n"+"Min Experience Required: "+job.getjRequiredExperience()+"\n\n"+"Regards,"+"\n"+"RMS Team"+"\n\n\n\n"+"THIS IS A SYSTEM GENERATED MAIL.PLEASE DO NOT REPLY TO THIS MAIL.THANK YOU."+"\nFor any queries,please feel free to reach us from the Contact Us page of our website";
+				emailMessage.setBody(resbody);
 				try {
 					emailService.sendmail(emailMessage);
 					String msg = "Dear "+c.getcName()+"\n"+" Your interview for "+job.getjTitle()+"is scheduled on "+interviewDateString+"\n\n"+"Regards,"+"\n"+"RMS Team"+"\n\n"+"This is a system generated response.Please do NOT reply to this message.Thank you.";

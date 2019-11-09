@@ -12,12 +12,12 @@ public class Organisation {
 	private ArrayList<Job> oJobList;
 	private ArrayList<Hr> oHrList;
 	
-	//Constructor without parameter
+	
 	public Organisation() {
 		
 	}
 	
-	//Constructor with parameters
+	
 	public Organisation(String oId, String oName, ArrayList<Job> oJobList, ArrayList<Hr> oHrList) {
 		super();
 		this.oId = oId;
@@ -26,7 +26,7 @@ public class Organisation {
 		this.oHrList = oHrList;
 	}
 
-	//Getters... and Setters...
+	
 	public String getoId() {
 		return oId;
 	}
